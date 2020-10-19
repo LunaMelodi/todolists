@@ -1,4 +1,4 @@
-import displayTodos from '/client/js/DisplayTodo.js';
+import displayTodos from '/client/js/displayTodos.js';
 
 export default function createTodo() {
   var addTodoInput = document.getElementById("add-todo")
