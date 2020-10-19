@@ -2,21 +2,23 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Todolists</title>
-     <link rel="stylesheet" href="./css/main.css" type="text/css">
+    <title>Todolist</title>
+     <link rel="stylesheet" href="/client/css/main.css" type="text/css">
   </head>
   <body>
-    <section class="main-form">
-      <form class="add-activity">
-        <label for="add-activity">New activity: </label>
-        <textarea name="name" rows="5" cols="50"></textarea>
-        <input class="add-button" type="submit" value=" Add " />
-      </form>
-    </section>
-    <section class="todo-list">
-      <ul class="list-items">
-
-      </ul>
-    </section>
+    <div class="app">
+      <section class="main-form">
+        <form class="add-todo">
+          <label for="add-todo">New Todo: </label>
+          <input name="add-todo" type="text" placeholder="Add a todo here!">
+          <button class="add-button" type="submit">Add Todo</button>
+        </form>
+      </section>
+      <section class="todo-list">
+        <ul class="list-items">
+  
+        </ul>
+      </section>
+    </div>
   </body>
 </html>
