@@ -1,5 +1,5 @@
 import createTodo from '/client/js/createTodo.js';
-import displayTodos from 'client/js/displayTodos.js';
+import displayTodos from '/client/js/displayTodos.js';
 
 var form = document.querySelector('#add-todo-form');
 
