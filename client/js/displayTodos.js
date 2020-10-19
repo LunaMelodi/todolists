@@ -1,4 +1,4 @@
-function displayTodos() {
+export default function displayTodos() {
   fetch('http://localhost:8080/api/todos', {headers: {'content-type': 'aplication/json'}})
   .then(response => {
     if(response.ok){
@@ -11,5 +11,3 @@ function displayTodos() {
     })
   })
 }
-
-export default displayTodos;

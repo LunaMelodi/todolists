@@ -1,5 +1,6 @@
-export default function createTodo() {
+import displayTodos from '/client/js/DisplayTodo.js';
 
+export default function createTodo() {
   var addTodoInput = document.getElementById("add-todo")
 
   var data = new URLSearchParams();
@@ -15,7 +16,7 @@ export default function createTodo() {
   .catch (error => console.log(error))
  
   //displayTodos();
-  
+
   addTodoInput.value = "";
   
   // (C) PREVENT HTML FORM SUBMIT
