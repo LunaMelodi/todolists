@@ -3,7 +3,7 @@ function displayTodos() {
   .then(response => {
     if(response.ok){
       return response.json();
-    } else throw new Error('Failed getting all employees. ');
+    } else throw new Error('Failed getting todo items. ');
   })
   .then(data => {
     let listItems = data.map( item => {
@@ -11,3 +11,5 @@ function displayTodos() {
     })
   })
 }
+
+export default displayTodos;
