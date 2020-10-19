@@ -15,7 +15,7 @@ export default function createTodo() {
   .then (text => console.log(text))
   .catch (error => console.log(error))
  
-  //displayTodos();
+  displayTodos();
 
   addTodoInput.value = "";
   

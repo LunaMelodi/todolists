@@ -1,14 +1,14 @@
-export default function displayTodos() {
-  fetch('http://localhost:8080/api/todos', {headers: {'content-type': 'aplication/json'}})
-  .then(response => {
-    if(response.ok){
-      return response.json();
-    } else throw new Error('Failed getting todo items. ');
-  })
-  .then(data => {
-    let listItems = data.map( item => {
-      return `<li class='todo-item'>${item.text}</li>`
-    })
-    return listItems;
-  }).catch( error => { console.log(error) })
+import getTodos from '/client/js/getTodos.js';
+
+export default async function displayTodos() {
+  var todos = await getTodos();
+  console.log('todos :>> ', todos);
+
+  var ul = document.querySelector('#list-items');
+
+  ul.innerHTML='';
+
+  todos.forEach(el => {
+    ul.innerHTML += `<li class='todo-item'>${el['todo-content']}</li>`;
+  });
 }
