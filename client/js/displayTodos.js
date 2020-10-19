@@ -9,9 +9,6 @@ export default function displayTodos() {
     let listItems = data.map( item => {
       return `<li class='todo-item'>${item.text}</li>`
     })
-  })
-}
     return listItems;
   }).catch( error => { console.log(error) })
 }
-
