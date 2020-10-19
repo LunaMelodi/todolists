@@ -1,4 +1,4 @@
-import displayTodos from '/client/js/displayTodos.js';
+import getTodos from '/client/js/getTodos.js';
 
 export default function createTodo() {
   var addTodoInput = document.getElementById("add-todo")
@@ -12,10 +12,13 @@ export default function createTodo() {
     body: data
   })
   .then (res => res.text())
-  .then (text => console.log(text))
+  .then (text => {
+    console.log(text);
+    getTodos();
+  })
   .catch (error => console.log(error))
  
-  displayTodos();
+  
 
   addTodoInput.value = "";
   

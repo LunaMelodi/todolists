@@ -1,5 +1,6 @@
+import displayTodos from "/client/js/displayTodos.js";
+
 export default function getTodos() {
-  var todos = [] 
   fetch('http://localhost:8080/api/todos', {headers: {'content-type': 'aplication/json'}})
   .then(response => {
     if(response.ok){
@@ -8,9 +9,7 @@ export default function getTodos() {
   })
   .then(data => {
     console.log('data.data :>> ', data.data);
-    todos = data.data;
-    return data.data;
+    displayTodos(data.data)
+    
   }).catch( error => { console.log(error) })
-
-  return todos;
 }

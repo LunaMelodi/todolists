@@ -1,15 +1,12 @@
 import createTodo from '/client/js/createTodo.js';
-import displayTodos from '/client/js/displayTodos.js';
+import getTodos from '/client/js/getTodos.js';
 
 var form = document.querySelector('#add-todo-form');
 
-displayTodos()
+getTodos()
 
 form.addEventListener('submit', evt => {
   evt.preventDefault();
 
-  console.log("test")
-
   createTodo();
-
 });

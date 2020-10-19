@@ -1,9 +1,4 @@
-import getTodos from '/client/js/getTodos.js';
-
-export default async function displayTodos() {
-  var todos = await getTodos();
-  console.log('todos :>> ', todos);
-
+export default async function displayTodos(todos) {
   var ul = document.querySelector('#list-items');
 
   ul.innerHTML='';
