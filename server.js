@@ -4,7 +4,7 @@ var cors = require('cors');
 var app = express();
 var port = 8080;
 
-var items = require('./routes/items');
+var todos = require('./routes/todos');
 
 app.use(cors());
 app.use(express.json());
@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.use('/items', items);
+app.use('/api/todos', todos);
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 

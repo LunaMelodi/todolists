@@ -1,30 +1,30 @@
-var items = [];
+var todos = [];
 var id = 0;
 
-exports.insertItem = function(item) {
-  item.id = id++;
+exports.insertTodo = function(todo) {
+  todo.id = id++;
 
-  items.push(item);
+  todos.push(todo);
 
-  console.log('items in dataAccess.insertItem :>> ', items)
+  console.log('todos in dataAccess.insertTodo :>> ', todos)
 }
 
-exports.getItems = function() {
-  console.log('items in dataAccess.getItems :>> ', items);
+exports.getTodos = function() {
+  console.log('todos in dataAccess.getTodos :>> ', todos);
 
-  return items;
+  return todos;
 }
 
-exports.deleteItem = function(idToDelete) {
+exports.deleteTodo = function(idToDelete) {
   idToDelete = parseInt(idToDelete);
   console.log('idToDelete :>> ', idToDelete);
-  console.log('items before deletion :>> ', items);
+  console.log('todos before deletion :>> ', todos);
 
-  items = items.filter(function(item) {
-    console.log('item :>> ', item);
-    console.log('item.id !== idToDelete :>> ', item.id !== idToDelete);
-    return item.id !== idToDelete;
+  todos = todos.filter(function(todo) {
+    console.log('todo :>> ', todo);
+    console.log('todo.id !== idToDelete :>> ', todo.id !== idToDelete);
+    return todo.id !== idToDelete;
   })
 
-  console.log('items after deletion :>> ', items);
+  console.log('todos after deletion :>> ', todos);
 }
