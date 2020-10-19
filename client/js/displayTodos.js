@@ -11,3 +11,7 @@ export default function displayTodos() {
     })
   })
 }
+    return listItems;
+  }).catch( error => { console.log(error) })
+}
+
