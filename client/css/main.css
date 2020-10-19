@@ -1,8 +1,20 @@
-body {
+body, html {
   font-family: Helvetica, sans-serif;
   background-color: whitesmoke;
+  margin: 0;
+  text-align: center;
 }
+h1 {
+  text-align: center;
+  background-color: hsla(210, 75%, 20%, 1);
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  color: white;
+  height: 3em;
+  line-height: 3em;
 
+}
 .app {
   display: flex;
   justify-content: center;
@@ -21,9 +33,19 @@ body {
   align-items: center;
   flex-direction: column;
 }
+.add-todo label {
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+.add-todo input {
+  width: 15rem;
+  height: 2rem;
+  box-shadow: 2px 3px 5px grey;
+}
 .add-button {
   background-color: hsla(210, 75%, 20%, 1);
   color: hsla(210, 0%, 100%, 1);
   border-style: none;
   padding: 0.75em 1.5em;
+  margin: 1rem;
 }
