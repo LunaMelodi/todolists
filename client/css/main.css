@@ -31,16 +31,13 @@ h1 {
 .add-todo {
   display: flex;
   align-items: center;
-  flex-direction: column;
-}
-.add-todo label {
-  margin: 1rem;
-  font-size: 1.5rem;
+
 }
 .add-todo input {
   width: 15rem;
   height: 2rem;
   box-shadow: 2px 3px 5px grey;
+  padding-left: 1em;
 }
 .add-button {
   background-color: hsla(210, 75%, 20%, 1);
