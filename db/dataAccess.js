@@ -16,15 +16,16 @@ exports.getTodos = function() {
 }
 
 exports.deleteTodo = function(idToDelete) {
-  idToDelete = parseInt(idToDelete);
+
   console.log('idToDelete :>> ', idToDelete);
   console.log('todos before deletion :>> ', todos);
-
-  todos = todos.filter(function(todo) {
-    console.log('todo :>> ', todo);
-    console.log('todo.id !== idToDelete :>> ', todo.id !== idToDelete);
-    return todo.id !== idToDelete;
-  })
-
+  
+  let indexToDelete = todos.findIndex(item => {return item.id == idToDelete})
+  //console.log('---- ', todos[indexToDelete], idToDelete, 'At index ' + indexToDelete)
+  let todosRest = todos.splice( indexToDelete, 1 )
+  
   console.log('todos after deletion :>> ', todos);
+  
+  return 1;
 }
+
