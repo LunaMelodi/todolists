@@ -23,7 +23,7 @@ exports.deleteTodo = function(idToDelete) {
   var removeIndex = 0;
 
   for (let i = 0; i < todos.length; i++) {
-    if (todos[i].id === idToDelete) {
+    if (todos[i].id === Number(idToDelete)) {
       removeIndex = i;
       break;
     }
