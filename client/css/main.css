@@ -46,14 +46,18 @@ input[type=text] {
   padding-left: 1em;
 }
 
-.add-button {
+.add-button, .delete-todo {
   background-color: hsla(210, 75%, 20%, 1);
   color: hsla(210, 0%, 100%, 1);
   border-style: none;
   padding: .7em 1.5em;
   margin: 1rem;
+  border-radius: 2px;
 }
-
+.delete-todo {
+  padding: 0.5em; 
+  
+}
 .list-items {
   list-style: none;
   margin: 0;
@@ -64,7 +68,9 @@ input[type=text] {
   display: flex;
   justify-content: space-between;
   font-size: 1.4em;
+  align-items: baseline;
 }
+
 .list-text {
   margin: 0.5rem 1rem;
   max-width: 20rem;
