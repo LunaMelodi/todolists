@@ -8,7 +8,7 @@ export default async function displayTodos(todos) {
     node.setAttribute('class', `todo-item`);
     node.setAttribute('data-key', el.id);
     node.innerHTML = `<label class="checkbox-container">
-                      <input type="checkbox" >
+                      <input class="todo-checkbox" type="checkbox" >
                       <span class="checkmark"></span>
                       </label>
                       <p class="list-text">${el['todo-content']}</p>
