@@ -1,3 +1,4 @@
+import getTodos from '/client/js/getTodos.js';
 
 export default function deleteTodo(id) {
 
@@ -11,6 +12,7 @@ export default function deleteTodo(id) {
     })
     .then(res => {
         console.log(res);
+        getTodos();
     })
     .catch(error => {
         console.log(error);

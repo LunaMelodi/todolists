@@ -20,15 +20,18 @@ exports.deleteTodo = function(idToDelete) {
   console.log('idToDelete :>> ', idToDelete);
   console.log('todos before deletion :>> ', todos);
   
-  let indexToDelete = todos.findIndex(item => {return item.id == idToDelete})
-  //console.log('---- ', todos[indexToDelete], idToDelete, 'At index ' + indexToDelete)
-  if(!indexToDelete === -1){
-    let todosRest = todos.splice( indexToDelete, 1 )
-  } else {
-    null
+  var removeIndex = 0;
+
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].id === idToDelete) {
+      removeIndex = i;
+      break;
+    }
   }
-  
-  
+
+  console.log(removeIndex);
+  todos.splice(removeIndex, 1);
+
   console.log('todos after deletion :>> ', todos);
   
   return 1;
