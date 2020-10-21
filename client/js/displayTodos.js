@@ -4,6 +4,13 @@ export default async function displayTodos(todos) {
   ul.innerHTML='';
 
   todos.forEach((el, i)=> {
-    ul.innerHTML += `<li class='todo-item'><input type="checkbox" id="todo${i}" name="todo" value="Todo"><p class="list-text">${el['todo-content']}</p><button id="btn${el.id}" onclick="deleteTodo(${el.id})">x</button></li>`;
+    const node = document.createElement("li");
+    node.setAttribute('class', `todo-item`);
+    node.setAttribute('data-key', el.id);
+    node.innerHTML = `<input type="checkbox" id="todo${i}" name="todo" value="Todo">
+                      <p class="list-text">${el['todo-content']}</p>
+                      <button class="delete-todo" type="submit">x</button>`;
+    ul.append(node);
   });
 }
+

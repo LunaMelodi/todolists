@@ -15,5 +15,16 @@ form.addEventListener('submit', evt => {
   createTodo();
 });
 
-window.deleteTodo = deleteTodo;
 
+
+/*
+var ul = document.getElementById('list-items');
+//console.log(ul)
+console.log(ul.children, '  -------')
+ul.addEventListener('click', evt => {
+  
+  if (evt.target.classList.contains('delete-todo')) {
+    const itemKey = evt.target.parentElement.dataset.key;
+    deleteTodo(itemKey);
+  }
+})*/

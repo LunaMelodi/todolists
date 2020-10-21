@@ -22,7 +22,12 @@ exports.deleteTodo = function(idToDelete) {
   
   let indexToDelete = todos.findIndex(item => {return item.id == idToDelete})
   //console.log('---- ', todos[indexToDelete], idToDelete, 'At index ' + indexToDelete)
-  let todosRest = todos.splice( indexToDelete, 1 )
+  if(!indexToDelete === -1){
+    let todosRest = todos.splice( indexToDelete, 1 )
+  } else {
+    null
+  }
+  
   
   console.log('todos after deletion :>> ', todos);
   
