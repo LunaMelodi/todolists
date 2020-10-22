@@ -1,5 +1,8 @@
+import displayTodos from "/client/js/displayTodos.js";
+
 export default function getTodosFromBrowser() {
-    let todosParsed = JSON.parse(sessionStorage.getItem('todolist'));
+    let todosParsed = JSON.parse(localStorage.getItem('todolist'));
+    displayTodos(todosParsed); 
     return todosParsed;
 }
 

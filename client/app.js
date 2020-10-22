@@ -3,17 +3,22 @@ import getTodos from '/client/js/getTodos.js';
 import deleteTodo from '/client/js/deleteTodo.js';
 import createTodoInBrowser from '/client/js/createTodoInBrowser.js';
 import getTodosFromBrowser from '/client/js/getTodosFromBrowser.js';
+import deleteTodoBrowser from '/client/js/deleteTodoBrowser.js';
 
 var form = document.querySelector('#add-todo-form');
 var ul = document.querySelector('#list-items');
-let temporalTodos = [];
+
+
+console.log(localStorage.getItem('todolist'), '--------****')
+console.log(localStorage.getItem('todolistt'), '++---++')
 
 getTodos()
+//getTodosFromBrowser()
 
 form.addEventListener('submit', evt => {
   evt.preventDefault();
-  //createTodoInBrowser(temporalTodos)
   createTodo();
+  //createTodoInBrowser();
 });
 
 console.log('ul :>> ', ul);
@@ -23,19 +28,9 @@ ul.addEventListener('click', evt => {
   if (evt.target.classList.contains('delete-todo')) {
     const itemKey = evt.target.parentElement.dataset.key;
     deleteTodo(itemKey);
+    //deleteTodoBrowser(itemKey);
   }
 })
 
 
-/*
-ul.addEventListener('click', evt => {  
-  let li = evt.target
 
-  let placeLast = 99;
-  if (evt.target.classList.contains('todo-checkbox')) {
-    console.log(evt.target.parentElement)
-    evt.target.parentElement.parentElement.style.order = placeLast;
-    placeLast++
-  }
-})
-*/
