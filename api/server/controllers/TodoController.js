@@ -21,6 +21,7 @@ class TodoController {
 
   static async addTodo(req, res) {
     if (!req.body.content) {
+      console.log(req.body)
       util.setError(400, 'Please provide complete details');
       return util.send(res);
     }
