@@ -6,9 +6,7 @@ export default function createTodoInBrowser() {
         "todo-content": addTodoInput.value,
         id: 1
     }
-    
     let savedTodos = getTodosFromBrowser();
-        console.log(savedTodos, '+-+-+-+-+-+')
     if(savedTodos){
         todoItem.id = ( savedTodos[ savedTodos.length - 1 ].id ) + 1;
         savedTodos.push(todoItem)
@@ -17,6 +15,7 @@ export default function createTodoInBrowser() {
         localStorage.setItem('todolist', JSON.stringify([todoItem]));
     }
     getTodosFromBrowser();
+    addTodoInput.value = "";
     return 1;
 }
 

@@ -2,8 +2,11 @@ import displayTodos from "/client/js/displayTodos.js";
 
 export default function getTodosFromBrowser() {
     let todosParsed = JSON.parse(localStorage.getItem('todolist'));
-    displayTodos(todosParsed); 
-    return todosParsed;
+    displayTodos(todosParsed);
+    
+    if(todosParsed[0]) {
+        return todosParsed;
+    } else return false;
 }
 
 
