@@ -2,8 +2,13 @@ import getTodosFromBrowser from '/client/js/getTodosFromBrowser.js';
 
 export default function createTodoInBrowser() {
     var addTodoInput = document.getElementById("add-todo");
+    let inputValue = addTodoInput.value.trim();
+    if(inputValue === '') {
+        alert('Add something!')
+        return 0
+    }
     let todoItem = {
-        "todo-content": addTodoInput.value,
+        "todo-content": inputValue,
         id: 1
     }
     let savedTodos = getTodosFromBrowser();
