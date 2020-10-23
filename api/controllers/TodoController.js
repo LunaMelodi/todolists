@@ -57,7 +57,7 @@ class TodoController {
     }
   }
 
-  static async getATodo(req, res) {
+  static async getOneTodo(req, res) {
     const { id } = req.params;
 
     if (!Number(id)) {
@@ -66,7 +66,7 @@ class TodoController {
     }
 
     try {
-      const theTodo = await TodoService.getATodo(id);
+      const theTodo = await TodoService.getOneTodo(id);
 
       if (!theTodo) {
         resgen.setError(404, `Cannot find todo with the id ${id}`);

@@ -34,7 +34,7 @@ class TodoService {
     }
   }
 
-  static async getATodo(id) {
+  static async getOneTodo(id) {
     try {
       const theTodo = await database.Todo.findOne({
         where: { id: Number(id) }
