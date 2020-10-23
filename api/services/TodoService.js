@@ -1,4 +1,4 @@
-import database from '../src/models';
+import database from '../db/models';
 
 class TodoService {
   static async getAllTodos() {

@@ -1,38 +1,38 @@
-import TodoService from '../server/services/TodoService';
-import Util from '../utils/Utils';
+import TodoService from '../services/TodoService';
+import ResGen from '../utils/ResGeneration';
 
-const util = new Util();
+const resgen = new ResGen();
 
 class TodoController {
   static async getAllTodos(req, res) {
     try {
       const allTodos = await TodoService.getAllTodos();
       if (allTodos.length > 0) {
-        util.setSuccess(200, 'Todos retrieved', allTodos);
+        resgen.setSuccess(200, 'Todos retrieved', allTodos);
       } else {
-        util.setSuccess(200, 'No todo found');
+        resgen.setSuccess(200, 'No todo found');
       }
-      return util.send(res);
+      return resgen.send(res);
     } catch (error) {
-      util.setError(400, error);
-      return util.send(res);
+      resgen.setError(400, error);
+      return resgen.send(res);
     }
   }
 
   static async addTodo(req, res) {
     if (!req.body.content) {
       console.log(req.body)
-      util.setError(400, 'Please provide complete details');
-      return util.send(res);
+      resgen.setError(400, 'Please provide complete details');
+      return resgen.send(res);
     }
     const newTodo = req.body;
     try {
       const createdTodo = await TodoService.addTodo(newTodo);
-      util.setSuccess(201, 'Todo Added!', createdTodo);
-      return util.send(res);
+      resgen.setSuccess(201, 'Todo Added!', createdTodo);
+      return resgen.send(res);
     } catch (error) {
-      util.setError(400, error.message);
-      return util.send(res);
+      resgen.setError(400, error.message);
+      return resgen.send(res);
     }
   }
 
@@ -40,20 +40,20 @@ class TodoController {
     const alteredTodo = req.body;
     const { id } = req.params;
     if (!Number(id)) {
-      util.setError(400, 'Please input a valid numeric value');
-      return util.send(res);
+      resgen.setError(400, 'Please input a valid numeric value');
+      return resgen.send(res);
     }
     try {
       const updateTodo = await TodoService.updateTodo(id, alteredTodo);
       if (!updateTodo) {
-        util.setError(404, `Cannot find todo with the id: ${id}`);
+        resgen.setError(404, `Cannot find todo with the id: ${id}`);
       } else {
-        util.setSuccess(200, 'Todo updated', updateTodo);
+        resgen.setSuccess(200, 'Todo updated', updateTodo);
       }
-      return util.send(res);
+      return resgen.send(res);
     } catch (error) {
-      util.setError(404, error);
-      return util.send(res);
+      resgen.setError(404, error);
+      return resgen.send(res);
     }
   }
 
@@ -61,22 +61,22 @@ class TodoController {
     const { id } = req.params;
 
     if (!Number(id)) {
-      util.setError(400, 'Please input a valid numeric value');
-      return util.send(res);
+      resgen.setError(400, 'Please input a valid numeric value');
+      return resgen.send(res);
     }
 
     try {
       const theTodo = await TodoService.getATodo(id);
 
       if (!theTodo) {
-        util.setError(404, `Cannot find todo with the id ${id}`);
+        resgen.setError(404, `Cannot find todo with the id ${id}`);
       } else {
-        util.setSuccess(200, 'Found Todo', theTodo);
+        resgen.setSuccess(200, 'Found Todo', theTodo);
       }
-      return util.send(res);
+      return resgen.send(res);
     } catch (error) {
-      util.setError(404, error);
-      return util.send(res);
+      resgen.setError(404, error);
+      return resgen.send(res);
     }
   }
 
@@ -84,22 +84,22 @@ class TodoController {
     const { id } = req.params;
 
     if (!Number(id)) {
-      util.setError(400, 'Please provide a numeric value');
-      return util.send(res);
+      resgen.setError(400, 'Please provide a numeric value');
+      return resgen.send(res);
     }
 
     try {
       const todoToDelete = await TodoService.deleteTodo(id);
 
       if (todoToDelete) {
-        util.setSuccess(200, 'Todo deleted');
+        resgen.setSuccess(200, 'Todo deleted');
       } else {
-        util.setError(404, `Todo with the id ${id} cannot be found`);
+        resgen.setError(404, `Todo with the id ${id} cannot be found`);
       }
-      return util.send(res);
+      return resgen.send(res);
     } catch (error) {
-      util.setError(400, error);
-      return util.send(res);
+      resgen.setError(400, error);
+      return resgen.send(res);
     }
   }
 }
