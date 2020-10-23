@@ -7,14 +7,13 @@ import deleteTodoBrowser from '/client/js/deleteTodoBrowser.js';
 
 var form = document.querySelector('#add-todo-form');
 var ul = document.querySelector('#list-items');
+const loggedIn = false;
 
-//getTodos()
-getTodosFromBrowser()
+loggedIn ? getTodos() : getTodosFromBrowser();
 
 form.addEventListener('submit', evt => {
   evt.preventDefault();
-  //createTodo();
-  createTodoInBrowser();
+  loggedIn ? createTodo() : createTodoInBrowser();
 });
 
 console.log('ul :>> ', ul);
@@ -23,8 +22,7 @@ console.log('ul.children :>> ', ul.children);
 ul.addEventListener('click', evt => {  
   if (evt.target.classList.contains('delete-todo')) {
     const itemKey = evt.target.parentElement.dataset.key;
-    //deleteTodo(itemKey);
-    deleteTodoBrowser(itemKey);
+    loggedIn ? deleteTodo(itemKey) : deleteTodoBrowser(itemKey);
   }
 })
 
