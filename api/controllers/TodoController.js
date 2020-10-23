@@ -1,4 +1,4 @@
-import TodoService from '../services/TodoService';
+import TodoService from '../server/services/TodoService';
 import Util from '../utils/Utils';
 
 const util = new Util();

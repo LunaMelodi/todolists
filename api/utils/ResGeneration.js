@@ -1,4 +1,4 @@
-export default class Util {
+export default class ResGeneration {
   constructor() {
     this.statusCode = null;
     this.type = null;
