@@ -33,16 +33,15 @@ class AuthController {
       } else {
         console.log('userRecord :>> ', userRecord);
 
-        resgen.setError(400, 'Email is already in use.');
-        return resgen.send(res);
+        return resgen.setError(400, 'Email is already in use.').send(res);        
       }
       
     } else {
-      resgen.setError(400, 'Invalid user');
-      return resgen.send(res);
+      return resgen.setError(400, 'Invalid user').send(res);    
     }
   }
   static async login(req, res) {
+    console.log('req.cookie :>> ', req.cookie);
     if (validateUser(req.body)) {
       const userRecord = await UserService.getOneUserByEmail(req.body.email);
       
@@ -52,11 +51,12 @@ class AuthController {
         const correctPassword = await argon2.verify(userRecord.password, req.body.password);
         
         if (correctPassword) {
-          let isSecure = req.app.get('env') != 'development';
+          let isSecure = process.env.NODE_ENV != 'development';
           
           res.cookie('user_id', userRecord.id, {
             httpOnly: true,
             secure: isSecure,
+            sameSite: 'None',
             signed: true
           })
           res.json({
@@ -64,17 +64,14 @@ class AuthController {
             user: userRecord
           })
         } else {
-            resgen.setError(400, 'Incorrect password');
-            return resgen.send(res);
+            return resgen.setError(400, 'Incorrect password').send(res);
         }      
       } else {
-        resgen.setError(400, 'User not found in database');
-        return resgen.send(res);
+        return resgen.setError(400, 'User not found in database').send(res);
       }
       
     } else {
-      resgen.setError(400, 'Invalid user');
-      return resgen.send(res);
+      return resgen.setError(400, 'Invalid user').send(res);    
     }
   }
   static async logout(req, res) {
@@ -86,10 +83,9 @@ class AuthController {
 
 function validateUser(user) {
   var validEmail = typeof(user.email) === 'string' && user.email.trim() != '';
-  var validName = typeof(user.name) === 'string' && user.name.trim() != '';
   var validPassword = typeof(user.password) === 'string' && user.password.trim().length >= 6;
 
-  return validEmail && validName && validPassword;
+  return validEmail && validPassword;
 }
 
 export default AuthController;

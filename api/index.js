@@ -5,6 +5,7 @@ import config from 'dotenv';
 import morgan from 'morgan';
 import todoRoutes from './routes/TodoRoutes.js';
 import authRoutes from './routes/AuthRoutes.js';
+import { http } from 'winston';
 
 config.config();
 
@@ -16,7 +17,10 @@ if (process.env.NODE_ENV == 'production') {
 } else {
   app.use(morgan('dev'));
 }
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: 'http://127.0.0.1:5500'
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));

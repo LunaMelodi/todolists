@@ -11,12 +11,16 @@ export default class ResGeneration {
     this.message = message;
     this.data = data;
     this.type = 'success';
+
+    return this;
   }
 
   setError(statusCode, message) {
     this.statusCode = statusCode;
     this.message = message;
     this.type = 'error';
+
+    return this;
   }
 
   send(res) {

@@ -13,11 +13,10 @@ function handleLogin(evt) {
 
   console.log('user :>> ', user);
   login(user)
-  .then(result => {
-      console.log('result :>> ', result);
-  })
+  .then(res => res.json())
+  .then(data => console.log('data >> ', data))
   .catch(err => {
-      console.log('err :>> ', err);
+      console.log('error :>> ', err);
   })
 
 }
@@ -28,6 +27,7 @@ function login(user) {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
     body: JSON.stringify(user),
   })
 }

@@ -14,25 +14,21 @@ class TodoController {
       }
       return resgen.send(res);
     } catch (error) {
-      resgen.setError(400, error);
-      return resgen.send(res);
+      return resgen.setError(400, error).send(res);      
     }
   }
 
   static async addTodo(req, res) {
     if (!req.body.content) {
       console.log(req.body)
-      resgen.setError(400, 'Please provide complete details');
-      return resgen.send(res);
+      return resgen.setError(400, 'Please provide complete details').send(res);      
     }
     const newTodo = req.body;
     try {
       const createdTodo = await TodoService.addTodo(newTodo);
-      resgen.setSuccess(201, 'Todo Added!', createdTodo);
-      return resgen.send(res);
+      return resgen.setSuccess(201, 'Todo Added!', createdTodo).send(res);      
     } catch (error) {
-      resgen.setError(400, error.message);
-      return resgen.send(res);
+      return resgen.setError(400, error.message).send(res);      
     }
   }
 
@@ -40,8 +36,7 @@ class TodoController {
     const alteredTodo = req.body;
     const { id } = req.params;
     if (!Number(id)) {
-      resgen.setError(400, 'Please input a valid numeric value');
-      return resgen.send(res);
+      return resgen.setError(400, 'Please input a valid numeric value').send(res);      
     }
     try {
       const updateTodo = await TodoService.updateTodo(id, alteredTodo);
@@ -52,8 +47,7 @@ class TodoController {
       }
       return resgen.send(res);
     } catch (error) {
-      resgen.setError(404, error);
-      return resgen.send(res);
+      return resgen.setError(404, error).send(res);
     }
   }
 
@@ -61,8 +55,7 @@ class TodoController {
     const { id } = req.params;
 
     if (!Number(id)) {
-      resgen.setError(400, 'Please input a valid numeric value');
-      return resgen.send(res);
+      return resgen.setError(400, 'Please input a valid numeric value').send(res);
     }
 
     try {
@@ -75,8 +68,7 @@ class TodoController {
       }
       return resgen.send(res);
     } catch (error) {
-      resgen.setError(404, error);
-      return resgen.send(res);
+      return resgen.setError(404, error).send(res);    
     }
   }
 
@@ -84,8 +76,7 @@ class TodoController {
     const { id } = req.params;
 
     if (!Number(id)) {
-      resgen.setError(400, 'Please provide a numeric value');
-      return resgen.send(res);
+      return resgen.setError(400, 'Please provide a numeric value').send(res);      
     }
 
     try {
@@ -98,8 +89,7 @@ class TodoController {
       }
       return resgen.send(res);
     } catch (error) {
-      resgen.setError(400, error);
-      return resgen.send(res);
+      return resgen.setError(400, error).send(res);      
     }
   }
 }
