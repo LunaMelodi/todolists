@@ -7,7 +7,7 @@ const resgen = new ResGen();
 
 class AuthController {
   static async signup(req, res) {
-    if (validateUser(req.body)) {
+    if (validateUser(req.body) && typeof(req.body.name) === 'string' && req.body.name != '') {
       let userRecord = await UserService.getOneUserByEmail(req.body.email);
 
       if (!userRecord) {
@@ -53,12 +53,14 @@ class AuthController {
         if (correctPassword) {
           let isSecure = process.env.NODE_ENV != 'development';
           
+          console.log("setting cookie now...");
           res.cookie('user_id', userRecord.id, {
             httpOnly: true,
             secure: isSecure,
             sameSite: 'None',
             signed: true
           })
+          console.log('cookie should be set: res.cookie :>> ', res.cookie);
           res.json({
             message: 'success. logging in...',
             user: userRecord
