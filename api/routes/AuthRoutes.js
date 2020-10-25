@@ -9,8 +9,10 @@ router.get('/', (req, res) => res.status(200).send({
 
 router.post('/signup', AuthController.signup);
 router.post('/login', AuthController.login);
-router.get('/logout', AuthController.logout)
+router.get('/logout', AuthController.logout);
 
+router.get('/users', AuthController.getAllUsers);
+// for debugging
 
 
 export default router;

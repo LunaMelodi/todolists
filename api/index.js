@@ -5,7 +5,7 @@ import config from 'dotenv';
 import morgan from 'morgan';
 import todoRoutes from './routes/TodoRoutes.js';
 import authRoutes from './routes/AuthRoutes.js';
-import { http } from 'winston';
+import confirmLoggedIn from './middleware/confirmLoggedIn.js';
 
 config.config();
 
@@ -25,8 +25,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
-app.use('/api/todos', todoRoutes);
-app.use('/auth', authRoutes);
+app.use('/api/todos', confirmLoggedIn, todoRoutes);
+app.use('/auth', confirmLoggedIn, authRoutes);
 
 app.get('*', (req, res) => res.status(200).send({
   message: 'This is the todolist API, but this was not a valid route.',

@@ -32,7 +32,6 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING,
       validate: {
-        isAlpha: true,
         notEmpty: true
       }
     }

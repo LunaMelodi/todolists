@@ -56,9 +56,10 @@ class AuthController {
           console.log("setting cookie now...");
           res.cookie('user_id', userRecord.id, {
             httpOnly: true,
-            secure: isSecure,
+            secure: false,
             sameSite: 'None',
-            signed: true
+            signed: true,
+            maxAge: 200000
           })
           console.log('cookie should be set: res.cookie :>> ', res.cookie);
           res.json({
@@ -76,6 +77,21 @@ class AuthController {
       return resgen.setError(400, 'Invalid user').send(res);    
     }
   }
+
+  static async getAllUsers(req, res) {
+    try {
+      const allUsers = await UserService.getAllUsers();
+      if (allUsers.length > 0) {
+        resgen.setSuccess(200, 'Users retrieved', allUsers);
+      } else {
+        resgen.setSuccess(200, 'No user found');
+      }
+      return resgen.send(res);
+    } catch (error) {
+      return resgen.setError(400, error).send(res);      
+    }
+  }
+
   static async logout(req, res) {
     res.json({
       message: 'hi'

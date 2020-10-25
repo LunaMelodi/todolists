@@ -1,6 +1,14 @@
 import database from '../db/models';
 
 class UserService {
+  static async getAllUsers() {
+    try {
+      return await database.User.findAll();
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async addUser(newUser) {
     try {
       return await database.User.create(newUser);
@@ -28,11 +36,11 @@ class UserService {
 
   static async getOneUser(id) {
     try {
-      const theUser = await database.User.findOne({
-        where: { id: Number(id) }
+      const userRecord = await database.User.findOne({
+        where: { id: id }
       });
 
-      return theUser;
+      return userRecord;
     } catch (error) {
       throw error;
     }
@@ -40,11 +48,11 @@ class UserService {
 
   static async getOneUserByEmail(email) {
     try {
-      const theUser = await database.User.findOne({
+      const userRecord = await database.User.findOne({
         where: { email: email }
       });
 
-      return theUser;
+      return userRecord;
     } catch (error) {
       throw error;
     }
