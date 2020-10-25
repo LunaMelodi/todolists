@@ -52,6 +52,13 @@ class AuthController {
         const correctPassword = await argon2.verify(userRecord.password, req.body.password);
         
         if (correctPassword) {
+          let isSecure = req.app.get('env') != 'development';
+          
+          res.cookie('user_id', userRecord.id, {
+            httpOnly: true,
+            secure: isSecure,
+            signed: true
+          })
           res.json({
             message: 'success. logging in...',
             user: userRecord
