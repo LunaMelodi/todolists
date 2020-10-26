@@ -96,8 +96,22 @@ class AuthController {
   }
 
   static async logout(req, res) {
+    /* res.clearCookie('user_id', {
+      domain: '127.0.0.1:5500', 
+      path: '/'
+    }); */
+    let isSecure = process.env.NODE_ENV != 'development';
+
+    res.cookie('user_id', 'logged out', {
+      httpOnly: true,
+      secure: isSecure,
+      sameSite: 'none',
+      signed: true, 
+      //expires: Date.now() 
+      maxAge: 0
+    })
     res.json({
-      message: 'hi'
+      message: 'You have been logged out!'
     })
   }
 }

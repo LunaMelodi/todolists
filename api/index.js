@@ -10,7 +10,7 @@ import todoRoutes from './routes/TodoRoutes.js';
 import authRoutes from './routes/AuthRoutes.js';
 
 import checkForSessionCookie from './middleware/confirmLoggedIn.js';
-import authAndAttachUserMiddleware from './middleware/authorize.js';
+import authAndAttachUserMiddleware from './middleware/authorizeAndAttachUser.js';
 
 config.config();
 
