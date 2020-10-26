@@ -52,15 +52,17 @@ class AuthController {
         
         if (correctPassword) {
           let isSecure = process.env.NODE_ENV != 'development';
+          let numDays = 200;
           console.log('req :>> ', req);
           console.log("setting cookie now...");
 
           res.cookie('user_id', userRecord.id, {
-            //httpOnly: true,
-            secure: false,
-            sameSite: 'strict',
-            signed: true,
-            expires: new Date() + 9999
+            httpOnly: true,
+            secure: isSecure,
+            sameSite: 'none',
+            signed: true, 
+            //expires: new Date(Date.now() + 900000000) 
+            maxAge: 1000 * 60 * 60 * 24 * numDays
           })
           console.log('cookie should be set: res.cookie :>> ', res.cookie);
           res.json({

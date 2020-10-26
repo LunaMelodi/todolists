@@ -22,7 +22,7 @@ if (process.env.NODE_ENV == 'production') {
 
 app.use(cors({
   credentials: true,
-  origin: '127.0.0.1:8000' //change back to 5500 later?
+  origin: 'http://127.0.0.1:5500' //change back to 5500 later?
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

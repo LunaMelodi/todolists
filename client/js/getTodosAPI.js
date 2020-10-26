@@ -1,7 +1,13 @@
 import API_URL from './config/var.js';
 
 function getTodosAPI() {
-  fetch(API_URL + '/api/todos')
+  fetch(API_URL + '/api/todos', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  })
   .then(res => res.json())
   .then(data => console.log('returned TODO data :>> ', data))
   .catch(err => console.log('err :>> ', err))
