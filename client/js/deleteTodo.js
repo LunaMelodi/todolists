@@ -1,4 +1,4 @@
-import getTodos from '/js/getTodos.js';
+import getTodos from '/client/js/getTodos.js';
 
 export default function deleteTodo(id) {
 
