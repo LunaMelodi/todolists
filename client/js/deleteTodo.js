@@ -8,7 +8,7 @@ export default function deleteTodo(id) {
     .then(response => {
         if(response.ok){
             return response
-        } else throw new Error('delete request failed');
+        } else throw new Error('Delete request failed. ');
     })
     .then(res => {
         console.log(res);
