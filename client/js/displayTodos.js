@@ -14,12 +14,14 @@ export default async function displayTodos(todos) {
                       <button class="delete-todo" type="submit">x</button>`;
     appendTo.append(node);
   }
-  todos.forEach((el)=> {
-    elementCreator(el, ul);
-    if(el.subtodos) {
-      const sublist = document.createElement("ul");
-      elementCreator(todo, sublist)
-    }
-  });
+  if(todos) {
+    todos.forEach((el)=> {
+      elementCreator(el, ul);
+      if(el.subtodos) {
+        const sublist = document.createElement("ul");
+        elementCreator(todo, sublist)
+      }
+    });
+  }
 }
 

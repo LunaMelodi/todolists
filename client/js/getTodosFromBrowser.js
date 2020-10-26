@@ -4,7 +4,7 @@ export default function getTodosFromBrowser() {
     let todosParsed = JSON.parse(localStorage.getItem('todolist'));
     displayTodos(todosParsed);
     
-    if(todosParsed[0]) {
+    if(todosParsed != null && todosParsed[0]) {
         return todosParsed;
     } else return false;
 }
