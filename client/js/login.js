@@ -1,3 +1,5 @@
+import  API_URL  from './config/var.js';
+
 var form = document.querySelector('#login-form');
 
 function handleLogin(evt) {
@@ -11,10 +13,10 @@ function handleLogin(evt) {
     password: password
   };
 
-  console.log('user :>> ', user);
+  console.log('user before login(user) called :>> ', user);
   login(user)
   .then(res => res.json())
-  .then(data => console.log('data >> ', data))
+  .then(data => console.log('data :>> ', data))
   .catch(err => {
       console.log('error :>> ', err);
   })
@@ -22,7 +24,7 @@ function handleLogin(evt) {
 }
 
 function login(user) {
-  return fetch('http://localhost:8000/auth/login', {
+  return fetch(API_URL + '/auth/login', {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',

@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import favicon from 'serve-favicon';
+import path from 'path';
 import config from 'dotenv';
 import morgan from 'morgan';
 import todoRoutes from './routes/TodoRoutes.js';
@@ -17,13 +19,16 @@ if (process.env.NODE_ENV == 'production') {
 } else {
   app.use(morgan('dev'));
 }
+
 app.use(cors({
   credentials: true,
-  origin: 'http://127.0.0.1:5500'
+  origin: '127.0.0.1:8000' //change back to 5500 later?
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
+
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use('/api/todos', confirmLoggedIn, todoRoutes);
 app.use('/auth', confirmLoggedIn, authRoutes);

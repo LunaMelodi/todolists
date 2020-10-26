@@ -1,4 +1,4 @@
-import getTodosFromBrowser from '/client/js/getTodosFromBrowser.js';
+import getTodosFromBrowser from '/js/getTodosFromBrowser.js';
 
 export default function createTodoInBrowser() {
     var addTodoInput = document.getElementById("add-todo");

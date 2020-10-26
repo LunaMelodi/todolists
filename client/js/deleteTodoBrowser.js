@@ -1,4 +1,4 @@
-import getTodosFromBrowser from '/client/js/getTodosFromBrowser.js';
+import getTodosFromBrowser from '/js/getTodosFromBrowser.js';
 
 export default function deleteTodoBrowser(id) {
     let todos = getTodosFromBrowser();
