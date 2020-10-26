@@ -1,11 +1,11 @@
-export default function generateTodoInput() {
-    let wrapper = document.querySelector('.wrapper');
+export default function generateTodoInput(e) {
+    //let wrapper = document.querySelector('.wrapper');
+    //let addButton = document.querySelector('add-button')
 
     let mainForm = document.createElement('section');
     mainForm.setAttribute('class', 'main-form');
 
     let form = document.createElement('form');
-    let inputContainer = document.createElement('div');
     form.setAttribute('id', 'add-todo-form');
 
     let inputTitle = document.createElement('input');
@@ -19,16 +19,15 @@ export default function generateTodoInput() {
     inputDescription.setAttribute('placeholder', 'Add a todo here!');
 
     let button = document.createElement('button');
-    button.setAttribute('class', 'add-button');
+    button.setAttribute('class', 'submit-todo-button');
     button.setAttribute('type', 'submit');
-    button.innerHTML = 'Add Todo';
+    button.innerHTML = 'Create Todo';
     
-    inputContainer.append(inputTitle)
-    inputContainer.append(inputDescription)
+    form.prepend(inputTitle)
+    form.append(inputDescription)
     
-    form.prepend(inputContainer);
     form.append(button);
     mainForm.append(form);
-    wrapper.append(mainForm);
+    e.target.after(mainForm);
     
 }

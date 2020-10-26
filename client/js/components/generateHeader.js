@@ -1,7 +1,4 @@
-export default function generateHeader(text) {
-  if(!text) {
-    text = 'TodoList'
-  }
+export default function generateHeader(text = 'TodoList') {
   let wrapper = document.querySelector('.wrapper');
   let h1Container = document.createElement('section');
   let h1 = document.createElement('h1');

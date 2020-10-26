@@ -1,12 +1,11 @@
 export default function login() {
-    var logInInputs = document.querySelector('#log-in-input');
     var username = document.getElementById('username');
     var password = document.getElementById('password');
     var data = new URLSearchParams();
     data.append('username', username.value);
     data.append('password', password.value);
 
-    fetch('login', {
+    fetch('http://localhost:8080/api/auth', {
         method: 'post',
         body: data,
         headers: {'content-type': 'aplication/json'}
