@@ -34,7 +34,7 @@ class UserService {
     }
   }
 
-  static async getOneUser(id) {
+  static async getOneUserByID(id) {
     try {
       const userRecord = await database.User.findOne({
         where: { id: id }

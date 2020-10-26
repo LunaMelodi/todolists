@@ -5,9 +5,12 @@ import favicon from 'serve-favicon';
 import path from 'path';
 import config from 'dotenv';
 import morgan from 'morgan';
+
 import todoRoutes from './routes/TodoRoutes.js';
 import authRoutes from './routes/AuthRoutes.js';
-import confirmLoggedIn from './middleware/confirmLoggedIn.js';
+
+import checkForSessionCookie from './middleware/confirmLoggedIn.js';
+import authAndAttachUserMiddleware from './middleware/authorize.js';
 
 config.config();
 
@@ -30,8 +33,8 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use('/api/todos', confirmLoggedIn, todoRoutes);
-app.use('/auth', confirmLoggedIn, authRoutes);
+app.use('/api/todos', checkForSessionCookie, authAndAttachUserMiddleware, todoRoutes);
+app.use('/auth', checkForSessionCookie, authRoutes);
 
 app.get('*', (req, res) => res.status(200).send({
   message: 'This is the todolist API, but this was not a valid route.',
