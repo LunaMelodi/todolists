@@ -20,11 +20,11 @@ class UserService {
   static async updateUser(id, updateUser) {
     try {
       const userToUpdate = await database.User.findOne({
-        where: { id: Number(id) }
+        where: { id: id }
       });
 
       if (userToUpdate) {
-        await database.User.update(updateUser, { where: { id: Number(id) } });
+        await database.User.update(updateUser, { where: { id: id } });
 
         return updateUser;
       }

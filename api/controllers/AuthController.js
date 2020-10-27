@@ -2,6 +2,9 @@ import UserService from '../services/UserService.js';
 import ResGen from '../utils/ResGeneration.js';
 import * as argon2 from 'argon2';
 import { randomBytes } from 'crypto';
+import jwt from 'jsonwebtoken';
+import _ from 'lodash';
+import transporter from '../utils/mailer.js';
 
 const resgen = new ResGen();
 
@@ -11,14 +14,41 @@ class AuthController {
       let userRecord = await UserService.getOneUserByEmail(req.body.email);
 
       if (!userRecord) {
-        const salt = randomBytes(32);
-        const passwordHashed = await argon2.hash(req.body.password, { salt });
+        let email = req.body.email;
+        let salt = randomBytes(32);
+        let passwordHashed = await argon2.hash(req.body.password, { salt });
         
-        UserService.addUser({
+        console.log('adding user');
+        userRecord = await UserService.addUser({
           name: req.body.name,
-          email: req.body.email,
+          email: email,
           password: passwordHashed
         })
+        
+        //userRecord = await UserService.getOneUserByEmail(email);
+        console.log('userRecord retrieved from db :>> ', userRecord);
+        console.log('signing jwt...');
+        console.log('userRecord.id :>> ', userRecord.id);
+        jwt.sign(
+          {
+            user_id: userRecord.id
+          },
+          process.env.EMAIL_SECRET,
+          {
+            expiresIn: '1d',
+          },
+          (err, emailToken) => {
+            const url = `http://localhost:8000/auth/confirmation/${emailToken}`;
+            console.log("sending email!");
+            transporter.sendMail({
+              to: email,
+              subject: 'Confirm Email',
+              html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+            });
+          },
+        );
+        
+        console.log('email sent, sending name and email json response back to client.');
         res.json({
           user: {
             name: req.body.name,
@@ -47,6 +77,10 @@ class AuthController {
       
       if(userRecord) {
         console.log('userRecord :>> ', userRecord);
+
+        if(!userRecord.confirmed) {
+          return resgen.setError(400, 'Please confirm your email to login.').send(res);
+        } 
 
         const correctPassword = await argon2.verify(userRecord.password, req.body.password);
         

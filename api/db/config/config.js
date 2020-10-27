@@ -8,26 +8,26 @@ module.exports = {
   // },
 
   development: {
-    database: 'todolist',
-    username: 'postgres',
-    password: 'fireballcinnamon911',
-    host: '127.0.0.1',
+    database: process.env.DEVDB_NAME,
+    username: process.env.DEVDB_USER,
+    password: process.env.DEVDB_PASS,
+    host: process.env.DEVDB_HOST,
     dialect: 'postgres'
   },
 
   test: {
-    database: 'todolist_test',
-    username: 'postgres',
-    password: 'fireballcinnamon911',
-    host: '127.0.0.1',
+    database: process.env.TESTDB_NAME,
+    username: process.env.TESTDB_USER,
+    password: process.env.TESTDB_PASS,
+    host: process.env.TESTDB_HOST,
     dialect: 'postgres'
   },
 
   production: {
-    database: process.env.DB_NAME,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    host: process.env.DB_HOST,
+    database: process.env.PRODDB_NAME,
+    username: process.env.PRODDB_USER,
+    password: process.env.PRODDB_PASS,
+    host: process.env.PRODDB_HOST,
     dialect: 'postgres'
   }
 };

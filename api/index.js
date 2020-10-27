@@ -12,6 +12,8 @@ import authRoutes from './routes/AuthRoutes.js';
 import checkForSessionCookie from './middleware/confirmLoggedIn.js';
 import authAndAttachUserMiddleware from './middleware/authorizeAndAttachUser.js';
 
+import database from './db/models';
+
 config.config();
 
 var port = process.env.PORT || 8000;
@@ -48,3 +50,9 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Server is running on PORT ${port}`);
 });
+
+/* database.sequelize.sync({ force: true }).then(() =>
+  app.listen(port, () => {
+    console.log(`Server is running on PORT ${port}`);
+  }),
+); */

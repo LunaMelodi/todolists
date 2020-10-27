@@ -1,5 +1,8 @@
 import { Router } from 'express';
 import AuthController from '../controllers/AuthController.js';
+import database from '../db/models';
+import UserService from '../services/UserService.js';
+import jwt from 'jsonwebtoken';
 
 var router = Router();
 
@@ -13,6 +16,28 @@ router.get('/logout', AuthController.logout);
 
 router.get('/users', AuthController.getAllUsers);
 // for debugging
+
+router.get('/confirmation/:token', async (req, res) => {
+  try {
+    //const { user: { id } } = jwt.verify(req.params.token, process.env.EMAIL_SECRET);
+    let user = jwt.verify(req.params.token, process.env.EMAIL_SECRET);
+    let id = user.user_id;
+    console.log('user :>> ', user);
+    console.log('id :>> ', id);
+
+    //await database.User.update({ confirmed: true }, { where: { id } });
+    await UserService.updateUser(id, { confirmed: true });
+    console.log('user updated hopefully?');
+    
+    let userRecord = await UserService.getOneUserByID(id);
+    console.log('userRecord :>> ', userRecord);
+
+    return res.json({message: 'confirmation complete!'});
+  } catch (err) {
+    console.log('there was an error :>> ', err)
+    return res.json({ error: err });
+  }
+});
 
 
 export default router;
