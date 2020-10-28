@@ -24,6 +24,7 @@ body {
   -moz-box-shadow:    3px 3px 5px 4px rgb(88, 85, 85);
   -webkit-box-shadow: 3px 3px 5px 4px rgb(88, 85, 85);
   box-shadow:         3px 3px 5px 4px rgb(88, 85, 85);
+  text-align: center;
 }
 
 .header {
@@ -46,7 +47,7 @@ input[type=text] {
   padding-left: 1em;
 }
 
-.add-button, .delete-todo {
+button {
   background-color: rgb(25, 69, 114);
   color: hsla(210, 0%, 100%, 1);
   border-style: none;
@@ -62,7 +63,12 @@ input[type=text] {
   line-height: 0;
   text-align: center;
 }
-
+#add-button { 
+  margin: 0;
+}
+.auth-button {
+  margin: 5px;
+}
 .list-items {
   list-style: none;
   margin: 0;
@@ -75,14 +81,30 @@ input[type=text] {
   justify-content: space-between;
   font-size: 1.4em;
   align-items: center;
+  margin: 0.5em 0;
+  position: relative;
+}
+
+.todo-title { 
+  margin: 0%;
+  padding: 0px;
+}
+
+.todo-duedate {
+  font-size: 0.9rem; 
 }
 
 .list-text {
   margin: 0.5rem 1rem;
   max-width: 20rem;
   overflow-wrap: break-word;
+  text-align: left;
+  flex-grow: 8;
 }
-
+#add-todo-form {
+  display: flex;
+  flex-direction: column;
+}
 
 /* ------------------------------------    checkbox   */
 
@@ -151,4 +173,54 @@ input[type=text] {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+
+/* -  -  -  -  -  -  -  - - - - - - - ------- todo description & edits modal window  */
+
+.auth-buttons {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+}
+.modal-todo-background {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(106, 108, 110, 0.6);
+  z-index: 50;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-info-container {
+  position: relative;
+  width: 40%;
+  padding: 1rem;
+  background-color: whitesmoke;
+  box-shadow: 8px 8px 10px rgb(54, 52, 52);
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  overflow: auto;
+}
+
+#edit-main-button {
+  width: 5rem;
+}
+
+.modal-todo-description {
+  max-width: 100%;
+  
+}
+.close-modal-button {
+  font-size: 1.5em;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  color: black;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
 }
