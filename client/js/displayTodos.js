@@ -1,3 +1,5 @@
+import updateCheckStatus from '/client/js/updateCheckStatus.js';
+
 export default async function displayTodos(todos) {
     var ul = document.querySelector('#list-items');
     ul.innerHTML='';
@@ -16,17 +18,21 @@ export default async function displayTodos(todos) {
       const todoText = document.createElement('div');
       todoText.setAttribute('class', 'list-text');
       todoText.innerHTML = `<p class="todo-title">${todo.title}</p>
-                            <p class="todo-description">${todo.description}</p>`;
+                            <span class="todo-duedate">${todo.duedate}</span>`;
       
       const button = document.createElement('button');
       button.setAttribute('class', 'delete-todo');
-      button.setAttribute('type', 'submit');
       button.innerHTML = 'x';
 
       li.append(checkbox);
       li.append(todoText);
       li.append(button);
       appendTo.append(li);
+
+      checkbox.addEventListener('click', evt => {
+        updateCheckStatus(todo.id, !todo.completed);
+        evt.stopPropagation()
+      })
     }
     todos.forEach((el)=> {
       elementCreator(el, ul); 
