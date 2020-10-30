@@ -43,7 +43,6 @@ ul.addEventListener('click',  (evt) => {
   }
 }) 
 
-
 form.addEventListener('submit', evt => {
   evt.preventDefault();
   createTodo()

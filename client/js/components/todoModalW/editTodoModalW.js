@@ -6,11 +6,14 @@ export default function editTodoModalW(todo) {
 
   let todoInfoContainer = document.createElement('div');
   todoInfoContainer.setAttribute('class', 'todo-info-container');
+  let buttonsContainer = document.createElement('div');
+  buttonsContainer.setAttribute('class', 'buttons-container');
 
   let changeTodoTitle = document.createElement('input');
   changeTodoTitle.className = 'modal-todo-title';
   changeTodoTitle.id = 'modal-todo-title';
   changeTodoTitle.value = todo.title;
+  changeTodoTitle.setAttribute('placeholder', '...');
   let labelTitle = document.createElement('label');
   labelTitle.setAttribute('for', 'modal-todo-title');
   labelTitle.innerHTML = 'Title: ';
@@ -21,6 +24,7 @@ export default function editTodoModalW(todo) {
   changeTodoDescription.value = todo.description;
   let labelDescription = document.createElement('label');
   labelDescription.setAttribute('for', 'modal-todo-description');
+  labelDescription.maxLength = 400;
   labelDescription.innerHTML = 'Description: ';
   
   let changeTodoDueDate = document.createElement('input');
@@ -33,6 +37,7 @@ export default function editTodoModalW(todo) {
 
   let close = newbutton( '[x]', 'close-modal-button', 'close-modal-button');
   let saveChanges = newbutton( 'save', 'save-modal-button', 'save-modal-button');
+  let deleteTodo = newbutton( 'delete todo', 'daleteTodo-modal-button', 'daleteTodo-modal-button');
   
   todoInfoContainer.prepend(labelTitle)
   todoInfoContainer.append(changeTodoTitle)
@@ -41,8 +46,11 @@ export default function editTodoModalW(todo) {
   todoInfoContainer.append(labelDueDate)
   todoInfoContainer.append(changeTodoDueDate)
   
-  todoInfoContainer.append(saveChanges)
   todoInfoContainer.append(close)
+  buttonsContainer.append(saveChanges)
+  buttonsContainer.append(deleteTodo)
+  todoInfoContainer.append(buttonsContainer)
+  
 
   saveChanges.addEventListener('click', evt => {
     updateTodo(todo.id)
