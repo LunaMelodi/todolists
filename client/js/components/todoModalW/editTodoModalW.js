@@ -14,26 +14,29 @@ export default function editTodoModalW(todo) {
   changeTodoTitle.id = 'modal-todo-title';
   changeTodoTitle.value = todo.title;
   changeTodoTitle.setAttribute('placeholder', '...');
+  changeTodoTitle.setAttribute('type', 'text');
   let labelTitle = document.createElement('label');
   labelTitle.setAttribute('for', 'modal-todo-title');
-  labelTitle.innerHTML = 'Title: ';
+  labelTitle.innerHTML = 'Todo ';
 
   let changeTodoDescription = document.createElement('textarea');
   changeTodoDescription.className = 'modal-todo-description';
   changeTodoDescription.id = 'modal-todo-description';
   changeTodoDescription.value = todo.description;
+  changeTodoDescription.setAttribute('maxlength', 450)
   let labelDescription = document.createElement('label');
   labelDescription.setAttribute('for', 'modal-todo-description');
   labelDescription.maxLength = 400;
-  labelDescription.innerHTML = 'Description: ';
+  labelDescription.innerHTML = 'Note: ';
   
   let changeTodoDueDate = document.createElement('input');
   changeTodoDueDate.className = 'modal-todo-duedate';
   changeTodoDueDate.id = 'modal-todo-duedate';
+  changeTodoDueDate.setAttribute('type', 'text');
   changeTodoDueDate.value = todo.duedate;
   let labelDueDate = document.createElement('label');
   labelDueDate.setAttribute('for', 'modal-todo-duedate');
-  labelDueDate.innerHTML = 'Due date: ';
+  labelDueDate.innerHTML = 'Due: ';
 
   let close = newbutton( '[x]', 'close-modal-button', 'close-modal-button');
   let saveChanges = newbutton( 'save', 'save-modal-button', 'save-modal-button');

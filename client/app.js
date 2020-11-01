@@ -24,6 +24,7 @@ ul.addEventListener('click', evt => {
     if (evt.target.classList.contains('delete-todo')) {
       const itemKey = evt.target.parentElement.dataset.key;
       deleteTodo(itemKey);
+      evt.target.parentElement.remove() //   this line has to be erased 
     }
 })
 

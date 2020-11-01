@@ -14,6 +14,7 @@ export default function loginSingupBtns() {
     
     authBtnsContainer.prepend(login);
     authBtnsContainer.append(signup);
-
-    document.body.append(authBtnsContainer);
+    
+    let app =  document.querySelector('.app');
+    app.prepend(authBtnsContainer);
 }

@@ -250,12 +250,18 @@ button:hover {
 }
 
 #modal-todo-title, #modal-todo-duedate {
+  border: none;
+  border-left: solid 0.2rem grey;
+  background-color: inherit;
   width: 50%;
   height: 2rem;
   padding: 0.5rem;
 }
 
 #modal-todo-description {
+  background-color: inherit;
+  border: none;
+  border-left: solid 0.2rem grey;
   min-height: 2rem;
   height: 10rem;
   padding: 0 0.5rem;
@@ -286,11 +292,14 @@ button:hover {
 }
 @media only screen and (min-width: 2500px) {
   /* width range useful for big screens  */
-  body {
-    font-size: 2.5rem;
+  * {
+    font-size: 70px;
   }
   .wrapper {
-    width: 50%;
+    width: 30%;
     max-height: 90%;
   }
-}
+  .todo-info-container {
+    width: 35%
+  }
+} 

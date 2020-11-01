@@ -11,18 +11,18 @@ export default function generateTodoInput(e) {
     let inputTitle = document.createElement('input');
     inputTitle.setAttribute('id', 'add-todo-title');
     inputTitle.setAttribute('type', 'text');
-    inputTitle.setAttribute('placeholder', 'Title');
+    inputTitle.setAttribute('placeholder', 'Todo');
     
     let inputDescription = document.createElement('input');
     inputDescription.setAttribute('id', 'add-todo-description');
     inputDescription.setAttribute('type', 'text');
-    inputDescription.setAttribute('placeholder', 'Add a description here!');
+    inputDescription.setAttribute('placeholder', 'Add a note here!');
     
 
     let inputDueDate = document.createElement('input');
     inputDueDate.setAttribute('id', 'add-todo-duedate');
     inputDueDate.setAttribute('type', 'text');
-    inputDueDate.setAttribute('placeholder', 'Due date');
+    inputDueDate.setAttribute('placeholder', 'Due ');
 
     let button = document.createElement('button');
     button.setAttribute('class', 'submit-todo-button');
