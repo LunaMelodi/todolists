@@ -1,7 +1,6 @@
 import UserService from '../services/UserService.js';
 import ResGen from '../utils/ResGeneration.js';
-import * as argon2 from 'argon2';
-import { randomBytes } from 'crypto';
+import * as password from '../utils/password.js';
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 import transporter from '../utils/mailer.js';
@@ -15,8 +14,8 @@ class AuthController {
 
       if (!userRecord) {
         let email = req.body.email;
-        let salt = randomBytes(32);
-        let passwordHashed = await argon2.hash(req.body.password, { salt });
+        
+        let passwordHashed = await password.hashPassword(req.body.password);
         
         console.log('adding user');
         userRecord = await UserService.addUser({
@@ -82,7 +81,7 @@ class AuthController {
           return resgen.setError(400, 'Please confirm your email to login.').send(res);
         } 
 
-        const correctPassword = await argon2.verify(userRecord.password, req.body.password);
+        const correctPassword = await password.verifyPassword(userRecord.password, req.body.password);
         
         if (correctPassword) {
           let isSecure = process.env.NODE_ENV != 'development';
