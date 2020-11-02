@@ -23,14 +23,14 @@ body {
 /*  white boxes (main and modal)*/
 
 .wrapper, .todo-info-container {
-  position: relative;
-  top: 4vh;
+  position: absolute;
+  top: 3rem;
   display: flex;
   flex-direction: column;
   background-color: whitesmoke;
   padding: 1.5rem;
+  max-height: calc(100% - 3rem);
   
-  max-height: 85vh;
   width: 100%;
   max-width: 100%;
   box-shadow: 4px 4px 5px 4px rgb(88, 85, 85);
@@ -66,13 +66,24 @@ button {
 }
 /*  user auth buttons  */
 
-.auth-buttons {
+.auth-buttons, header {
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
-    background-color: rgb(25, 31, 114);
-    text-align: right;
-    height: 7vh;
+    background-image: linear-gradient(45deg, rgb(187, 39, 39), purple, rgb(25, 31, 114));
+    height: 3rem;
+    z-index: 10;
+}
+
+.material-icons { 
+    color: rgba(255, 255, 255, 1); 
+}
+
+.settings-icon {
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
 }
 
 .auth-buttons button {
@@ -123,12 +134,13 @@ input[type=text], input[type=password],  #modal-todo-description {
     overflow-wrap: break-word;
     text-align: left;
     flex-grow: 8;
+    border-bottom: solid 1px grey;
 }
 
 .todo-title {
     max-width: 100%;
     overflow-wrap: break-word;
-    border-bottom: solid 1px grey;
+    
 }
 
 .todo-duedate {
@@ -268,12 +280,19 @@ input[type=text], input[type=password],  #modal-todo-description {
 }
 
 /*  ---- for laptops and bigger */
-@media only screen and (min-width: 1250px) {
+@media only screen and (min-width: 1024px) {
     html {
         font-size: 20px;
     }
+    header {
+        background-image: none;
+        background-color: rgb(25, 31, 114);
+    }
     .wrapper, .todo-info-container {
         width: 50%;
+        position: fixed;
+        top: unset;
+        max-height: calc(95% - 3rem);
     }
     #modal-todo-description, #modal-todo-title, #modal-todo-duedate {
         font-size: 1rem;
@@ -288,9 +307,15 @@ input[type=text], input[type=password],  #modal-todo-description {
     html {
       font-size: 50px;
     }
+    header {
+        background-image: none;
+        background-color: rgb(25, 31, 114);
+    }
     .wrapper {
       width: 30%;
       max-height: 90%;
+      position: fixed;
+      top: unset;
     }
     .todo-info-container {
       width: 50%;
@@ -300,14 +325,19 @@ input[type=text], input[type=password],  #modal-todo-description {
     }
 } 
 
-@media only screen and (min-width: 750px) and (max-width: 1250px) {
+@media only screen and (min-width: 750px) and (max-width: 1024px) {
     /* screen width range useful for tablets */
     html {
         font-size: 18px;
     }
+    header {
+        background-image: none;
+        background-color: rgb(25, 31, 114);
+    }
     .wrapper {
       width: 80%;
       max-height: 90%;
+      top: unset;
     }
     #modal-todo-description, #modal-todo-title, #modal-todo-duedate {
         font-size: 1rem;
