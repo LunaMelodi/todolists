@@ -96,7 +96,7 @@ button {
     width: 100%;
 }
 
-input[type=text], #modal-todo-description {
+input[type=text], input[type=password],  #modal-todo-description {
     height: 2rem;
     box-shadow: 2px 3px 5px grey;
     padding-left: 1em;
@@ -248,8 +248,9 @@ input[type=text], #modal-todo-description {
     top: 1px;
     right: 1px;
     color: #000;
-    background-color: inherit;
+    background-color: transparent;
     cursor: pointer;
+    z-index: 15;
 }
 
 #modal-todo-description {
@@ -259,6 +260,11 @@ input[type=text], #modal-todo-description {
 
 .todo-info-container label {
     margin: 0.25rem 0;
+}
+
+.modal-todo-duedate {
+    font-size: 1rem;
+    margin-top: 1rem;
 }
 
 /*  ---- for laptops and bigger */
@@ -287,14 +293,14 @@ input[type=text], #modal-todo-description {
       max-height: 90%;
     }
     .todo-info-container {
-      width: inherit;
+      width: 50%;
     }
     #modal-todo-description, #modal-todo-title, #modal-todo-duedate {
         font-size: 1.5rem;
     }
-  } 
+} 
 
-  @media only screen and (min-width: 600px) and (max-width: 1024px) {
+@media only screen and (min-width: 750px) and (max-width: 1250px) {
     /* screen width range useful for tablets */
     html {
         font-size: 18px;
@@ -309,4 +315,16 @@ input[type=text], #modal-todo-description {
     #add-todo-duedate, #add-todo-description, #add-todo-title {
         font-size: 1rem;
     }
-  }
+}
+
+
+
+/*  Reset password file  */
+
+.reset-pass-text {
+    margin: 1rem 0;
+}
+
+.pass-label {
+  padding: 2rem;
+}

@@ -1,5 +1,5 @@
 export default function loginSingupBtns() {
-    let authBtnsContainer = document.createElement('section');
+    let authBtnsContainer = document.createElement('header');
     authBtnsContainer.setAttribute('class', 'auth-buttons');
 
     let login = document.createElement('button');
