@@ -15,6 +15,7 @@ export default function editTodoModalW(todo) {
   changeTodoTitle.value = todo.title;
   changeTodoTitle.setAttribute('placeholder', '...');
   changeTodoTitle.setAttribute('type', 'text');
+ 
   let labelTitle = document.createElement('label');
   labelTitle.setAttribute('for', 'modal-todo-title');
   labelTitle.innerHTML = 'Todo ';
@@ -24,19 +25,23 @@ export default function editTodoModalW(todo) {
   changeTodoDescription.id = 'modal-todo-description';
   changeTodoDescription.value = todo.description;
   changeTodoDescription.setAttribute('maxlength', 450)
+  
   let labelDescription = document.createElement('label');
   labelDescription.setAttribute('for', 'modal-todo-description');
-  labelDescription.maxLength = 400;
-  labelDescription.innerHTML = 'Note: ';
+  labelDescription.classList.add('material-icons', 'edit-icon', 'md-24', 'md-dark');
+  labelDescription.innerHTML = 'edit';
   
   let changeTodoDueDate = document.createElement('input');
   changeTodoDueDate.className = 'modal-todo-duedate';
   changeTodoDueDate.id = 'modal-todo-duedate';
   changeTodoDueDate.setAttribute('type', 'text');
   changeTodoDueDate.value = todo.duedate;
+  
   let labelDueDate = document.createElement('label');
   labelDueDate.setAttribute('for', 'modal-todo-duedate');
-  labelDueDate.innerHTML = 'Due: ';
+  labelDueDate.classList.add('material-icons', 'event-icon', 'md-24', 'md-dark');
+  labelDueDate.innerHTML = 'event';
+
 
   let close = newbutton( '[x]', 'close-modal-button', 'close-modal-button');
   let saveChanges = newbutton( 'save', 'save-modal-button', 'save-modal-button');

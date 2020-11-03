@@ -74,16 +74,26 @@ button {
     background-image: linear-gradient(45deg, rgb(187, 39, 39), purple, rgb(25, 31, 114));
     height: 3rem;
     z-index: 10;
+    box-shadow: 0.3rem 0 10px black;
 }
 
-.material-icons { 
+.material-icons.md-24 { 
     color: rgba(255, 255, 255, 1); 
+    font-size: 24px; 
 }
 
-.settings-icon {
-    position: absolute;
-    right: 1rem;
-    top: 0.8rem;
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-icon, .list-icon {
+    margin: 0 0.5rem;
 }
 
 .auth-buttons button {
