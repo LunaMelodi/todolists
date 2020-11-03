@@ -5,7 +5,6 @@ import generateList from '/client/js/components/generateList.js';
 import addTodoButton from '/client/js/components/addTodoButton.js'; 
 import headBar from '/client/js/components/headBar.js'; 
 
-
 export default function generateApp(headerText) {
   generateWrapper()
   generateHeader(headerText)

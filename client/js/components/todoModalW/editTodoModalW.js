@@ -26,10 +26,10 @@ export default function editTodoModalW(todo) {
   changeTodoDescription.value = todo.description;
   changeTodoDescription.setAttribute('maxlength', 450)
   
-  let labelDescription = document.createElement('label');
-  labelDescription.setAttribute('for', 'modal-todo-description');
-  labelDescription.classList.add('material-icons', 'edit-icon', 'md-24', 'md-dark');
-  labelDescription.innerHTML = 'edit';
+  let editDescriptionIcon = document.createElement('label');
+  editDescriptionIcon.setAttribute('for', 'modal-todo-description');
+  editDescriptionIcon.classList.add('material-icons', 'edit-icon', 'md-24', 'md-dark');
+  editDescriptionIcon.innerHTML = 'edit';
   
   let changeTodoDueDate = document.createElement('input');
   changeTodoDueDate.className = 'modal-todo-duedate';
@@ -49,7 +49,7 @@ export default function editTodoModalW(todo) {
   
   todoInfoContainer.prepend(labelTitle)
   todoInfoContainer.append(changeTodoTitle)
-  todoInfoContainer.append(labelDescription)
+  todoInfoContainer.append(editDescriptionIcon)
   todoInfoContainer.append(changeTodoDescription)
   todoInfoContainer.append(labelDueDate)
   todoInfoContainer.append(changeTodoDueDate)
