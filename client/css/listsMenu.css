@@ -1,13 +1,16 @@
 #lists-menu-container {
-    z-index: 30;
+    z-index: 15;
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
+    width: 60%;
     max-height: 100%;
     background-color: rgb(25, 31, 114);
-    width: 60%;
+    background-image: linear-gradient(45deg, rgb(187, 39, 39), purple, rgb(25, 31, 114));
     color: #fff;
+    overflow-x: hidden;
+    transition: 0.2s;
 }
 
 .icon-header-container {
@@ -20,6 +23,7 @@
 #lists-menu-header {
     font-size: 1.5rem;
     margin: 0 1rem;
+    cursor: context-menu;
 }
 
 #lists-menu-container div {
@@ -35,6 +39,8 @@
 .lists-menu-item {
     padding: 0.5rem 0.2rem;
     overflow-wrap: break-word;
+    cursor: context-menu;
+    transition: 0.3s;
 }
 
 .lists-menu-item:hover {

@@ -21,9 +21,10 @@
     transform: rotate(180deg);
     padding: 1rem;
     position: relative;
-    
+    cursor: context-menu;
 }
 
 .add-list-icon, .share-icon {
     padding-right: 1rem;
+    cursor: context-menu;
 }

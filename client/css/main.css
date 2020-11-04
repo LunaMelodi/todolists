@@ -71,7 +71,7 @@ button {
     top: 0;
     left: 0;
     width: 100%;
-    background-image: linear-gradient(45deg, rgb(187, 39, 39), purple, rgb(25, 31, 114));
+    background-image: linear-gradient(45deg, rgb(187, 39, 39), rgb(25, 31, 114), purple);
     height: 3rem;
     z-index: 10;
     box-shadow: 0.3rem 0 10px black;

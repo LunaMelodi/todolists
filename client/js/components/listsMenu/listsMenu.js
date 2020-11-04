@@ -3,6 +3,7 @@ import menuItems from '/client/js/components/listsMenu/menuItems.js';
 export default function listsMenu(lists) {
     let app = document.querySelector('.app');
 
+
     let menuContainer = document.createElement('section');
     menuContainer.id = 'lists-menu-container';
     
@@ -18,7 +19,7 @@ export default function listsMenu(lists) {
 
     let shareIcon = document.createElement('span');
     shareIcon.classList.add('material-icons', 'share-icon', 'md-36');
-    shareIcon.innerHTML = 'share';
+    shareIcon.innerHTML = 'folder_shared';
     
     actionsContainer.append(addListIcon)
     actionsContainer.append(shareIcon)
@@ -53,6 +54,6 @@ export default function listsMenu(lists) {
     app.append(menuContainer);
 
     exitIcon.addEventListener('click', e => {
-        menuContainer.remove();
+        menuContainer.style.width = '0';
     })
 }

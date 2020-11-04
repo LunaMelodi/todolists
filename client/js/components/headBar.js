@@ -16,8 +16,13 @@ export default function headBar() {
     header.append(settingsIcon);
     let app = document.querySelector('.app');
     app.prepend(header);
-    
-    const listsHandler = () => { listsMenu(theLists) }
+
+    listsMenu(theLists);
+    document.querySelector('#lists-menu-container').style.width = '0'
+    const listsHandler = () => { 
+        let menu = document.querySelector('#lists-menu-container');
+        menu.style.width = '';
+    }
     
     listIcon.addEventListener('click', listsHandler);
 }
