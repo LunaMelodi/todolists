@@ -1,3 +1,5 @@
+import editList from '/client/js/components/editList/editList.js';
+
 export default function generateHeader(text = 'TodoList') {
   let wrapper = document.querySelector('.wrapper');
 
@@ -17,5 +19,7 @@ export default function generateHeader(text = 'TodoList') {
 
   wrapper.append(h1Container)
   
-  
+  editIcon.addEventListener('click', e => {
+    editList()
+  })
 }
