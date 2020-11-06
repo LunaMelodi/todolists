@@ -11,13 +11,6 @@ export default function listsMenu(lists) {
     let iconHeaderContainer = document.createElement('section');
     iconHeaderContainer.className = 'icon-header-container';
 
-    /*let shareIcon = document.createElement('span');
-    shareIcon.classList.add('material-icons', 'share-icon', 'md-36');
-    shareIcon.innerHTML = 'edit';
-    */
-    
-    //actionsContainer.append(shareIcon)
-
     let ulContainer = document.createElement('div');
     ulContainer.classList.add('ul-lists-container')
     

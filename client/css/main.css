@@ -3,6 +3,7 @@
     margin: 0;
     font-family: 'Raleway', Helvetica, sans-serif;
 }
+
 body {
   background-color: #4158D0;
   background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
@@ -37,7 +38,11 @@ body {
   
 }
 
-.header h1 {
+.main-list-header {
+    position: relative;
+}
+
+.main-list-header h1 {
     font-size: 3rem;
 }
 

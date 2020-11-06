@@ -1,4 +1,4 @@
-
+k
 /* Rules for sizing the icon. */
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
@@ -24,7 +24,19 @@
     cursor: context-menu;
 }
 
-.add-list-icon, .share-icon {
-    padding-right: 1rem;
-    cursor: context-menu;
+#edit-icon-list-header {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    transition: 100ms;
+}
+
+#edit-icon-list-header:hover {
+    text-shadow: 2px 2px 5px rgb(75, 73, 73);
+    color: black;
+    font-size: 28px;
+}
+
+#edit-icon-list-header, .exit-icon, .settings-icon, .list-icon {
+    cursor: pointer;
 }
