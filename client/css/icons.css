@@ -37,6 +37,6 @@ k
     font-size: 28px;
 }
 
-#edit-icon-list-header, .exit-icon, .settings-icon, .list-icon {
+#edit-icon-list-header, .exit-icon, .settings-icon, .list-icon, .plus-list-icon {
     cursor: pointer;
 }

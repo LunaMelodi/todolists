@@ -8,11 +8,16 @@ export default function headBar() {
     settingsIcon.classList.add('material-icons', 'settings-icon', 'md-24', 'md-light')
     settingsIcon.innerHTML = 'settings';
     
+    let appName = document.createElement('span'); 
+    appName.className = 'app-name-header';
+    appName.innerHTML = 'TodoLists';
+
     let listIcon = document.createElement('span'); 
     listIcon.classList.add('material-icons', 'list-icon', 'md-24', 'md-light')
     listIcon.innerHTML = 'list';
   
     header.append(listIcon);
+    header.append(appName);
     header.append(settingsIcon);
     let app = document.querySelector('.app');
     app.prepend(header);
