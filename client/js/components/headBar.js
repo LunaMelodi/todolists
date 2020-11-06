@@ -17,11 +17,11 @@ export default function headBar() {
     let app = document.querySelector('.app');
     app.prepend(header);
 
-    listsMenu(theLists);
-    document.querySelector('#lists-menu-container').style.width = '0'
-    const listsHandler = () => { 
-        let menu = document.querySelector('#lists-menu-container');
-        menu.style.width = '';
+    listsMenu(theLists); // the navbar is added to the page.  
+    let menu = document.querySelector('#lists-menu-container');
+        menu.style.width = '0';   //immediately set "width: 0" to hide it.
+    const listsHandler = () => { // on click the elem will transition to the width declared in the stylesheet. 
+        menu.style.width = '';  
     }
     
     listIcon.addEventListener('click', listsHandler);
