@@ -1,6 +1,6 @@
 import UserService from '../services/UserService.js';
 import ResGen from '../utils/ResGeneration.js';
-import * as password from '../utils/password.js';
+import * as password from '../utils/passwordAdapter.js';
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 import transporter from '../utils/mailer.js';

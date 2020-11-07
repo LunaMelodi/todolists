@@ -1,29 +1,25 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Todos', {
+    await queryInterface.createTable('UserLists', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      userId: {
+        type: Sequelize.UUID,
         allowNull: false,
-        type: Sequelize.STRING
-      },
-      description: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      completed: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
+        references: {         // User hasMany lists n:m
+          model: 'Users',
+          key: 'id'
+        }
       },
       listId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { // Todo belongsTo List 1:1
+        references: {         // List hasMany Users n:m
           model: 'Lists',
           key: 'id'
         }
@@ -39,6 +35,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('todos');
+    await queryInterface.dropTable('userLists');
   }
 };

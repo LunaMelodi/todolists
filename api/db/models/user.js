@@ -1,20 +1,10 @@
 'use strict';
 import { v4 as uuid } from 'uuid';
-import { Model } from 'sequelize'; //not tested yet \/
+import { Model } from 'sequelize';
 // const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  User.init({
+  const User = sequelize.define('User', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -43,12 +33,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }
-  }, {
-    sequelize,
-    modelName: 'User',
   });
+
+  User.associate = function(models) {
+    User.belongsToMany(models.List, {through: 'UserLists', foreignKey: 'userId', as: 'days'})
+  }
+
   User.beforeCreate((user, _ ) => {
     return user.id = uuid();
   });
+
   return User;
 };
