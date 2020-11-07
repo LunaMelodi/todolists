@@ -1,5 +1,6 @@
 import listsMenu from '/client/js/components/listsMenu/listsMenu.js';
 import theLists from '/client/js/getLists.js';
+import settingsWindow from '/client/js/components/settings/settingsWindow.js';
 
 export default function headBar() {
     let header = document.createElement('header'); 
@@ -30,4 +31,10 @@ export default function headBar() {
     }
     
     listIcon.addEventListener('click', listsHandler);
+
+    settingsIcon.addEventListener('click', e => {
+        let wrapperFirstChild = document.querySelector('.wrapper').firstChild;
+        wrapperFirstChild.classList.contains('edit-list-container') ? wrapperFirstChild.remove() : null; //if that elem is there remove it to avoid overlapping
+        settingsWindow();
+    })
 }

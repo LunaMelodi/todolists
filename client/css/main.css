@@ -69,7 +69,16 @@ button {
     border-radius: 5px;
     font-size: 1.2rem;
 }
-/*  user auth buttons  */
+
+#add-button {
+    width: 3rem;
+    font-size: 3rem;
+    align-self: center;
+    padding: 0;
+    height: 3rem;
+    line-height: 1px;
+    
+}
 
 header {
     position: absolute;
@@ -80,13 +89,9 @@ header {
     height: 3rem;
     z-index: 10;
     box-shadow: 0.3rem 0 10px black;
-}
-
-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 3rem;
 }
 
 .app-name-header {
@@ -94,14 +99,6 @@ header {
     color: rgba(255, 255, 255, 1);
 }
 
-.auth-buttons button {
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    margin-right: 0.5rem;
-    line-height: 2rem;
-    max-height: 100%;
-}
 
 /*  create todo  */
 .main-form {

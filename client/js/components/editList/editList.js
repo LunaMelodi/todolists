@@ -15,7 +15,7 @@ export default function editList(title = 'title') {
     editListContainer.append(close)
 
     
-    wrapper.append(editListContainer);
+    wrapper.prepend(editListContainer);
 
     close.addEventListener('click', evt => {
         editListContainer.remove();

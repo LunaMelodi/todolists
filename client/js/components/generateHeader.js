@@ -20,6 +20,8 @@ export default function generateHeader(text = 'TodoList') {
   wrapper.append(h1Container)
   
   editIcon.addEventListener('click', e => {
+    let wrapperFirstChild = document.querySelector('.wrapper').firstChild;
+    wrapperFirstChild.classList.contains('settings-container') ? wrapperFirstChild.remove() : null; //if that elem is there remove it to avoid overlapping
     editList()
   })
 }

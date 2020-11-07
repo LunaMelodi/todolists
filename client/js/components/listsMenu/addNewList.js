@@ -16,6 +16,5 @@ export default function addNewList() {
     container.append(input);
     container.append(plusIcon);
 
-
     return container;
 }
