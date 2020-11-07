@@ -30,7 +30,7 @@ body {
   flex-direction: column;
   background-color: whitesmoke;
   padding: 1.5rem;
-  max-height: calc(100% - 3rem);
+  max-height: 100%;
   
   width: 100%;
   max-width: 100%;
@@ -296,8 +296,8 @@ input[type=text], input[type=password],  #modal-todo-description {
     .wrapper, .todo-info-container {
         width: 50%;
         position: fixed;
-        top: unset;
-        max-height: calc(95% - 3rem);
+        top: 3rem;
+        max-height: calc(100% - 3rem);
     }
     #modal-todo-description, #modal-todo-title, #modal-todo-duedate {
         font-size: 1rem;
@@ -318,9 +318,9 @@ input[type=text], input[type=password],  #modal-todo-description {
     }
     .wrapper {
       width: 30%;
-      max-height: 90%;
-      position: fixed;
-      top: unset;
+      max-height: calc(100% - 3rem);
+      position: absolute;
+      top: 3rem;
     }
     .todo-info-container {
       width: 50%;
@@ -341,8 +341,9 @@ input[type=text], input[type=password],  #modal-todo-description {
     }
     .wrapper {
       width: 80%;
-      max-height: 90%;
-      top: unset;
+      max-height: calc(100% - 3rem);
+      position: absolute;
+      top: 3rem;
     }
     #modal-todo-description, #modal-todo-title, #modal-todo-duedate {
         font-size: 1rem;
