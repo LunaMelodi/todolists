@@ -1,6 +1,4 @@
-export default function generateTodoInput(e) {
-    //let wrapper = document.querySelector('.wrapper');
-    //let addButton = document.querySelector('add-button')
+export default function generateTodoInput(e) {   //this function is called in app.js
 
     let mainForm = document.createElement('section');
     mainForm.setAttribute('class', 'main-form');
@@ -17,6 +15,7 @@ export default function generateTodoInput(e) {
     inputDescription.setAttribute('id', 'add-todo-description');
     inputDescription.setAttribute('type', 'text');
     inputDescription.setAttribute('placeholder', 'Add a note here!');
+    inputDescription.setAttribute('maxlength', 450)
     
 
     let inputDueDate = document.createElement('input');
@@ -35,6 +34,6 @@ export default function generateTodoInput(e) {
     
     form.append(button);
     mainForm.append(form);
-    e.target.after(mainForm);
+    e.target.closest('.main-list-header').after(mainForm); //appends it after the wrapper header block.
     
 }

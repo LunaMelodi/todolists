@@ -1,21 +1,33 @@
 import editList from '/client/js/components/editList/editList.js';
+import generateTodoInput from '/client/js/components/generateTodoInput.js'; 
 
 export default function generateHeader(text = 'TodoList') {
   let wrapper = document.querySelector('.wrapper');
 
   let h1Container = document.createElement('section');
-  h1Container.className = 'main-list-header';
+    h1Container.className = 'main-list-header';
+
+  let iconsContainer = document.createElement('section');
+  iconsContainer.className = 'wrapper-header-icons';
+
+  let plusIcon = document.createElement('span');
+    plusIcon.classList.add('material-icons', 'md-dark', 'md-36');
+    plusIcon.id = 'add-button';
+    plusIcon.innerHTML = 'add';
 
   let editIcon = document.createElement('span');
-  editIcon.classList.add('material-icons', 'md-24', 'md-dark');
-  editIcon.id = 'edit-icon-list-header';
-  editIcon.innerHTML = 'edit';
+    editIcon.classList.add('material-icons', 'md-24', 'md-dark');
+    editIcon.id = 'edit-icon-list-header';
+    editIcon.innerHTML = 'edit';
 
   let h1 = document.createElement('h1');
-  h1.innerHTML = text;
-  
+    h1.innerHTML = text;
+
+  iconsContainer.append(plusIcon);
+  iconsContainer.append(editIcon);
+  h1Container.append(iconsContainer)
   h1Container.append(h1);
-  h1Container.append(editIcon);
+  
 
   wrapper.append(h1Container)
   
@@ -24,4 +36,18 @@ export default function generateHeader(text = 'TodoList') {
     wrapperFirstChild.classList.contains('settings-container') ? wrapperFirstChild.remove() : null; //if that elem is there remove it to avoid overlapping
     editList()
   })
+
+  const setActiveState = e => {  // to prevent the box to display repeatedly.
+    if(e.target.classList.contains('active')) {
+      let mainForm = document.querySelector('.main-form');
+      mainForm.remove();
+      e.target.classList.remove('active');
+    } else {
+      generateTodoInput(e);
+      e.target.classList.add('active');
+    }
+  }
+
+  plusIcon.addEventListener('click', setActiveState);  // displays the input fields to add a new todo.
+  
 }

@@ -24,19 +24,29 @@ k
     cursor: context-menu;
 }
 
-#edit-icon-list-header {
+.wrapper-header-icons {
     position: absolute;
     top: 0;
     right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#edit-icon-list-header, #add-button {
     transition: 100ms;
 }
 
-#edit-icon-list-header:hover {
+#edit-icon-list-header:hover, #add-button:hover {
     text-shadow: 2px 2px 5px rgb(75, 73, 73);
     color: black;
     font-size: 28px;
 }
 
-#edit-icon-list-header, .exit-icon, .settings-icon, .list-icon, .plus-list-icon {
+#add-button:hover {
+    font-size: 40px;
+}
+
+#edit-icon-list-header, .exit-icon, .settings-icon, .list-icon, .plus-list-icon, #add-button {
     cursor: pointer;
 }
+

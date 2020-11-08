@@ -46,6 +46,9 @@ body {
     font-size: 3rem;
 }
 
+.main-list-header .active {
+    transform: rotate(45deg);
+}
 /*    list items    */
 
 .todo-list {
@@ -70,15 +73,6 @@ button {
     font-size: 1.2rem;
 }
 
-#add-button {
-    width: 3rem;
-    font-size: 3rem;
-    align-self: center;
-    padding: 0;
-    height: 3rem;
-    line-height: 1px;
-    
-}
 
 header {
     position: absolute;
