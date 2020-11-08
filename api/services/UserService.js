@@ -1,13 +1,6 @@
 import database from '../db/models';
 
 class UserService {
-  static async getAllUsers() {
-    try {
-      return await database.User.findAll();
-    } catch (error) {
-      throw error;
-    }
-  }
 
   static async addUser(newUser) {
     try {
@@ -17,24 +10,15 @@ class UserService {
     }
   }
 
-  static async updateUser(id, updateUser) {
+  static async getAllUsers() {
     try {
-      const userToUpdate = await database.User.findOne({
-        where: { id: id }
-      });
-
-      if (userToUpdate) {
-        await database.User.update(updateUser, { where: { id: id } });
-
-        return updateUser;
-      }
-      return null;
+      return await database.User.findAll();
     } catch (error) {
       throw error;
     }
   }
 
-  static async getOneUserByID(id) {
+  static async getOneUserById(id) {
     try {
       const userRecord = await database.User.findOne({
         where: { id: id }
@@ -53,6 +37,23 @@ class UserService {
       });
 
       return userRecord;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async updateUser(id, updateUser) {
+    try {
+      const userToUpdate = await database.User.findOne({
+        where: { id: id }
+      });
+
+      if (userToUpdate) {
+        await database.User.update(updateUser, { where: { id: id } });
+
+        return updateUser;
+      }
+      return null;
     } catch (error) {
       throw error;
     }

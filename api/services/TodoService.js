@@ -1,42 +1,37 @@
-import database from '../db/models';
+import db from '../db/models';
 
 class TodoService {
-  static async getAllTodos() {
-    try {
-      return await database.Todo.findAll();
-    } catch (error) {
-      throw error;
-    }
-  }
 
   static async addTodo(newTodo) {
     try {
-      return await database.Todo.create(newTodo);
+      return await db.Todo.create(newTodo);
     } catch (error) {
       throw error;
     }
   }
 
-  static async updateTodo(id, updateTodo) {
+  static async getAllTodos() {
     try {
-      const todoToUpdate = await database.Todo.findOne({
-        where: { id: Number(id) }
-      });
-
-      if (todoToUpdate) {
-        await database.Todo.update(updateTodo, { where: { id: Number(id) } });
-
-        return updateTodo;
-      }
-      return null;
+      return await db.Todo.findAll();
     } catch (error) {
       throw error;
+    }
+  }
+
+  static async getAllTodosByListId(listId) {
+    try {
+      var listWithTodos = await db.List.findByPk(listId, { 
+        include: ['todos']
+      });
+      return await listWithTodos.get().todos;
+    } catch (error) {
+      console.log(error)
     }
   }
 
   static async getOneTodo(id) {
     try {
-      const theTodo = await database.Todo.findOne({
+      const theTodo = await db.Todo.findOne({
         where: { id: Number(id) }
       });
 
@@ -46,12 +41,29 @@ class TodoService {
     }
   }
 
+  static async updateTodo(id, updateTodo) {
+    try {
+      const todoToUpdate = await db.Todo.findOne({
+        where: { id: Number(id) }
+      });
+
+      if (todoToUpdate) {
+        await db.Todo.update(updateTodo, { where: { id: Number(id) } });
+
+        return updateTodo;
+      }
+      return null;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async deleteTodo(id) {
     try {
-      const todoToDelete = await database.Todo.findOne({ where: { id: Number(id) } });
+      const todoToDelete = await db.Todo.findOne({ where: { id: Number(id) } });
 
       if (todoToDelete) {
-        const deletedTodo = await database.Todo.destroy({
+        const deletedTodo = await db.Todo.destroy({
           where: { id: Number(id) }
         });
         return deletedTodo;

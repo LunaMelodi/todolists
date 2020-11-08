@@ -1,28 +1,42 @@
-import database from '../db/models';
+import db from '../db/models';
 
 class ListService {
-  // Debugging
-  static async getAllLists() { 
+
+  static async addList(newList) {
     try {
-      return await database.List.findAll();
+      return await db.List.create(newList);
     } catch (error) {
       throw error;
     }
   }
 
-  static async getAllListsForUser(userId) {
+  // Debugging
+  static async getAllLists() { 
     try {
-      return await database.List.findAll( { 
-        where: { userId: userId }
+      return await db.List.findAll();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async getAllListsByUserId(userId) {
+    try {
+      return await db.User.findByPk(userId, { 
+        include: ['lists']
       });
     } catch (error) {
       throw error;
     }
   }
 
-  static async addList(newList) {
+  // unnecessary
+  static async getOneList(id) {
     try {
-      return await database.List.create(newList);
+      const theList = await db.List.findOne({
+        where: { id: Number(id) }
+      });
+
+      return theList;
     } catch (error) {
       throw error;
     }
@@ -30,12 +44,12 @@ class ListService {
 
   static async updateList(id, updateList) {
     try {
-      const listToUpdate = await database.List.findOne({
+      const listToUpdate = await db.List.findOne({
         where: { id: Number(id) }
       });
 
       if (listToUpdate) {
-        await database.List.update(updateList, { 
+        await db.List.update(updateList, { 
           where: { id: Number(id) } 
         });
 
@@ -47,25 +61,12 @@ class ListService {
     }
   }
 
-  // unnecessary
-  static async getOneList(id) {
-    try {
-      const theList = await database.List.findOne({
-        where: { id: Number(id) }
-      });
-
-      return theList;
-    } catch (error) {
-      throw error;
-    }
-  }
-
   static async deleteList(id) {
     try {
-      const listToDelete = await database.List.findOne({ where: { id: Number(id) } });
+      const listToDelete = await db.List.findOne({ where: { id: Number(id) } });
 
       if (listToDelete) {
-        const deletedList = await database.List.destroy({
+        const deletedList = await db.List.destroy({
           where: { id: Number(id) }
         });
         return deletedList;
