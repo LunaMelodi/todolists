@@ -37,7 +37,7 @@ export default function generateHeader(text = 'TodoList') {
     editList()
   })
 
-  const setActiveState = e => {  // to prevent the box to display repeatedly.
+  const setActiveState = e => {  // toggles CSS selector to prevent the box from displaying repeatedly, to add transition to icon and to remove the box. 
     if(e.target.classList.contains('active')) {
       let mainForm = document.querySelector('.main-form');
       mainForm.remove();
