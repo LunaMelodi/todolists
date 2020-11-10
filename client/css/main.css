@@ -346,15 +346,3 @@ input[type=text], input[type=password],  #modal-todo-description {
         font-size: 1rem;
     }
 }
-
-
-
-/*  Reset password file  */
-
-.reset-pass-text {
-    margin: 1rem 0;
-}
-
-.pass-label {
-  padding: 2rem;
-}

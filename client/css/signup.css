@@ -1,0 +1,50 @@
+.wrapper {
+    top: unset;
+}
+
+#signup-form, #login-form, #resetPassword-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.resetPassword {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+#resetPassword-form {
+    height: 100%;
+    justify-content: space-around;
+}
+
+a {
+    margin: 0.4rem 0;
+    align-self: end;
+    font-size: 0.8rem;
+}
+
+b {
+    padding: 0;
+}
+input#email, input#name , input#password , input#password2 {
+    margin: 0;
+}
+
+label {
+    margin: 0.5rem 0;
+}
+
+@media only screen and (min-width: 750px) {
+    .wrapper {
+        max-width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .wrapper {
+        max-width: 40%;
+    }
+}
