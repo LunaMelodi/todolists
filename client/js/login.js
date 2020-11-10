@@ -5,8 +5,8 @@ var form = document.querySelector('#login-form');
 function handleLogin(evt) {
   evt.preventDefault();
 
-  var email = form.querySelector('#email').value
-  var password = form.querySelector('#password').value;
+  var email = form.querySelector('#login-email').value
+  var password = form.querySelector('#login-password').value;
 
   var user = {
     email: email,

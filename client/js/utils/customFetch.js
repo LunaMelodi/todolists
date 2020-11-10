@@ -1,3 +1,10 @@
+module.exports = {
+  getAPI,
+  postAPI,
+  putAPI,
+  deleteAPI
+}
+
 async function getAPI(path) {
   const response = await fetch(API_URL + path, {
     method: 'GET',
@@ -59,11 +66,4 @@ async function deleteAPI(path) {
   })
   
   return response.json();
-}
-
-module.exports = {
-  getAPI,
-  postAPI,
-  putAPI,
-  deleteAPI
 }

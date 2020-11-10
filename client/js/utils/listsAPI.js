@@ -1,10 +1,18 @@
-import customFetch from './customFetch.js';
+import { 
+  getAPI,
+  postAPI,
+  putAPI,
+  patchAPI,
+  deleteAPI
+} from './customFetch.js';
+
+console.log("lists API script running!");
 
 let addListInput = document.querySelector('#addList-input');
 
 async function getListsAPI() {
   try {
-    let data = await customFetch.getAPI('/api/lists');
+    let data = await getAPI('/api/lists');
     console.log('data :>> ', data);
   } catch (error) {
     console.log('error :>> ', error);
@@ -17,7 +25,7 @@ async function addListAPI() {
   }
 
   try {
-    let data = await customFetch.postAPI('/api/lists', formData);
+    let data = await postAPI('/api/lists', formData);
     console.log('data :>> ', data);
   } catch (error) {
     console.log('error :>> ', error);
@@ -35,3 +43,5 @@ let addListForm = document.querySelector('#addList-form');
 
 getListsButton.addEventListener('click', getListsAPI);
 addListForm.addEventListener('submit', addListAPI);
+
+console.log("list event listeners should have been added!");
