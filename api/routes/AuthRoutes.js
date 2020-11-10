@@ -29,13 +29,13 @@ router.get('/confirmation/:token', async (req, res) => {
     await UserService.updateUser(id, { confirmed: true });
     console.log('user updated hopefully?');
     
-    let userRecord = await UserService.getOneUserByID(id);
+    let userRecord = await UserService.getOneUserById(id);
     console.log('userRecord :>> ', userRecord);
 
     return res.json({message: 'confirmation complete!'});
-  } catch (err) {
-    console.log('there was an error :>> ', err)
-    return res.json({ error: err });
+  } catch (error) {
+    console.log('there was an error :>> ', error)
+    return res.json({ error: error });
   }
 });
 
