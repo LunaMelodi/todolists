@@ -12,6 +12,10 @@ class TodoController {
     }
     const newTodo = req.body;
     newTodo.listId = req.params.listId;
+    
+    if (!newTodo.listId) {
+      return resgen.setError(400, 'Please provide listId');
+    }
 
     try {
       const createdTodo = await TodoService.addTodo(newTodo);

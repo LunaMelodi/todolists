@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     completed: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
       allowNull: false,
     },
     listId: {
