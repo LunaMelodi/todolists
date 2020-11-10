@@ -1,11 +1,12 @@
-module.exports = {
+/* export = {
   getAPI,
   postAPI,
   putAPI,
+  patchAPI,
   deleteAPI
-}
+} */
 
-async function getAPI(path) {
+export async function getAPI(path) {
   const response = await fetch(API_URL + path, {
     method: 'GET',
     headers: {
@@ -17,7 +18,7 @@ async function getAPI(path) {
   return response.json();
 }
 
-async function postAPI(path, data) {
+export async function postAPI(path, data) {
   const response = await fetch('API_URL + path', {
     method: 'POST', // or 'PUT'
     headers: {
@@ -30,7 +31,7 @@ async function postAPI(path, data) {
   return response.json();
 }
 
-async function putAPI(path, data) {
+export async function putAPI(path, data) {
   const response = await fetch('API_URL + path', {
     method: 'PUT',
     headers: {
@@ -43,7 +44,7 @@ async function putAPI(path, data) {
   return response.json();
 }
 
-async function patchAPI(path, data) {
+export async function patchAPI(path, data) {
   const response = await fetch('API_URL + path', {
     method: 'PUT',
     headers: {
@@ -56,7 +57,7 @@ async function patchAPI(path, data) {
   return response.json();
 }
 
-async function deleteAPI(path) {
+export async function deleteAPI(path) {
   const response = await fetch('API_URL + path', {
     method: 'DELETE', // or 'PUT'
     headers: {

@@ -12,7 +12,7 @@ let addListInput = document.querySelector('#addList-input');
 
 async function getListsAPI() {
   try {
-    let data = await getAPI('/api/lists');
+    let data = getAPI('/api/lists');
     console.log('data :>> ', data);
   } catch (error) {
     console.log('error :>> ', error);
