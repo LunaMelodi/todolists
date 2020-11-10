@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import favicon from 'serve-favicon';
 import path from 'path';
@@ -7,6 +8,7 @@ import config from 'dotenv';
 import morgan from 'morgan';
 
 import todoRoutes from './routes/TodoRoutes.js';
+import listRoutes from './routes/ListRoutes.js';
 import authRoutes from './routes/AuthRoutes.js';
 
 import checkForSessionCookie from './middleware/confirmLoggedIn.js';
@@ -25,17 +27,19 @@ if (process.env.NODE_ENV == 'production') {
   app.use(morgan('dev'));
 }
 
+
 app.use(cors({
   credentials: true,
   origin: 'http://127.0.0.1:5500' //change back to 5500 later?
 }));
+app.use(helmet());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use('/api/todos', checkForSessionCookie, authAndAttachUserMiddleware, todoRoutes);
+app.use('/api/lists/:listid/todos', checkForSessionCookie, authAndAttachUserMiddleware, todoRoutes);
+app.use('/api/lists', checkForSessionCookie, authAndAttachUserMiddleware, listRoutes)
 app.use('/auth', checkForSessionCookie, authRoutes);
 
 app.get('*', (req, res) => res.status(200).send({
