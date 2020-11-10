@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     listId: {
       type: DataTypes.INTEGER,
-      allowNull: false;
+      allowNull: false,
     }
   });
 
