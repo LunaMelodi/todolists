@@ -13,7 +13,7 @@ export async function getAPI(path) {
 }
 
 export async function postAPI(path, data) {
-  const response = await fetch('API_URL + path', {
+  const response = await fetch(API_URL + path, {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ export async function postAPI(path, data) {
 }
 
 export async function putAPI(path, data) {
-  const response = await fetch('API_URL + path', {
+  const response = await fetch(API_URL + path, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export async function putAPI(path, data) {
 }
 
 export async function patchAPI(path, data) {
-  const response = await fetch('API_URL + path', {
+  const response = await fetch(API_URL + path, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export async function patchAPI(path, data) {
 }
 
 export async function deleteAPI(path) {
-  const response = await fetch('API_URL + path', {
+  const response = await fetch(API_URL + path, {
     method: 'DELETE', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',

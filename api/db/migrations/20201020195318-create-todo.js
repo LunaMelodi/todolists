@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Todo', {
+    await queryInterface.createTable('Todos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -28,17 +28,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      listId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { // Todo belongsTo List 1:1
-          model: List,
-          key: 'id'
-        }
-      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Todo');
+    await queryInterface.dropTable('Todos');
   }
 };

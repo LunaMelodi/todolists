@@ -4,7 +4,7 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  const List = sequelize.define('List', {
+  const List = sequelize.define('Lists', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -16,14 +16,14 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   List.associate = function(models) {
-    List.hasMany(models.Todo, {
+    List.hasMany(models.Todos, {
       //as: 'todos'
     })
-    /* List.belongsToMany(models.User, {
+    List.belongsToMany(models.Users, {
       through: 'UserLists', 
-      foreignKey: 'userId', 
-      as: 'users'
-    })*/
+      foreignKey: 'listId', 
+      //as: 'users'
+    })
   }; 
 
   return List;

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('List', {
+    await queryInterface.createTable('Lists', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -19,17 +19,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      /* userId: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {         // User hasMany Lists n:m
-          model: 'User',
-          key: 'id'
-        }
-      }, */
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('List');
+    await queryInterface.dropTable('Lists');
   }
 };

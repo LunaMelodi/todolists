@@ -8,7 +8,7 @@ import {
 
 console.log("lists API script running!");
 
-let addListInput = document.querySelector('#addList-input');
+let addListInput = document.querySelector('#listName-input');
 
 async function getListsAPI() {
   try {
@@ -19,7 +19,9 @@ async function getListsAPI() {
   }
 }
 
-async function addListAPI() {
+async function addListAPI(evt) {
+  evt.preventDefault();
+
   let formData = {
     name: addListInput.value
   }

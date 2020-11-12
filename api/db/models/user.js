@@ -4,7 +4,7 @@ import { Model } from 'sequelize';
 // const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const User = sequelize.define('Users', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -35,17 +35,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     //schema: 'User',
-    //tableName: 'usertest',
+    //tableName: 'Users',
     //freezeTableName: true
   });
 
-  /* User.associate = function(models) {
-    User.belongsToMany(models.List, {
+  User.associate = function(models) {
+    User.belongsToMany(models.Lists, {
       through: 'UserLists', 
-      foreignKey: 'listId', 
-      as: 'lists'
+      foreignKey: 'userId', 
+      //as: 'lists'
     })
-  } */
+  } 
 
   User.beforeCreate((user, _ ) => {
     return user.id = uuid();

@@ -1,40 +1,40 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('UserList', {
-      id: {
+    await queryInterface.createTable('UserLists', {
+      /* id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
+      }, */
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
       },
-      /* userId: {
+      userId: {
         type: Sequelize.UUID,
-        allowNull: false,
-        references: {         // User hasMany lists n:m
-          model: 'users',
+        references: {
+          model: 'User',
           key: 'id'
-        }
+        },
+        primaryKey: true
       },
       listId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {         // List hasMany Users n:m
-          model: List,
+        references: {
+          model: 'List',
           key: 'id'
-        }
-      }, */
+        },
+        primaryKey: true,
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('UserList');
+    await queryInterface.dropTable('UserLists');
   }
 };

@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 };
 
 module.exports = (sequelize, DataTypes) => {
-  const UserList = sequelize.define('UserList', {
+  const UserList = sequelize.define('UserLists', {
     userId: DataTypes.UUID,
     listId: DataTypes.INTEGER
   }, {
@@ -33,16 +33,16 @@ module.exports = (sequelize, DataTypes) => {
     //freezeTableName: true
   });
 
-  /* UserList.associate = function(models) {
-    UserList.belongsTo(models.List, {
+  UserList.associate = function(models) {
+    UserList.belongsTo(models.Lists, {
       foreignKey: 'listId', 
-      as: 'lists'
+      //as: 'lists'
     }),
-    UserList.belongsTo(models.User, {
+    UserList.belongsTo(models.Users, {
       foreignKey: 'userId', 
-      as: 'users'
+      //as: 'users'
     })
-  } */
+  }
 
   return UserList;
 }

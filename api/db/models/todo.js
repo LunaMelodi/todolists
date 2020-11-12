@@ -4,12 +4,12 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  const Todo = sequelize.define('Todo', {
+  const Todo = sequelize.define('Todos', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    note: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -18,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false,
       allowNull: false,
     },
-    listId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    }
   }, {
     //schema: 'Todo',
     //tableName: 'todotest',
@@ -29,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Todo.associate = function(models) {
-    Todo.belongsTo(models.List, {
+    Todo.belongsTo(models.Lists, {
       //foreignKey: 'listId', 
       //as: 'list'
     })
