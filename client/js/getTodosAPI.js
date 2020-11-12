@@ -1,8 +1,7 @@
-import API_URL from './config/var.js';
+import TODOLISTS_API from './config/var.js';
 
 function getTodosAPI() {
-  fetch(API_URL + '/api/todos', {
-    method: 'GET',
+  fetch(TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT, {
     headers: {
       'Content-Type': 'application/json',
     },

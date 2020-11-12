@@ -1,5 +1,8 @@
 import menuItems from '/client/js/components/listsMenu/menuItems.js';
 import addNewList from '/client/js/components/listsMenu/addNewList.js';
+import requestLists from '/client/js/requests/requestLists.js'; 
+import displayTodos from '/client/js/displayTodos.js';
+import generateHeader from '/client/js/components/generateHeader.js'; 
 
 export default function listsMenu(lists) {
     let app = document.querySelector('.app');
@@ -43,6 +46,14 @@ export default function listsMenu(lists) {
 
     app.append(menuContainer);
     
+    ul.addEventListener('click', async (e) => {
+        if(e.target.classList.contains('lists-menu-item')) {
+            let listId = e.target.dataset.listId;
+            let list = await requestLists.get(listId);
+            displayTodos(list.list.todos);
+        }
+    })
+
     exitIcon.addEventListener('click', e => { // this closes the lists navbar. 
         menuContainer.style.width = '0';
     })

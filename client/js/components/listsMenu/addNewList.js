@@ -1,3 +1,5 @@
+import requestLists from '/client/js/requests/requestLists.js';
+
 export default function addNewList() {
 
     let container = document.createElement('section');
@@ -15,6 +17,7 @@ export default function addNewList() {
 
     container.append(input);
     container.append(plusIcon);
-
+    
+    plusIcon.addEventListener('click', requestLists.post);
     return container;
 }

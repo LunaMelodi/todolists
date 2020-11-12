@@ -1,4 +1,4 @@
-import  API_URL  from './config/var.js';
+import  TODOLISTS_API  from './config/var.js';
 
 var form = document.querySelector('#login-form');
 
@@ -24,7 +24,7 @@ function handleLogin(evt) {
 }
 
 function login(user) {
-  return fetch(API_URL + '/auth/login', {
+  return fetch(TODOLISTS_API.API_URL + '/auth/login', {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',

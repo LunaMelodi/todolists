@@ -1,7 +1,7 @@
-import API_URL from './config/var.js';
+import TODOLISTS_API from './config/var.js';
 
 function logout() {
-  fetch(API_URL + '/auth/logout', {
+  fetch(TODOLISTS_API.API_URL + '/auth/logout', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

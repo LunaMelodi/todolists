@@ -1,8 +1,9 @@
 import listsMenu from '/client/js/components/listsMenu/listsMenu.js';
-import theLists from '/client/js/getLists.js';
+import requestLists from '/client/js/requests/requestLists.js'; 
 import settingsWindow from '/client/js/components/settings/settingsWindow.js';
 
-export default function headBar() {
+
+export default async function headBar() {
     let header = document.createElement('header'); 
     
     let settingsIcon = document.createElement('span'); 
@@ -22,11 +23,12 @@ export default function headBar() {
     header.append(settingsIcon);
     let app = document.querySelector('.app');
     app.prepend(header);
-
-    listsMenu(theLists); // the navbar is added to the page.  
+    
+    let lists = await requestLists.getAll(); 
+    listsMenu(lists.lists); // the navbar is added to the page.  
     let menu = document.querySelector('#lists-menu-container');
         menu.style.width = '0';   //immediately set "width: 0" to hide it.
-    const listsHandler = () => { // on click the elem will transition to the width declared in the stylesheet. 
+    const listsHandler = () => { // on event the elem will transition to the width declared in the stylesheet. 
         menu.style.width = '';  
     }
     

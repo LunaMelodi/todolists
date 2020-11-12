@@ -29,7 +29,7 @@ export default function generateHeader(text = 'TodoList') {
   h1Container.append(h1);
   
 
-  wrapper.append(h1Container)
+  wrapper.prepend(h1Container)
   
   editIcon.addEventListener('click', e => {
     let wrapperFirstChild = document.querySelector('.wrapper').firstChild;
