@@ -1,11 +1,32 @@
 import db from '../db/models';
+import UserService from './UserService.js';
 
 class ListService {
 
-  static async addList(newList) {
+  static async addList(newList, userId) {
     try {
       console.log("in ListService.addList()");
-      return await db.Lists.create(newList);
+      //return await db.Lists.create(newList);
+      let savedList = await db.Lists.create(newList);
+      console.log('savedList :>> ', savedList);
+
+      let user = await UserService.getOneUserById(userId);
+
+      user.setLists(savedList);
+
+      let userLists = await db.UserLists.findAll();
+      console.log('userLists :>> ', userLists);
+      //savedList.setUsers(user);
+      /* let newUserList = await db.UserLists.create({
+        userId: userId,
+        listId: savedList.id
+      }) */
+
+      
+
+      return;
+
+
     } catch (error) {
       throw error;
     }

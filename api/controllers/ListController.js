@@ -12,7 +12,7 @@ class ListController {
     }
     const newList = req.body;
     try {
-      const createdList = await ListService.addList(newList);
+      const createdList = await ListService.addList(newList, req.userRecord.id);
       return resgen.setSuccess(201, 'List Added!', createdList).send(res);
 
     } catch (error) {
