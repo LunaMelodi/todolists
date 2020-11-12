@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    completed: {
+    isCompleted: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
       allowNull: false,
@@ -22,12 +22,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     }
+  }, {
+    //schema: 'Todo',
+    //tableName: 'todotest',
+    //freezeTableName: true
   });
 
   Todo.associate = function(models) {
     Todo.belongsTo(models.List, {
-      foreignKey: 'listId', 
-      as: 'list'
+      //foreignKey: 'listId', 
+      //as: 'list'
     })
   }
 

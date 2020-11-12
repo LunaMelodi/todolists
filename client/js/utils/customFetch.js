@@ -1,10 +1,4 @@
-/* export = {
-  getAPI,
-  postAPI,
-  putAPI,
-  patchAPI,
-  deleteAPI
-} */
+import API_URL from '../config/var.js';
 
 export async function getAPI(path) {
   const response = await fetch(API_URL + path, {

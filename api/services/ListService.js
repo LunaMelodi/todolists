@@ -4,6 +4,7 @@ class ListService {
 
   static async addList(newList) {
     try {
+      console.log("in ListService.addList()");
       return await db.List.create(newList);
     } catch (error) {
       throw error;

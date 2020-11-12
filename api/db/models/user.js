@@ -29,15 +29,23 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     },
-    confirmed: {
+    isConfirmed: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }
+  }, {
+    //schema: 'User',
+    //tableName: 'usertest',
+    //freezeTableName: true
   });
 
-  User.associate = function(models) {
-    User.belongsToMany(models.List, {through: 'UserLists', foreignKey: 'userId', as: 'days'})
-  }
+  /* User.associate = function(models) {
+    User.belongsToMany(models.List, {
+      through: 'UserLists', 
+      foreignKey: 'listId', 
+      as: 'lists'
+    })
+  } */
 
   User.beforeCreate((user, _ ) => {
     return user.id = uuid();
