@@ -11,8 +11,9 @@ class ListService {
       console.log('savedList :>> ', savedList);
 
       let user = await UserService.getOneUserById(userId);
+      console.log('user :>> ', user);
 
-      user.setLists(savedList);
+      let success = await user.addList(savedList);
 
       let userLists = await db.UserLists.findAll();
       console.log('userLists :>> ', userLists);
@@ -43,9 +44,17 @@ class ListService {
 
   static async getAllListsByUserId(userId) {
     try {
-      return await db.Users.findByPk(userId, { 
-        include: ['Lists']
+      let userListObject = await db.Users.findByPk(userId, { 
+        include: [db.Lists]
       });
+      console.log('userListObject :>> ', userListObject);
+
+      let lists = await userListObject.get('Lists');
+
+      console.log('lists :>> ', lists);
+
+
+      
     } catch (error) {
       throw error;
     }

@@ -19,7 +19,7 @@ module.exports = {
       userId: {
         type: Sequelize.UUID,
         references: {
-          model: 'User',
+          model: 'Users',
           key: 'id'
         },
         primaryKey: true
@@ -27,7 +27,7 @@ module.exports = {
       listId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'List',
+          model: 'Lists',
           key: 'id'
         },
         primaryKey: true,
