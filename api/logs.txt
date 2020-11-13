@@ -1,0 +1,94 @@
+Server is running on PORT 8000
+OPTIONS /api/lists 204 4.773 ms - 0
+req.signedCookies :>>  [Object: null prototype] {
+  user_id: 'ab59ed42-0b5f-4b63-9da9-ec3a82109846'
+}
+req.signedCookies.user_id :>>  ab59ed42-0b5f-4b63-9da9-ec3a82109846
+Executing (default): SELECT "id", "name", "email", "password", "isConfirmed", "createdAt", "updatedAt" FROM "Users" AS "Users" WHERE "Users"."id" = 'ab59ed42-0b5f-4b63-9da9-ec3a82109846';
+req.userRecord :>>  Users {
+  dataValues: {
+    id: 'ab59ed42-0b5f-4b63-9da9-ec3a82109846',
+    name: 'susan',
+    email: 'swj27420@eoopy.com',
+    password: '$argon2i$v=19$m=4096,t=3,p=1$y2EHqydbZ/Se+wlxjRnFOTrFdmdE7EskN7mYEAz0vwM$U/ZdnIvHLmqk7rFfT6KULnUu45jPe9VChbIdP9hQ9WQ',
+    isConfirmed: true,
+    createdAt: 2020-11-12T06:59:57.966Z,
+    updatedAt: 2020-11-12T07:00:09.784Z
+  },
+  _previousDataValues: {
+    id: 'ab59ed42-0b5f-4b63-9da9-ec3a82109846',
+    name: 'susan',
+    email: 'swj27420@eoopy.com',
+    password: '$argon2i$v=19$m=4096,t=3,p=1$y2EHqydbZ/Se+wlxjRnFOTrFdmdE7EskN7mYEAz0vwM$U/ZdnIvHLmqk7rFfT6KULnUu45jPe9VChbIdP9hQ9WQ',
+    isConfirmed: true,
+    createdAt: 2020-11-12T06:59:57.966Z,
+    updatedAt: 2020-11-12T07:00:09.784Z
+  },
+  _changed: Set {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [
+      'id',
+      'name',
+      'email',
+      'password',
+      'isConfirmed',
+      'createdAt',
+      'updatedAt'
+    ]
+  },
+  isNewRecord: false
+}
+in ListService.addList()
+Executing (default): INSERT INTO "Lists" ("id","name","createdAt","updatedAt") VALUES (DEFAULT,$1,$2,$3) RETURNING "id","name","createdAt","updatedAt";
+POST /api/lists 201 209.321 ms - 160
+OPTIONS /api/lists 204 0.601 ms - 0
+req.signedCookies :>>  [Object: null prototype] {
+  user_id: 'ab59ed42-0b5f-4b63-9da9-ec3a82109846'
+}
+req.signedCookies.user_id :>>  ab59ed42-0b5f-4b63-9da9-ec3a82109846
+Executing (default): SELECT "id", "name", "email", "password", "isConfirmed", "createdAt", "updatedAt" FROM "Users" AS "Users" WHERE "Users"."id" = 'ab59ed42-0b5f-4b63-9da9-ec3a82109846';
+req.userRecord :>>  Users {
+  dataValues: {
+    id: 'ab59ed42-0b5f-4b63-9da9-ec3a82109846',
+    name: 'susan',
+    email: 'swj27420@eoopy.com',
+    password: '$argon2i$v=19$m=4096,t=3,p=1$y2EHqydbZ/Se+wlxjRnFOTrFdmdE7EskN7mYEAz0vwM$U/ZdnIvHLmqk7rFfT6KULnUu45jPe9VChbIdP9hQ9WQ',
+    isConfirmed: true,
+    createdAt: 2020-11-12T06:59:57.966Z,
+    updatedAt: 2020-11-12T07:00:09.784Z
+  },
+  _previousDataValues: {
+    id: 'ab59ed42-0b5f-4b63-9da9-ec3a82109846',
+    name: 'susan',
+    email: 'swj27420@eoopy.com',
+    password: '$argon2i$v=19$m=4096,t=3,p=1$y2EHqydbZ/Se+wlxjRnFOTrFdmdE7EskN7mYEAz0vwM$U/ZdnIvHLmqk7rFfT6KULnUu45jPe9VChbIdP9hQ9WQ',
+    isConfirmed: true,
+    createdAt: 2020-11-12T06:59:57.966Z,
+    updatedAt: 2020-11-12T07:00:09.784Z
+  },
+  _changed: Set {},
+  _options: {
+    isNewRecord: false,
+    _schema: null,
+    _schemaDelimiter: '',
+    raw: true,
+    attributes: [
+      'id',
+      'name',
+      'email',
+      'password',
+      'isConfirmed',
+      'createdAt',
+      'updatedAt'
+    ]
+  },
+  isNewRecord: false
+}
+in ListController.getAllListsByUserId()
+req.userRecord.id :>>  ab59ed42-0b5f-4b63-9da9-ec3a82109846
+Executing (default): SELECT "Users"."id", "Users"."name", "Users"."email", "Users"."password", "Users"."isConfirmed", "Users"."createdAt", "Users"."updatedAt", "Lists"."id" AS "Lists.id", "Lists"."name" AS "Lists.name", "Lists"."createdAt" AS "Lists.createdAt", "Lists"."updatedAt" AS "Lists.updatedAt", "Lists->UserLists"."userId" AS "Lists.UserLists.userId", "Lists->UserLists"."listId" AS "Lists.UserLists.listId", "Lists->UserLists"."createdAt" AS "Lists.UserLists.createdAt", "Lists->UserLists"."updatedAt" AS "Lists.UserLists.updatedAt" FROM "Users" AS "Users" LEFT OUTER JOIN ( "UserLists" AS "Lists->UserLists" INNER JOIN "Lists" AS "Lists" ON "Lists"."id" = "Lists->UserLists"."listId") ON "Users"."id" = "Lists->UserLists"."userId" WHERE "Users"."id" = 'ab59ed42-0b5f-4b63-9da9-ec3a82109846';
+GET /api/lists 200 140.258 ms - 46

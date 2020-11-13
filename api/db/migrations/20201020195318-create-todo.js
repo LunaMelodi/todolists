@@ -20,14 +20,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.BOOLEAN
       },
-      listId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { // Todo belongsTo List 1:1
-          model: 'Lists',
-          key: 'id'
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -35,10 +27,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('todos');
+    await queryInterface.dropTable('Todos');
   }
 };

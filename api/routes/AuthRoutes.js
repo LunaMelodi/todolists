@@ -25,8 +25,8 @@ router.get('/confirmation/:token', async (req, res) => {
     console.log('user :>> ', user);
     console.log('id :>> ', id);
 
-    //await database.User.update({ confirmed: true }, { where: { id } });
-    await UserService.updateUser(id, { confirmed: true });
+    //await database.User.update({ isConfirmed: true }, { where: { id } });
+    await UserService.updateUser(id, { isConfirmed: true });
     console.log('user updated hopefully?');
     
     let userRecord = await UserService.getOneUserById(id);

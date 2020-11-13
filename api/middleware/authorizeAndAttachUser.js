@@ -5,7 +5,7 @@ var resgen = new ResGen();
 
 async function authorizeAndAttachUser(req, res, next) {
   if(req.signedCookies.user_id) {
-    let userRecord = await UserService.getOneUserByID(req.signedCookies.user_id);
+    let userRecord = await UserService.getOneUserById(req.signedCookies.user_id);
     
     if (userRecord) {
       req.userRecord = userRecord;

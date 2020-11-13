@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      confirmed: {
+      isConfirmed: {
         type: Sequelize.BOOLEAN
       },
       createdAt: {

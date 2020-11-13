@@ -1,10 +1,33 @@
 import db from '../db/models';
+import UserService from './UserService.js';
 
 class ListService {
 
-  static async addList(newList) {
+  static async addList(newList, userId) {
     try {
-      return await db.List.create(newList);
+      console.log("in ListService.addList()");
+      //return await db.Lists.create(newList);
+      let savedList = await db.Lists.create(newList);
+      console.log('savedList :>> ', savedList);
+
+      let user = await UserService.getOneUserById(userId);
+      console.log('user :>> ', user);
+
+      let success = await user.addList(savedList);
+
+      let userLists = await db.UserLists.findAll();
+      console.log('userLists :>> ', userLists);
+      //savedList.setUsers(user);
+      /* let newUserList = await db.UserLists.create({
+        userId: userId,
+        listId: savedList.id
+      }) */
+
+      
+
+      return;
+
+
     } catch (error) {
       throw error;
     }
@@ -13,7 +36,7 @@ class ListService {
   // Debugging
   static async getAllLists() { 
     try {
-      return await db.List.findAll();
+      return await db.Lists.findAll();
     } catch (error) {
       throw error;
     }
@@ -21,9 +44,17 @@ class ListService {
 
   static async getAllListsByUserId(userId) {
     try {
-      return await db.User.findByPk(userId, { 
-        include: ['lists']
+      let userListObject = await db.Users.findByPk(userId, { 
+        include: [db.Lists]
       });
+      console.log('userListObject :>> ', userListObject);
+
+      let lists = await userListObject.get('Lists');
+
+      console.log('lists :>> ', lists);
+
+
+      
     } catch (error) {
       throw error;
     }
@@ -32,7 +63,7 @@ class ListService {
   // unnecessary
   static async getOneList(id) {
     try {
-      const theList = await db.List.findOne({
+      const theList = await db.Lists.findOne({
         where: { id: Number(id) }
       });
 
@@ -44,12 +75,12 @@ class ListService {
 
   static async updateList(id, updateList) {
     try {
-      const listToUpdate = await db.List.findOne({
+      const listToUpdate = await db.Lists.findOne({
         where: { id: Number(id) }
       });
 
       if (listToUpdate) {
-        await db.List.update(updateList, { 
+        await db.Lists.update(updateList, { 
           where: { id: Number(id) } 
         });
 
@@ -63,10 +94,10 @@ class ListService {
 
   static async deleteList(id) {
     try {
-      const listToDelete = await db.List.findOne({ where: { id: Number(id) } });
+      const listToDelete = await db.Lists.findOne({ where: { id: Number(id) } });
 
       if (listToDelete) {
-        const deletedList = await db.List.destroy({
+        const deletedList = await db.Lists.destroy({
           where: { id: Number(id) }
         });
         return deletedList;

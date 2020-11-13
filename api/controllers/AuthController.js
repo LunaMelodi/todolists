@@ -77,7 +77,7 @@ class AuthController {
       if(userRecord) {
         console.log('userRecord :>> ', userRecord);
 
-        if(!userRecord.confirmed) {
+        if(!userRecord.isConfirmed) {
           return resgen.setError(400, 'Please confirm your email to login.').send(res);
         } 
 

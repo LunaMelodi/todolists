@@ -4,7 +4,7 @@ class TodoService {
 
   static async addTodo(newTodo) {
     try {
-      return await db.Todo.create(newTodo);
+      return await db.Todos.create(newTodo);
     } catch (error) {
       throw error;
     }
@@ -12,7 +12,7 @@ class TodoService {
 
   static async getAllTodos() {
     try {
-      return await db.Todo.findAll();
+      return await db.Todos.findAll();
     } catch (error) {
       throw error;
     }
@@ -31,7 +31,7 @@ class TodoService {
 
   static async getOneTodo(id) {
     try {
-      const theTodo = await db.Todo.findOne({
+      const theTodo = await db.Todos.findOne({
         where: { id: Number(id) }
       });
 
@@ -43,12 +43,12 @@ class TodoService {
 
   static async updateTodo(id, updateTodo) {
     try {
-      const todoToUpdate = await db.Todo.findOne({
+      const todoToUpdate = await db.Todos.findOne({
         where: { id: Number(id) }
       });
 
       if (todoToUpdate) {
-        await db.Todo.update(updateTodo, { where: { id: Number(id) } });
+        await db.Todos.update(updateTodo, { where: { id: Number(id) } });
 
         return updateTodo;
       }
@@ -60,10 +60,10 @@ class TodoService {
 
   static async deleteTodo(id) {
     try {
-      const todoToDelete = await db.Todo.findOne({ where: { id: Number(id) } });
+      const todoToDelete = await db.Todos.findOne({ where: { id: Number(id) } });
 
       if (todoToDelete) {
-        const deletedTodo = await db.Todo.destroy({
+        const deletedTodo = await db.Todos.destroy({
           where: { id: Number(id) }
         });
         return deletedTodo;

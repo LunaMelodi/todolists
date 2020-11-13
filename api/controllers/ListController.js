@@ -4,8 +4,25 @@ import ResGen from '../utils/ResGeneration';
 const resgen = new ResGen();
 
 class ListController {
+
+  static async addList(req, res) {
+    if (!req.body.name) {
+      console.log('req.body :>> ', req.body);
+      return resgen.setError(400, 'Please provide complete details').send(res);   
+    }
+    const newList = req.body;
+    try {
+      const createdList = await ListService.addList(newList, req.userRecord.id);
+      return resgen.setSuccess(201, 'List Added!', createdList).send(res);
+
+    } catch (error) {
+      return resgen.setError(400, error.message).send(res);      
+    }
+  }
+
   static async getAllLists(req, res) {
     try {
+      console.log("in ListController.getAllLists()");
       const allLists = await ListService.getAllLists();
       if (allLists.length > 0) {
         resgen.setSuccess(200, 'Lists retrieved', allLists);
@@ -15,13 +32,16 @@ class ListController {
       return resgen.send(res);
 
     } catch (error) {
+      console.log(error);
       return resgen.setError(400, error).send(res);      
     }
   }
 
   static async getAllListsByUserId(req, res) {
     try {
-      const allLists = await ListService.getAllListsByUserId();
+      console.log("in ListController.getAllListsByUserId()");
+      console.log('req.userRecord.id :>> ', req.userRecord.id);
+      const allLists = await ListService.getAllListsByUserId(req.userRecord.id);
       if (allLists.length > 0) {
         resgen.setSuccess(200, 'Lists retrieved', allLists);
       } else {
@@ -30,22 +50,8 @@ class ListController {
       return resgen.send(res);
 
     } catch (error) {
+      console.log(error);
       return resgen.setError(400, error).send(res);      
-    }
-  }
-
-  static async addList(req, res) {
-    if (!req.body.content) {
-      console.log(req.body)
-      return resgen.setError(400, 'Please provide complete details').send(res);   
-    }
-    const newList = req.body;
-    try {
-      const createdList = await ListService.addList(newList);
-      return resgen.setSuccess(201, 'List Added!', createdList).send(res);
-
-    } catch (error) {
-      return resgen.setError(400, error.message).send(res);      
     }
   }
 
