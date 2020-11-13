@@ -18,17 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false,
       allowNull: false,
     },
-  }, {
-    //schema: 'Todo',
-    //tableName: 'todotest',
-    //freezeTableName: true
   });
 
   Todo.associate = function(models) {
-    Todo.belongsTo(models.Lists, {
-      //foreignKey: 'listId', 
-      //as: 'list'
-    })
+    Todo.belongsTo(models.Lists)
   }
 
   return Todo;

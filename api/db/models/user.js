@@ -1,7 +1,6 @@
 'use strict';
 import { v4 as uuid } from 'uuid';
 import { Model } from 'sequelize';
-// const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('Users', {
@@ -33,17 +32,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }
-  }, {
-    //schema: 'User',
-    //tableName: 'Users',
-    //freezeTableName: true
   });
 
   User.associate = function(models) {
     User.belongsToMany(models.Lists, {
       through: 'UserLists', 
       foreignKey: 'userId', 
-      //as: 'lists'
     })
   } 
 

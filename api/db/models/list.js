@@ -9,20 +9,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  }, {
-    //schema: 'List',
-    //tableName: 'list',
-    //freezeTableName: true
   });
 
   List.associate = function(models) {
-    List.hasMany(models.Todos, {
-      //as: 'todos'
-    })
+    List.hasMany(models.Todos)
     List.belongsToMany(models.Users, {
       through: 'UserLists', 
       foreignKey: 'listId', 
-      //as: 'users'
     })
   }; 
 
