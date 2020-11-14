@@ -21,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Todo.associate = function(models) {
-    Todo.belongsTo(models.Lists)
+    Todo.belongsTo(models.Lists, {
+      foreignKey: 'listId'
+    })
   }
 
   return Todo;

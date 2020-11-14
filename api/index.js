@@ -38,7 +38,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use('/api/lists/:listid/todos', checkForSessionCookie, authAndAttachUserMiddleware, todoRoutes);
+app.use('/api/lists/:id/todos', checkForSessionCookie, authAndAttachUserMiddleware, todoRoutes);
 app.use('/api/lists', checkForSessionCookie, authAndAttachUserMiddleware, listRoutes)
 app.use('/auth', checkForSessionCookie, authRoutes);
 

@@ -76,10 +76,6 @@ async function deleteListAPI(evt) {
   
 }
 
-
-
-
-
 let getListsButton = document.querySelector('#getLists-button');
 let addListFormButton = document.querySelector('#addList-form');
 let updateListFormButton = document.querySelector('#updateList-form');

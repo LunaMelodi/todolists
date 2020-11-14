@@ -8,15 +8,15 @@ class ListService {
       console.log("in ListService.addList()");
 
       let savedList = await db.Lists.create(newList);
-      console.log('savedList :>> ', savedList);
+      //console.log('savedList :>> ', savedList);
 
       let user = await UserService.getOneUserById(userId);
-      console.log('user :>> ', user);
+      //console.log('user :>> ', user);
 
       let success = await user.addList(savedList);
 
       let userLists = await db.UserLists.findAll();
-      console.log('userLists :>> ', userLists);
+      //console.log('userLists :>> ', userLists);
 
       return savedList;
 
@@ -39,11 +39,11 @@ class ListService {
       let userListObject = await db.Users.findByPk(userId, { 
         include: [db.Lists]
       });
-      console.log('userListObject :>> ', userListObject);
+      //console.log('userListObject :>> ', userListObject);
 
       let lists = await userListObject.get('Lists');
 
-      console.log('lists :>> ', lists);
+      //console.log('lists :>> ', lists);
       
       let simplifiedLists = lists.map(list => {
         let simplifiedList = {
@@ -53,7 +53,7 @@ class ListService {
 
         return simplifiedList;
       });
-      console.log('simplifiedLists :>> ', simplifiedLists);
+      //console.log('simplifiedLists :>> ', simplifiedLists);
       
       return simplifiedLists;
 
