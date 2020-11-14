@@ -3,7 +3,12 @@ const TODOLISTS_API = {
     LISTS_ENDPOINT: '/api/lists',
     TODOS_ENDPOINT: function (listid) {
       return `${this.LISTS_ENDPOINT}/${listid}/todos`;
-    } 
+    },
+    AUTH: {
+      LOGIN: '/auth/login',
+      SIGNUP: '/auth/signup',
+      LOGOUT: '/auth/logout'
+    }
 }
 
 

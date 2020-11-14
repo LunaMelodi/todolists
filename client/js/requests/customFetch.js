@@ -3,7 +3,7 @@ export async function getAPI(path) {
       headers: {
         'Content-Type': 'application/json',
       },
-      //credentials: 'include'
+      credentials: 'include'
     });
     if(response.ok) {
       return response.json();
@@ -16,10 +16,12 @@ export async function postAPI(path, data) {
       headers: {
         'Content-Type': 'application/json',
       },
-      //credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify(data)
     })
+    console.log(response, ' ----+-+-+-+-+')
     if(response.ok) {
+      console.log(' -------------  -- - -777')
       return response.json();
     } else throw new Error('POST request failed. ');
 }
@@ -30,7 +32,7 @@ export async function putAPI(path, data) {
       headers: {
         'Content-Type': 'application/json',
       },
-      //credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify(data)
     })
     if(response.ok) {
@@ -44,7 +46,7 @@ export async function patchAPI(path, data) {
       headers: {
         'Content-Type': 'application/json',
       },
-      //credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify(data)
     })
     if(response.ok) {
@@ -58,7 +60,7 @@ export async function deleteAPI(path) {
       headers: {
         'Content-Type': 'application/json',
       },
-      //credentials: 'include'
+      credentials: 'include'
     })
     if(response.ok) {
       return response.json();
