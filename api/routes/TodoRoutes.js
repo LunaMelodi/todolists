@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import TodoController from '../controllers/TodoController.js';
+import TodoController from '../controllers/TodoController';
 
-var router = Router({ mergeParams: true });
+const router = Router({ mergeParams: true });
 
 router.get('/', TodoController.getTodos);
-//router.get('/', TodoController.getAllTodos);
+// router.get('/', TodoController.getAllTodos);
 router.post('/', TodoController.addTodo);
-//router.get('/:id', TodoController.getOneTodo);
+// router.get('/:id', TodoController.getOneTodo);
 router.put('/:todoId', TodoController.updateTodo);
 router.delete('/:todoId', TodoController.deleteTodo);
 

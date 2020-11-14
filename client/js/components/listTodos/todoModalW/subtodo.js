@@ -1,4 +1,8 @@
+<<<<<<< HEAD:client/js/components/listTodos/todoModalW/subtodo.js
 /* import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
+=======
+import editButton from '/client/js/components/todoModalW/editButton';
+>>>>>>> todosAPI:client/js/components/todoModalW/subtodo.js
 
 export default function subtodo(title, description, duedate, subTodos) {
     //let wrapper = document.querySelector('.wrapper');

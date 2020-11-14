@@ -1,4 +1,8 @@
+<<<<<<< HEAD:client/js/components/listTodos/displayTodos.js
 import requestTodos from '/client/js/requests/requestTodos.js'; 
+=======
+import updateCheckStatus from '/client/js/updateCheckStatus';
+>>>>>>> todosAPI:client/js/displayTodos.js
 
 export default async function displayTodos(todos) {
     var ul = document.querySelector('#list-items');

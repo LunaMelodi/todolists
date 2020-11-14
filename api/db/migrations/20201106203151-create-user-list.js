@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('UserLists', {
@@ -10,31 +9,32 @@ module.exports = {
       }, */
       createdAt: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
       updatedAt: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
       userId: {
         type: Sequelize.UUID,
         references: {
           model: 'Users',
-          key: 'id'
+          key: 'id',
         },
-        primaryKey: true
+        primaryKey: true,
       },
       listId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Lists',
-          key: 'id'
+          key: 'id',
         },
         primaryKey: true,
-      }
+      },
     });
   },
+  // eslint-disable-next-line no-unused-vars
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('UserLists');
-  }
+  },
 };

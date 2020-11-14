@@ -1,5 +1,10 @@
+<<<<<<< HEAD:client/js/components/listTodos/todoModalW/editTodoModalW.js
 import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
 import requestTodos from '/client/js/requests/requestTodos.js'; 
+=======
+import newbutton from '/client/js/components/todoModalW/newbutton';
+import updateTodo from '/client/js/updateTodo';
+>>>>>>> todosAPI:client/js/components/todoModalW/editTodoModalW.js
 
 export default function editTodoModalW(todo) {
   let background = document.querySelector('.modal-todo-background');

@@ -1,5 +1,10 @@
+<<<<<<< HEAD:client/js/components/listTodos/todoModalW/todoModalW.js
 import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
 import editTodoModalW from '/client/js/components/listTodos/todoModalW/editTodoModalW.js';
+=======
+import newbutton from '/client/js/components/todoModalW/newbutton';
+import editTodoModalW from '/client/js/components/todoModalW/editTodoModalW';
+>>>>>>> todosAPI:client/js/components/todoModalW/todoModalW.js
 
 export default function todoModalW(todo) {
   

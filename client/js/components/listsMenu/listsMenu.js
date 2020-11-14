@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 import menuItems from '/client/js/components/listsMenu/menuItems.js';
 import addNewList from '/client/js/components/listsMenu/addNewList.js';
 import requestLists from '/client/js/requests/requestLists.js'; 
 import listTodos from '/client/js/components/listTodos/listTodos.js';
+=======
+import menuItems from '/client/js/components/listsMenu/menuItems';
+import addNewList from '/client/js/components/listsMenu/addNewList';
+>>>>>>> todosAPI
 
 export default function listsMenu(lists) {
     let app = document.querySelector('.app');

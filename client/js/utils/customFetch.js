@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import TODOLISTS_API from '../config/var.js';
+=======
+import API_URL from '../config/var';
+>>>>>>> todosAPI
 
 export async function getAPI(path) {
   const response = await fetch(TODOLISTS_API.API_URL + path, {

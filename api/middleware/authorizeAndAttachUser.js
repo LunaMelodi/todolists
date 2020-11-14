@@ -1,25 +1,22 @@
 import ResGen from '../utils/ResGeneration';
-import UserService from '../services/UserService.js';
+import UserService from '../services/UserService';
 
-var resgen = new ResGen();
+const resgen = new ResGen();
 
 async function authorizeAndAttachUser(req, res, next) {
+  if (req.signedCookies.user_id) {
+    const userRecord = await UserService.getOneUserById(req.signedCookies.user_id);
 
-  if(req.signedCookies.user_id) {
-    let userRecord = await UserService.getOneUserById(req.signedCookies.user_id);
-    
     if (userRecord) {
       req.userRecord = userRecord;
-      //console.log('req.userRecord :>> ', req.userRecord);
-      next();
-    } else {
-      return resgen.setError(400, 'User not found in database.').send(res); 
+      // console.log('req.userRecord :>> ', req.userRecord);
+      return next();
     }
-  } else {
-    console.log('authAndAttachUser() :>> User not logged in.');
-    ;
-    return resgen.setError(400, 'User not logged in.').send(res);
+    return resgen.setError(400, 'User not found in database.').send(res);
   }
+  console.log('authAndAttachUser() :>> User not logged in.');
+
+  return resgen.setError(400, 'User not logged in.').send(res);
 }
 
 export default authorizeAndAttachUser;

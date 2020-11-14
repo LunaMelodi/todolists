@@ -1,10 +1,9 @@
 import { Router } from 'express';
-import AuthController from '../controllers/AuthController.js';
-import database from '../db/models';
-import UserService from '../services/UserService.js';
 import jwt from 'jsonwebtoken';
+import AuthController from '../controllers/AuthController';
+import UserService from '../services/UserService';
 
-var router = Router();
+const router = Router();
 
 router.get('/', (req, res) => res.status(200).send({
   message: 'Welcome to the auth router (:',
@@ -19,25 +18,24 @@ router.get('/users', AuthController.getAllUsers);
 
 router.get('/confirmation/:token', async (req, res) => {
   try {
-    //const { user: { id } } = jwt.verify(req.params.token, process.env.EMAIL_SECRET);
-    let user = jwt.verify(req.params.token, process.env.EMAIL_SECRET);
-    let id = user.user_id;
+    // const { user: { id } } = jwt.verify(req.params.token, process.env.EMAIL_SECRET);
+    const user = jwt.verify(req.params.token, process.env.EMAIL_SECRET);
+    const id = user.user_id;
     console.log('user :>> ', user);
     console.log('id :>> ', id);
 
-    //await database.User.update({ isConfirmed: true }, { where: { id } });
+    // await database.User.update({ isConfirmed: true }, { where: { id } });
     await UserService.updateUser(id, { isConfirmed: true });
     console.log('user updated hopefully?');
-    
-    let userRecord = await UserService.getOneUserById(id);
+
+    const userRecord = await UserService.getOneUserById(id);
     console.log('userRecord :>> ', userRecord);
 
-    return res.json({message: 'confirmation complete!'});
+    return res.json({ message: 'confirmation complete!' });
   } catch (error) {
-    console.log('there was an error :>> ', error)
-    return res.json({ error: error });
+    console.log('there was an error :>> ', error);
+    return res.json({ error });
   }
 });
-
 
 export default router;

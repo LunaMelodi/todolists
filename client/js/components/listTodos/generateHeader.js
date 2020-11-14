@@ -1,5 +1,10 @@
+<<<<<<< HEAD:client/js/components/listTodos/generateHeader.js
 import editList from '/client/js/components/editList/editList.js';
 import generateTodoInput from '/client/js/components/listTodos/generateTodoInput.js'; 
+=======
+import editList from '/client/js/components/editList/editList';
+import generateTodoInput from '/client/js/components/generateTodoInput'; 
+>>>>>>> todosAPI:client/js/components/generateHeader.js
 
 export default function generateHeader(text = 'TodoList') {
   let listTodos = document.querySelector('#list-todos-container');

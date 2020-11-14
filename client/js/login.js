@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import  TODOLISTS_API  from './config/var.js';
+=======
+import  API_URL  from './config/var';
+>>>>>>> todosAPI
 
 var form = document.querySelector('#login-form');
 
