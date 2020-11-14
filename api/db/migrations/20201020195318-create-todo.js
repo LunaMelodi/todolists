@@ -3,30 +3,30 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Todos', {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
       },
       title: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.STRING
       },
-      description: {
+      note: {
+        type: Sequelize.STRING,
         allowNull: true,
-        type: Sequelize.STRING
       },
-      completed: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
+      isCompleted: {
+        type: Sequelize.BOOLEAN,
+
       },
       createdAt: {
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
       },
       updatedAt: {
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
       },
     });
   },

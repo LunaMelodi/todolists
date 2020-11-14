@@ -3,6 +3,7 @@ import db from '../db/models';
 class TodoService {
 
   static async addTodo(newTodo) {
+    console.log("in TodoService.addTodo()");
     try {
       return await db.Todos.create(newTodo);
     } catch (error) {
@@ -10,41 +11,43 @@ class TodoService {
     }
   }
 
-  static async getAllTodos() {
+  static async getTodos(listId) {
     try {
-      return await db.Todos.findAll();
-    } catch (error) {
-      throw error;
-    }
-  }
+      console.log("in TodoService.getTodos()");
+      
+      console.log('listId :>> ', listId);
 
-  static async getAllTodosByListId(listId) {
-    try {
-      var listWithTodos = await db.List.findByPk(listId, { 
-        include: ['todos']
+      let listWithTodos = await db.Lists.findByPk(listId, { 
+        include: [ {
+          model: db.Todos, 
+          attributes: ['id', 'title', 'note', 'isCompleted']
+        }]
       });
-      return await listWithTodos.get().todos;
+      console.log('listWithTodos :>> ', listWithTodos);
+
+      let simplifiedTodos = listWithTodos.dataValues.Todos.map(todo => {
+        return todo.dataValues;
+      })
+      console.log('simplifiedTodos :>> ', simplifiedTodos);
+
+      let simplifiedListWithTodos  = { 
+        listId: listId,
+        name: listWithTodos.dataValues.name,
+        todos: simplifiedTodos
+      }
+      console.log('simplifiedListWithTodos :>> ', simplifiedListWithTodos);
+
+      return simplifiedListWithTodos;
+      //return await listWithTodos.get().todos;
     } catch (error) {
       console.log(error)
     }
   }
 
-  static async getOneTodo(id) {
-    try {
-      const theTodo = await db.Todos.findOne({
-        where: { id: Number(id) }
-      });
-
-      return theTodo;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  static async updateTodo(id, updateTodo) {
+  static async updateTodo(todoId, updateTodo) {
     try {
       const todoToUpdate = await db.Todos.findOne({
-        where: { id: Number(id) }
+        where: { id: Number(todoId) }
       });
 
       if (todoToUpdate) {
