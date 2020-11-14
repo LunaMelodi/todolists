@@ -1,23 +1,18 @@
-<<<<<<< HEAD
-import TODOLISTS_API from './config/var.js';
-=======
 import API_URL from './config/var';
->>>>>>> todosAPI
 
 function logout() {
-  fetch(TODOLISTS_API.API_URL + '/auth/logout', {
+  fetch(`${TODOLISTS_API.API_URL}/auth/logout`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
   })
-  .then(res => res.json())
-  .then(data => console.log('data :>> ', data))
-  .catch(err => console.log('err :>> ', err))
+    .then((res) => res.json())
+    .then((data) => console.log('data :>> ', data))
+    .catch((err) => console.log('err :>> ', err));
 }
 
-var button = document.querySelector('#logout-button');
+const button = document.querySelector('#logout-button');
 
-button.addEventListener('click', logout)
-
+button.addEventListener('click', logout);

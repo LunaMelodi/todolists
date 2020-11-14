@@ -1,63 +1,56 @@
-<<<<<<< HEAD
-import menuItems from '/client/js/components/listsMenu/menuItems.js';
-import addNewList from '/client/js/components/listsMenu/addNewList.js';
-import requestLists from '/client/js/requests/requestLists.js'; 
-import listTodos from '/client/js/components/listTodos/listTodos.js';
-=======
 import menuItems from '/client/js/components/listsMenu/menuItems';
 import addNewList from '/client/js/components/listsMenu/addNewList';
->>>>>>> todosAPI
 
 export default function listsMenu(lists) {
-    let app = document.querySelector('.app');
+  const app = document.querySelector('.app');
 
-    let menuContainer = document.createElement('section');
-    menuContainer.id = 'lists-menu-container';
-    
-    let iconHeaderContainer = document.createElement('section');
-    iconHeaderContainer.className = 'icon-header-container';
+  const menuContainer = document.createElement('section');
+  menuContainer.id = 'lists-menu-container';
 
-    let ulContainer = document.createElement('div');
-    ulContainer.classList.add('ul-lists-container')
-    
-    let header = document.createElement('span');
-    header.id = 'lists-menu-header';
-    header.innerHTML = 'My Lists';
+  const iconHeaderContainer = document.createElement('section');
+  iconHeaderContainer.className = 'icon-header-container';
 
-    let exitIcon = document.createElement('span');
-    exitIcon.classList.add('material-icons', 'exit-icon', 'md-36');
-    exitIcon.innerHTML = 'exit_to_app';
-    
-    let addListInputContainer = addNewList();
+  const ulContainer = document.createElement('div');
+  ulContainer.classList.add('ul-lists-container');
 
-    let ul = document.createElement('ul');
-    ul.className = 'lists-menu';
-    
-    lists.forEach(list => {
-        let li = menuItems(list);
-        ul.append(li);
-    });
+  const header = document.createElement('span');
+  header.id = 'lists-menu-header';
+  header.innerHTML = 'My Lists';
 
-    iconHeaderContainer.append(header);
-    iconHeaderContainer.append(exitIcon);
-    
-    ulContainer.append(ul);
+  const exitIcon = document.createElement('span');
+  exitIcon.classList.add('material-icons', 'exit-icon', 'md-36');
+  exitIcon.innerHTML = 'exit_to_app';
 
-    menuContainer.prepend(iconHeaderContainer);
-    menuContainer.append(addListInputContainer);
-    menuContainer.append(ulContainer);
+  const addListInputContainer = addNewList();
 
-    app.append(menuContainer);
-    
-    ul.addEventListener('click', async (e) => {
-        if(e.target.classList.contains('lists-menu-item')) {
-            let listId = e.target.dataset.listId;
-            let list = await requestLists.get(listId);
-            listTodos(list.list);
-        }
-    })
+  const ul = document.createElement('ul');
+  ul.className = 'lists-menu';
 
-    exitIcon.addEventListener('click', e => { // this closes the lists navbar. 
-        menuContainer.style.width = '0';
-    })
+  lists.forEach((list) => {
+    const li = menuItems(list);
+    ul.append(li);
+  });
+
+  iconHeaderContainer.append(header);
+  iconHeaderContainer.append(exitIcon);
+
+  ulContainer.append(ul);
+
+  menuContainer.prepend(iconHeaderContainer);
+  menuContainer.append(addListInputContainer);
+  menuContainer.append(ulContainer);
+
+  app.append(menuContainer);
+
+  ul.addEventListener('click', async (e) => {
+    if (e.target.classList.contains('lists-menu-item')) {
+      const { listId } = e.target.dataset;
+      const list = await requestLists.get(listId);
+      listTodos(list.list);
+    }
+  });
+
+  exitIcon.addEventListener('click', (e) => { // this closes the lists navbar.
+    menuContainer.style.width = '0';
+  });
 }

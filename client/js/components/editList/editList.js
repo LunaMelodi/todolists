@@ -1,27 +1,22 @@
-<<<<<<< HEAD
-import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
-=======
 import newbutton from '/client/js/components/todoModalW/newbutton';
->>>>>>> todosAPI
 
 export default function editList(title = 'title') {
-    let wrapper = document.querySelector('.wrapper');
-    
-    let editListContainer = document.createElement('div');
-    editListContainer.className = 'edit-list-container';
+  const wrapper = document.querySelector('.wrapper');
 
-    let editTitle = document.createElement('input');
-    editTitle.setAttribute('placeholder', title);
+  const editListContainer = document.createElement('div');
+  editListContainer.className = 'edit-list-container';
 
-    let close = newbutton( '[x]', 0, 'close-modal-button');
+  const editTitle = document.createElement('input');
+  editTitle.setAttribute('placeholder', title);
 
-    editListContainer.append(editTitle)
-    editListContainer.append(close)
+  const close = newbutton('[x]', 0, 'close-modal-button');
 
-    
-    wrapper.prepend(editListContainer);
+  editListContainer.append(editTitle);
+  editListContainer.append(close);
 
-    close.addEventListener('click', evt => {
-        editListContainer.remove();
-      })
+  wrapper.prepend(editListContainer);
+
+  close.addEventListener('click', (evt) => {
+    editListContainer.remove();
+  });
 }
