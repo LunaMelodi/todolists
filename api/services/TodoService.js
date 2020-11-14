@@ -3,6 +3,7 @@ import db from '../db/models';
 class TodoService {
 
   static async addTodo(newTodo) {
+    console.log("in TodoService.addTodo()");
     try {
       return await db.Todos.create(newTodo);
     } catch (error) {
@@ -16,13 +17,27 @@ class TodoService {
       
       console.log('listId :>> ', listId);
 
-      var listWithTodos = await db.Lists.findByPk(listId/* , { 
-        include: db.Todos
-      } */);
-
+      let listWithTodos = await db.Lists.findByPk(listId, { 
+        include: [ {
+          model: db.Todos, 
+          attributes: ['id', 'title', 'note', 'isCompleted']
+        }]
+      });
       console.log('listWithTodos :>> ', listWithTodos);
 
-      return;
+      let simplifiedTodos = listWithTodos.dataValues.Todos.map(todo => {
+        return todo.dataValues;
+      })
+      console.log('simplifiedTodos :>> ', simplifiedTodos);
+
+      let simplifiedListWithTodos  = { 
+        listId: listId,
+        name: listWithTodos.dataValues.name,
+        todos: simplifiedTodos
+      }
+      console.log('simplifiedListWithTodos :>> ', simplifiedListWithTodos);
+
+      return simplifiedListWithTodos;
       //return await listWithTodos.get().todos;
     } catch (error) {
       console.log(error)

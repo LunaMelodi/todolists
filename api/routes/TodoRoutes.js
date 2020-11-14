@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import TodoController from '../controllers/TodoController.js';
 
-var router = Router();
+var router = Router({ mergeParams: true });
 
 router.get('/', TodoController.getTodos);
 //router.get('/', TodoController.getAllTodos);

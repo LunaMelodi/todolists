@@ -6,19 +6,22 @@ const resgen = new ResGen();
 class TodoController {
   
   static async addTodo(req, res) {
-    console.log(req.body)
+    console.log('req.body :>>', req.body);
 
     if (!req.body.title) {
       return resgen.setError(400, 'Please provide complete details').send(res);      
     }
     const newTodo = req.body;
-    newTodo.listId = req.params.listId;
+    newTodo.listId = req.params.id;
+
+    console.log('newTodo :>> ', newTodo);
     
     if (!newTodo.listId) {
       return resgen.setError(400, 'Please provide listId');
     }
 
     try {
+      console.log("before calling TodoService");
       const createdTodo = await TodoService.addTodo(newTodo);
       return resgen.setSuccess(201, 'Todo Added!', createdTodo).send(res);      
 
@@ -29,15 +32,12 @@ class TodoController {
 
   static async getTodos(req, res) {
     try {
-      console.log("_________________________________________");
-      console.log('Object.keys(req.params) :>> ', Object.keys(req.params));
-      console.log('req.params.id :>> ', req.params.id);
-      console.log('req.params :>> ', req.params);
+      console.log("in TodoController.getTodos()");
 
       let { id } = req.params;
       const allTodos = await TodoService.getTodos(id);
 
-      if (allTodos.length > 0) {
+      if (allTodos.todos.length > 0) {
         resgen.setSuccess(200, 'Todos retrieved', allTodos);
       } else {
         resgen.setSuccess(200, 'No todo found');
