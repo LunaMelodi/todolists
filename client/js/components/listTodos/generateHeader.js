@@ -1,8 +1,8 @@
 import editList from '/client/js/components/editList/editList.js';
-import generateTodoInput from '/client/js/components/generateTodoInput.js'; 
+import generateTodoInput from '/client/js/components/listTodos/generateTodoInput.js'; 
 
 export default function generateHeader(text = 'TodoList') {
-  let wrapper = document.querySelector('.wrapper');
+  let listTodos = document.querySelector('#list-todos-container');
 
   let h1Container = document.createElement('section');
     h1Container.className = 'main-list-header';
@@ -29,7 +29,7 @@ export default function generateHeader(text = 'TodoList') {
   h1Container.append(h1);
   
 
-  wrapper.prepend(h1Container)
+  listTodos.prepend(h1Container)
   
   editIcon.addEventListener('click', e => {
     let wrapperFirstChild = document.querySelector('.wrapper').firstChild;

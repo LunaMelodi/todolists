@@ -1,12 +1,10 @@
 import menuItems from '/client/js/components/listsMenu/menuItems.js';
 import addNewList from '/client/js/components/listsMenu/addNewList.js';
 import requestLists from '/client/js/requests/requestLists.js'; 
-import displayTodos from '/client/js/displayTodos.js';
-import generateHeader from '/client/js/components/generateHeader.js'; 
+import listTodos from '/client/js/components/listTodos/listTodos.js';
 
 export default function listsMenu(lists) {
     let app = document.querySelector('.app');
-
 
     let menuContainer = document.createElement('section');
     menuContainer.id = 'lists-menu-container';
@@ -50,7 +48,7 @@ export default function listsMenu(lists) {
         if(e.target.classList.contains('lists-menu-item')) {
             let listId = e.target.dataset.listId;
             let list = await requestLists.get(listId);
-            displayTodos(list.list.todos);
+            listTodos(list.list);
         }
     })
 

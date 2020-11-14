@@ -47,7 +47,7 @@ const requestLists = {
   },
 
   post: async function () {
-    let addListInput = document.querySelector('#add-list-input');
+    let addListInput = document.querySelector('.add-list-input');
     let listName = addListInput.value.trim();
       if(listName === '') {
           alert('Give it a name!')

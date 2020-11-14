@@ -1,5 +1,5 @@
-import newbutton from '/client/js/components/todoModalW/newbutton.js';
-import updateTodo from '/client/js/updateTodo.js';
+import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
+import requestTodos from '/client/js/requests/requestTodos.js'; 
 
 export default function editTodoModalW(todo) {
   let background = document.querySelector('.modal-todo-background');
@@ -61,7 +61,7 @@ export default function editTodoModalW(todo) {
   
 
   saveChanges.addEventListener('click', evt => {
-    updateTodo(todo.id)
+    requestTodos.put(todo.id)
   })
 
   close.addEventListener('click', evt => {

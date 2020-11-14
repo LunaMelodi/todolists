@@ -1,4 +1,4 @@
-import TODOLISTS_API from './config/var.js';
+import TODOLISTS_API from '../config/var.js';
 
 function getTodosAPI() {
   fetch(TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT, {

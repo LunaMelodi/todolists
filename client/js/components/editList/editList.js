@@ -1,4 +1,4 @@
-import newbutton from '/client/js/components/todoModalW/newbutton.js';
+import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
 
 export default function editList(title = 'title') {
     let wrapper = document.querySelector('.wrapper');

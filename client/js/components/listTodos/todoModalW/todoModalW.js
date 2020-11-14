@@ -1,5 +1,5 @@
-import newbutton from '/client/js/components/todoModalW/newbutton.js';
-import editTodoModalW from '/client/js/components/todoModalW/editTodoModalW.js';
+import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
+import editTodoModalW from '/client/js/components/listTodos/todoModalW/editTodoModalW.js';
 
 export default function todoModalW(todo) {
   

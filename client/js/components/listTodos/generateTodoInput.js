@@ -1,3 +1,5 @@
+import requestTodos from '/client/js/requests/requestTodos.js';
+
 export default function generateTodoInput(e) {   //this function is called in app.js
 
     let mainForm = document.createElement('section');
@@ -34,6 +36,14 @@ export default function generateTodoInput(e) {   //this function is called in ap
     
     form.append(button);
     mainForm.append(form);
-    e.target.closest('.main-list-header').after(mainForm); //appends it after the wrapper header block.
+    e.target.closest('.main-list-header').after(mainForm); //appends this component after the wrapper header block.
+    
+    form.addEventListener('submit', evt => {
+        evt.preventDefault();
+        requestTodos.post(inputTitle, inputDescription, inputDueDate);
+        mainForm.remove();
+    }) 
     
 }
+
+

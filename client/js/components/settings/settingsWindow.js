@@ -1,4 +1,4 @@
-import newbutton from '/client/js/components/todoModalW/newbutton.js';
+import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
 
 export default function settingsWindow() {
     let wrapper = document.querySelector('.wrapper');

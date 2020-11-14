@@ -3,10 +3,10 @@ import requestLists from '/client/js/requests/requestLists.js';
 export default function addNewList() {
 
     let container = document.createElement('section');
-    container.id = 'add-list-container';
+    container.classList.add('add-list-container');
 
     let input = document.createElement('input');
-    input.id = 'add-list-input';
+    input.classList.add('add-list-input');
     input.setAttribute('type', 'text');
     input.setAttribute('maxlength', 25);
     input.setAttribute('placeholder', 'New list');

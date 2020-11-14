@@ -25,6 +25,7 @@ export default async function headBar() {
     app.prepend(header);
     
     let lists = await requestLists.getAll(); 
+
     listsMenu(lists.lists); // the navbar is added to the page.  
     let menu = document.querySelector('#lists-menu-container');
         menu.style.width = '0';   //immediately set "width: 0" to hide it.
@@ -39,4 +40,6 @@ export default async function headBar() {
         wrapperFirstChild.classList.contains('edit-list-container') ? wrapperFirstChild.remove() : null; //if that elem is there remove it to avoid overlapping
         settingsWindow();
     })
+
+    return lists.lists;
 }

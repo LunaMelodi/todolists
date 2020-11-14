@@ -1,4 +1,4 @@
-import updateCheckStatus from '/client/js/updateCheckStatus.js';
+import requestTodos from '/client/js/requests/requestTodos.js'; 
 
 export default async function displayTodos(todos) {
     var ul = document.querySelector('#list-items');
@@ -8,7 +8,7 @@ export default async function displayTodos(todos) {
       const li = document.createElement('li');
       li.setAttribute('class', 'todo-item');
       li.setAttribute('data-key', todo.id);
-      li.setAttribute('data-completed', todo.completed);
+      li.dataset.completed = todo.completed;
 
       const checkbox = document.createElement('label');
       checkbox.setAttribute('class', 'checkbox-container');
@@ -30,7 +30,7 @@ export default async function displayTodos(todos) {
       appendTo.append(li);
 
       checkbox.addEventListener('click', evt => {
-        updateCheckStatus(todo.id, !todo.completed);
+        requestTodos.updateCheckStatus(todo.id, !todo.completed);
         evt.stopPropagation()
       })
     }
