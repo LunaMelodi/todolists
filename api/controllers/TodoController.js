@@ -6,8 +6,9 @@ const resgen = new ResGen();
 class TodoController {
   
   static async addTodo(req, res) {
-    if (!req.body.content) {
-      console.log(req.body)
+    console.log(req.body)
+
+    if (!req.body.title) {
       return resgen.setError(400, 'Please provide complete details').send(res);      
     }
     const newTodo = req.body;
@@ -25,26 +26,16 @@ class TodoController {
       return resgen.setError(400, error.message).send(res);      
     }
   }
-  
-  static async getAllTodos(req, res) {
+
+  static async getTodos(req, res) {
     try {
-      const allTodos = await TodoService.getAllTodos();
+      console.log("_________________________________________");
+      console.log('Object.keys(req.params) :>> ', Object.keys(req.params));
+      console.log('req.params.id :>> ', req.params.id);
+      console.log('req.params :>> ', req.params);
 
-      if (allTodos.length > 0) {
-        resgen.setSuccess(200, 'Todos retrieved', allTodos);
-      } else {
-        resgen.setSuccess(200, 'No todo found');
-      }
-      return resgen.send(res);
-
-    } catch (error) {
-      return resgen.setError(400, error).send(res);      
-    }
-  }
-
-  static async getAllTodosByListId(req, res) {
-    try {
-      const allTodos = await TodoService.getAllTodosByListId(req.params.listId);
+      let { id } = req.params;
+      const allTodos = await TodoService.getTodos(id);
 
       if (allTodos.length > 0) {
         resgen.setSuccess(200, 'Todos retrieved', allTodos);

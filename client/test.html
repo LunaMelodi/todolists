@@ -60,13 +60,13 @@
     <label for="update-list-name"><b>Updated List Name:</b></label>
     <input type="text" placeholder="Enter updated List name" name="update-list-name" id="update-listName-input" required>
     <label for="update-listId"><b>List ID:</b></label>
-    <input type="text" placeholder="Enter updated List ID" name="update-listId" id="update-listId-input" required>
+    <input type="text" placeholder="Enter List ID to update" name="update-listId" id="update-listId-input" required>
     <button>Update List</button>
   </form>
 
   <form id="deleteList-form">
     <label for="delete-listId"><b>List ID to delete:</b></label>
-    <input type="text" placeholder="Enter updated List ID" name="delete-listId" id="delete-listId-input" required>
+    <input type="text" placeholder="Enter List ID to delete" name="delete-listId" id="delete-listId-input" required>
     <button>Delete List</button>
   </form>
 
@@ -75,14 +75,14 @@
   <h2>Todos: </h2>
 
   <label for="listId">Current listId:</label>
-  <input style="display:block" type="text" name="listId" id="listId">
+  <input style="display:block" type="text" name="listId" id="listId" placeholder="Enter current list ID">
 
   <button id="getTodos-button">getTodos</button>
 
   <form id="addTodo-form">
     <label for="todo-name"><b>New Todo Title:</b></label>
     <input type="text" placeholder="Enter Todo Title" name="todo-title" id="todoTitle-input" required>
-    <button>Add List</button>
+    <button>Add Todo</button>
   </form>
   
   <script src="./js/signup.js" type="module"></script>

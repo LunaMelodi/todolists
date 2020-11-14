@@ -10,41 +10,29 @@ class TodoService {
     }
   }
 
-  static async getAllTodos() {
+  static async getTodos(listId) {
     try {
-      return await db.Todos.findAll();
-    } catch (error) {
-      throw error;
-    }
-  }
+      console.log("in TodoService.getTodos()");
+      
+      console.log('listId :>> ', listId);
 
-  static async getAllTodosByListId(listId) {
-    try {
-      var listWithTodos = await db.List.findByPk(listId, { 
-        include: ['todos']
-      });
-      return await listWithTodos.get().todos;
+      var listWithTodos = await db.Lists.findByPk(listId/* , { 
+        include: db.Todos
+      } */);
+
+      console.log('listWithTodos :>> ', listWithTodos);
+
+      return;
+      //return await listWithTodos.get().todos;
     } catch (error) {
       console.log(error)
     }
   }
 
-  static async getOneTodo(id) {
-    try {
-      const theTodo = await db.Todos.findOne({
-        where: { id: Number(id) }
-      });
-
-      return theTodo;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  static async updateTodo(id, updateTodo) {
+  static async updateTodo(todoId, updateTodo) {
     try {
       const todoToUpdate = await db.Todos.findOne({
-        where: { id: Number(id) }
+        where: { id: Number(todoId) }
       });
 
       if (todoToUpdate) {
