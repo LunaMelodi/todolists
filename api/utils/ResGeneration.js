@@ -33,12 +33,10 @@ export default class ResGeneration {
 
     if (this.type === 'success') {
       return res.status(this.statusCode).json(result);
-    } else {
-      return res.status(this.statusCode).json({
-        status: this.type,
-        message: this.message,
-      });
     }
-    
+    return res.status(this.statusCode).json({
+      status: this.type,
+      message: this.message,
+    });
   }
 }

@@ -1,4 +1,4 @@
-import editButton from '/client/js/components/todoModalW/editButton.js';
+import editButton from '/client/js/components/todoModalW/editButton';
 
 export default function subtodo(title, description, duedate, subTodos) {
     //let wrapper = document.querySelector('.wrapper');

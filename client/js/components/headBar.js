@@ -1,6 +1,6 @@
-import listsMenu from '/client/js/components/listsMenu/listsMenu.js';
-import theLists from '/client/js/getLists.js';
-import settingsWindow from '/client/js/components/settings/settingsWindow.js';
+import listsMenu from '/client/js/components/listsMenu/listsMenu';
+import theLists from '/client/js/getLists';
+import settingsWindow from '/client/js/components/settings/settingsWindow';
 
 export default function headBar() {
     let header = document.createElement('header'); 

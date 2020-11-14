@@ -1,4 +1,4 @@
-import API_URL from '../config/var.js';
+import API_URL from '../config/var';
 
 export async function getAPI(path) {
   const response = await fetch(API_URL + path, {

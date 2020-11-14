@@ -1,6 +1,5 @@
-'use strict';
 import { v4 as uuid } from 'uuid';
-import { Model } from 'sequelize';
+// import { Model } from 'sequelize';
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('Users', {
@@ -9,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isAlpha: true,
-        notEmpty: true
-      }
+        notEmpty: true,
+      },
     },
     email: {
       type: DataTypes.STRING,
@@ -18,31 +17,33 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       validate: {
         isEmail: true,
-        notEmpty: true
-      }
+        notEmpty: true,
+      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true
-      }
+        notEmpty: true,
+      },
     },
     isConfirmed: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
-    }
+      defaultValue: false,
+    },
   });
 
-  User.associate = function(models) {
+  User.associate = function (models) {
     User.belongsToMany(models.Lists, {
-      through: 'UserLists', 
-      foreignKey: 'userId', 
-    })
-  } 
+      through: 'UserLists',
+      foreignKey: 'userId',
+    });
+  };
 
-  User.beforeCreate((user, _ ) => {
-    return user.id = uuid();
+  // eslint-disable-next-line no-unused-vars
+  User.beforeCreate((user, _) => {
+    // eslint-disable-next-line no-param-reassign
+    user.id = uuid();
   });
 
   return User;

@@ -1,8 +1,8 @@
-import generateApp from '/client/js/generateApp.js';
-import createTodo from '/client/js/createTodo.js';
-import getTodos from '/client/js/getTodos.js';
-import deleteTodo from '/client/js/deleteTodo.js';
-import todoModalW from '/client/js/components/todoModalW/todoModalW.js'; 
+import generateApp from '/client/js/generateApp';
+import createTodo from '/client/js/createTodo';
+import getTodos from '/client/js/getTodos';
+import deleteTodo from '/client/js/deleteTodo';
+import todoModalW from '/client/js/components/todoModalW/todoModalW'; 
 
 generateApp() 
 

@@ -1,4 +1,4 @@
-import updateCheckStatus from '/client/js/updateCheckStatus.js';
+import updateCheckStatus from '/client/js/updateCheckStatus';
 
 export default async function displayTodos(todos) {
     var ul = document.querySelector('#list-items');

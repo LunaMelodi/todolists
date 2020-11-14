@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import ListController from '../controllers/ListController.js';
+import ListController from '../controllers/ListController';
 
-var router = Router();
+const router = Router();
 
 router.get('/', ListController.getAllListsByUserId);
 router.post('/', ListController.addList);
-//router.get('/:id', ListController.getOneList);
+// router.get('/:id', ListController.getOneList);
 router.put('/:id', ListController.updateList);
 router.delete('/:id', ListController.deleteList);
 

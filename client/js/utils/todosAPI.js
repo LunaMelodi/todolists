@@ -4,7 +4,7 @@ import {
   putAPI,
   patchAPI,
   deleteAPI
-} from './customFetch.js';
+} from './customFetch';
 
 console.log("lists API script running!");
 

@@ -1,5 +1,5 @@
-import menuItems from '/client/js/components/listsMenu/menuItems.js';
-import addNewList from '/client/js/components/listsMenu/addNewList.js';
+import menuItems from '/client/js/components/listsMenu/menuItems';
+import addNewList from '/client/js/components/listsMenu/addNewList';
 
 export default function listsMenu(lists) {
     let app = document.querySelector('.app');

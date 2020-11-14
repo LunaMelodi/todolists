@@ -1,4 +1,4 @@
-import API_URL from './config/var.js';
+import API_URL from './config/var';
 
 function getTodosAPI() {
   fetch(API_URL + '/api/todos', {

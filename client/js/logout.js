@@ -1,4 +1,4 @@
-import API_URL from './config/var.js';
+import API_URL from './config/var';
 
 function logout() {
   fetch(API_URL + '/auth/logout', {

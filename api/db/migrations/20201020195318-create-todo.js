@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Todos', {
@@ -30,7 +29,8 @@ module.exports = {
       },
     });
   },
+  // eslint-disable-next-line no-unused-vars
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Todos');
-  }
+  },
 };

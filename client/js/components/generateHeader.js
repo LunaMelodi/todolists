@@ -1,5 +1,5 @@
-import editList from '/client/js/components/editList/editList.js';
-import generateTodoInput from '/client/js/components/generateTodoInput.js'; 
+import editList from '/client/js/components/editList/editList';
+import generateTodoInput from '/client/js/components/generateTodoInput'; 
 
 export default function generateHeader(text = 'TodoList') {
   let wrapper = document.querySelector('.wrapper');

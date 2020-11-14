@@ -1,78 +1,53 @@
 import database from '../db/models';
 
 class UserService {
-
   static async addUser(newUser) {
-    try {
-      return await database.Users.create(newUser);
-    } catch (error) {
-      throw error;
-    }
+    return database.Users.create(newUser);
   }
 
   static async getAllUsers() {
-    try {
-      return await database.Users.findAll();
-    } catch (error) {
-      throw error;
-    }
+    return database.Users.findAll();
   }
 
   static async getOneUserById(id) {
-    try {
-      const userRecord = await database.Users.findOne({
-        where: { id: id }
-      });
+    const userRecord = await database.Users.findOne({
+      where: { id },
+    });
 
-      return userRecord;
-    } catch (error) {
-      throw error;
-    }
+    return userRecord;
   }
 
   static async getOneUserByEmail(email) {
-    try {
-      const userRecord = await database.Users.findOne({
-        where: { email: email }
-      });
+    const userRecord = await database.Users.findOne({
+      where: { email },
+    });
 
-      return userRecord;
-    } catch (error) {
-      throw error;
-    }
+    return userRecord;
   }
 
   static async updateUser(id, updateUser) {
-    try {
-      const userToUpdate = await database.Users.findOne({
-        where: { id: id }
-      });
+    const userToUpdate = await database.Users.findOne({
+      where: { id },
+    });
 
-      if (userToUpdate) {
-        await database.Users.update(updateUser, { where: { id: id } });
+    if (userToUpdate) {
+      await database.Users.update(updateUser, { where: { id } });
 
-        return updateUser;
-      }
-      return null;
-    } catch (error) {
-      throw error;
+      return updateUser;
     }
+    return null;
   }
 
   static async deleteUser(id) {
-    try {
-      const userToDelete = await database.Users.findOne({ where: { id: Number(id) } });
+    const userToDelete = await database.Users.findOne({ where: { id: Number(id) } });
 
-      if (userToDelete) {
-        const deletedUser = await database.Users.destroy({
-          where: { id: Number(id) }
-        });
-        return deletedUser;
-      }
-      return null;
-    } catch (error) {
-      throw error;
+    if (userToDelete) {
+      const deletedUser = await database.Users.destroy({
+        where: { id: Number(id) },
+      });
+      return deletedUser;
     }
+    return null;
   }
 }
 

@@ -1,11 +1,12 @@
-import jwt from 'jsonwebtoken';
+/* import jwt from 'jsonwebtoken';
 
 module.exports = {
   signJWT: () => {
 
   },
-  
+
   verifyJWT: () => {
 
-  }
-} 
+  },
+};
+ */

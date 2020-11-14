@@ -4,37 +4,35 @@ import ResGen from '../utils/ResGeneration';
 const resgen = new ResGen();
 
 class TodoController {
-  
   static async addTodo(req, res) {
     console.log('req.body :>>', req.body);
 
     if (!req.body.title) {
-      return resgen.setError(400, 'Please provide complete details').send(res);      
+      return resgen.setError(400, 'Please provide complete details').send(res);
     }
     const newTodo = req.body;
     newTodo.listId = req.params.id;
 
     console.log('newTodo :>> ', newTodo);
-    
+
     if (!newTodo.listId) {
       return resgen.setError(400, 'Please provide listId');
     }
 
     try {
-      console.log("before calling TodoService");
+      console.log('before calling TodoService');
       const createdTodo = await TodoService.addTodo(newTodo);
-      return resgen.setSuccess(201, 'Todo Added!', createdTodo).send(res);      
-
+      return resgen.setSuccess(201, 'Todo Added!', createdTodo).send(res);
     } catch (error) {
-      return resgen.setError(400, error.message).send(res);      
+      return resgen.setError(400, error.message).send(res);
     }
   }
 
   static async getTodos(req, res) {
     try {
-      console.log("in TodoController.getTodos()");
+      console.log('in TodoController.getTodos()');
 
-      let { id } = req.params;
+      const { id } = req.params;
       const allTodos = await TodoService.getTodos(id);
 
       if (allTodos.todos.length > 0) {
@@ -43,9 +41,8 @@ class TodoController {
         resgen.setSuccess(200, 'No todo found');
       }
       return resgen.send(res);
-
     } catch (error) {
-      return resgen.setError(400, error).send(res);     
+      return resgen.setError(400, error).send(res);
     }
   }
 
@@ -53,7 +50,7 @@ class TodoController {
     const alteredTodo = req.body;
     const { id } = req.params;
     if (!Number(id)) {
-      return resgen.setError(400, 'Please input a valid numeric value').send(res);      
+      return resgen.setError(400, 'Please input a valid numeric value').send(res);
     }
     try {
       const updateTodo = await TodoService.updateTodo(id, alteredTodo);
@@ -64,7 +61,6 @@ class TodoController {
         resgen.setSuccess(200, 'Todo updated', updateTodo);
       }
       return resgen.send(res);
-
     } catch (error) {
       return resgen.setError(404, error).send(res);
     }
@@ -86,9 +82,8 @@ class TodoController {
         resgen.setSuccess(200, 'Found Todo', theTodo);
       }
       return resgen.send(res);
-
     } catch (error) {
-      return resgen.setError(404, error).send(res);    
+      return resgen.setError(404, error).send(res);
     }
   }
 
@@ -96,7 +91,7 @@ class TodoController {
     const { id } = req.params;
 
     if (!Number(id)) {
-      return resgen.setError(400, 'Please provide a numeric value').send(res);      
+      return resgen.setError(400, 'Please provide a numeric value').send(res);
     }
 
     try {
@@ -108,9 +103,8 @@ class TodoController {
         resgen.setError(404, `Todo with the id ${id} cannot be found`);
       }
       return resgen.send(res);
-
     } catch (error) {
-      return resgen.setError(400, error).send(res);      
+      return resgen.setError(400, error).send(res);
     }
   }
 }

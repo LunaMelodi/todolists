@@ -1,5 +1,5 @@
-import newbutton from '/client/js/components/todoModalW/newbutton.js';
-import updateTodo from '/client/js/updateTodo.js';
+import newbutton from '/client/js/components/todoModalW/newbutton';
+import updateTodo from '/client/js/updateTodo';
 
 export default function editTodoModalW(todo) {
   let background = document.querySelector('.modal-todo-background');
