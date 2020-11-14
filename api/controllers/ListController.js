@@ -62,7 +62,7 @@ class ListController {
       return resgen.setError(400, 'Please input a valid numeric value').send(res);      
     }
     try {
-      const updateList = await ListService.updateList(id, alteredList);
+      const updateList = await ListService.updateList(id, req.userRecord.id, alteredList);
       if (!updateList) {
         resgen.setError(404, `Cannot find list with the id: ${id}`);
       } else {
@@ -103,9 +103,9 @@ class ListController {
     if (!Number(id)) {
       return resgen.setError(400, 'Please provide a numeric value').send(res);
     }
-
+    //WRONG ID BEING PASSED IN. USER DOES NOT HAVE ACCESS TO LIST WITH ID 1
     try {
-      const listToDelete = await ListService.deleteList(id);
+      const listToDelete = await ListService.deleteList(id, req.userRecord.id);
 
       if (listToDelete) {
         resgen.setSuccess(200, 'List deleted');

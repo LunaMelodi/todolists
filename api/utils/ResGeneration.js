@@ -24,6 +24,7 @@ export default class ResGeneration {
   }
 
   send(res) {
+    console.log(this);
     const result = {
       status: this.type,
       message: this.message,
