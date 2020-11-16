@@ -7,6 +7,8 @@ import {
   deleteAPI
 } from './customFetch.js';
 
+const indexHTML = 'http://localhost:5500/client/index.html';
+
 const requestAuth = {
     login: async function (email, password) {
         let user = {
@@ -15,7 +17,7 @@ const requestAuth = {
         };
         try {
             let response = await postAPI(TODOLISTS_API.API_URL + TODOLISTS_API.AUTH.LOGIN, user);
-            window.location.href = 'http://localhost:5500/client/index.html';
+            window.location.href = indexHTML;
         } catch(error){
             console.log(error, TODOLISTS_API.API_URL + TODOLISTS_API.AUTH.LOGIN)
         }
@@ -31,8 +33,12 @@ const requestAuth = {
             email: email,
             password: password
           };
-
-          await postAPI(TODOLISTS_API.API_URL + TODOLISTS_API.AUTH.SIGNUP, user)
+        try {
+            let res = await postAPI(TODOLISTS_API.API_URL + TODOLISTS_API.AUTH.SIGNUP, user);
+            window.location.href = indexHTML;
+        } catch (error) {
+            console.log(error);
+        }          
     }
 }
 

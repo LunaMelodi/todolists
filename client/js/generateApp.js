@@ -1,5 +1,16 @@
-import generateWrapper from '/client/js/components/generateWrapper';
-import generateHeader from '/client/js/components/generateHeader';
-// generateHeader(text) The argument is a string and is optional. It would replace the default header "TodoList" with the new string.
-import generateList from '/client/js/components/generateList';
-import headBar from '/client/js/components/headBar';
+/* import generateWrapper from './components/generateWrapper.js';
+import headBar from './components/headBar.js';
+import listTodos from './components/listTodos.js';
+import noListWindow from './components/noListWindow/noListWindow.js'; */
+
+export default async function generateApp() {
+/*  headBar(); 
+  generateWrapper();
+  const lists = await requestLists.getAll();
+  if(lists.length > 0) {
+    const list = await requestLists.get(lists[0].id);
+    listTodos(list);
+  } else {
+    noListWindow()
+  } */  alert('mierda x2')
+}

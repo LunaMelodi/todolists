@@ -1,4 +1,4 @@
-import API_URL from './config/var';
+import TODOLISTS_API from './config/var';
 
 const form = document.querySelector('#login-form');
 

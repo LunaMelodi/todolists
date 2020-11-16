@@ -1,5 +1,4 @@
 import listsMenu from '/client/js/components/listsMenu/listsMenu';
-import theLists from '/client/js/getLists';
 import settingsWindow from '/client/js/components/settings/settingsWindow';
 
 export default async function headBar() {

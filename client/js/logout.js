@@ -1,4 +1,4 @@
-import API_URL from './config/var';
+import TODOLISTS_API from './config/var';
 
 function logout() {
   fetch(`${TODOLISTS_API.API_URL}/auth/logout`, {

@@ -1,5 +1,4 @@
-import generateApp from '/client/js/generateApp.js';
+import generateApp from './js/generateApp.js';
 
-import requestTodos from '/client/js/requests/requestTodos.js';
-
-generateApp();
+alert('mierda')
+generateApp()
