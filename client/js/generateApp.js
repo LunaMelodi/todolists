@@ -1,16 +1,17 @@
-/* import generateWrapper from './components/generateWrapper.js';
-import headBar from './components/headBar.js';
-import listTodos from './components/listTodos.js';
-import noListWindow from './components/noListWindow/noListWindow.js'; */
+import generateWrapper from '/client/js/components/generateWrapper.js';
+import headBar from '/client/js/components/headBar.js'; 
+import requestLists from '/client/js/requests/requestLists.js';
+import noListWindow from '/client/js/components/noListWindow/noListWindow.js';
+import listTodos from '/client/js/components/listTodos/listTodos.js';
 
 export default async function generateApp() {
-/*  headBar(); 
+  let lists = await headBar();
   generateWrapper();
-  const lists = await requestLists.getAll();
-  if(lists.length > 0) {
-    const list = await requestLists.get(lists[0].id);
-    listTodos(list);
+  if(lists.length <= 0 ) {
+    noListWindow();
   } else {
-    noListWindow()
-  } */  alert('mierda x2')
+    let list = await requestLists.get(lists[0].id);
+    listTodos(list)
+  }
 }
+

@@ -1,4 +1,4 @@
-import getTodos from '/client/js/getTodos';
+import getTodos from '/client/js/getTodos.js';
 
 export default function createTodo() {
   var addTodoTitle = document.getElementById("add-todo-title");

@@ -1,18 +1,18 @@
-import newbutton from '/client/js/components/todoModalW/newbutton';
+import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
 
 export default function settingsWindow() {
-  const wrapper = document.querySelector('.wrapper');
+    let wrapper = document.querySelector('.wrapper');
+    
+    let settingsContainer = document.createElement('div');
+    settingsContainer.className = 'settings-container';
 
-  const settingsContainer = document.createElement('div');
-  settingsContainer.className = 'settings-container';
+    let close = newbutton( '[x]', 0, 'close-modal-button');
 
-  const close = newbutton('[x]', 0, 'close-modal-button');
+    settingsContainer.append(close)
 
-  settingsContainer.append(close);
+    wrapper.prepend(settingsContainer);
 
-  wrapper.prepend(settingsContainer);
-
-  close.addEventListener('click', (evt) => {
-    settingsContainer.remove();
-  });
+    close.addEventListener('click', evt => {
+        settingsContainer.remove();
+      })
 }

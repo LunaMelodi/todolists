@@ -1,4 +1,7 @@
-import generateApp from './js/generateApp.js';
+import generateApp from '/client/js/generateApp.js';
 
-alert('mierda')
-generateApp()
+generateApp() 
+
+
+
+

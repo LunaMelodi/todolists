@@ -1,4 +1,4 @@
-import API_URL from './config/var';
+import TODOLISTS_API from '../config/var.js';
 
 function getTodosAPI() {
   fetch(TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT, {
@@ -7,11 +7,11 @@ function getTodosAPI() {
     },
     credentials: 'include',
   })
-    .then((res) => res.json())
-    .then((data) => console.log('returned TODO data :>> ', data))
-    .catch((err) => console.log('err :>> ', err));
+  .then(res => res.json())
+  .then(data => console.log('returned TODO data :>> ', data))
+  .catch(err => console.log('err :>> ', err))
 }
 
-const button = document.querySelector('#getTodos-button');
+let button = document.querySelector('#getTodos-button');
 
 button.addEventListener('click', getTodosAPI);
