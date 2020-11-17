@@ -38,12 +38,18 @@ body {
   
 }
 
+#list-todos-container {
+  max-height: 100%;
+  max-width: 100%;
+}
+
 .main-list-header {
     position: relative;
 }
 
 .main-list-header h1 {
     font-size: 3rem;
+    overflow-wrap: break-word;
 }
 
 .main-list-header .active {
@@ -60,7 +66,7 @@ body {
     list-style: none;
     padding: 0;
     max-height: 100%;
-    max-width: 100%
+    max-width: 100%;
 }
 /* buttons  */
 button {

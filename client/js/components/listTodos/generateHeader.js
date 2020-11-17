@@ -2,6 +2,10 @@ import editList from '/client/js/components/editList/editList.js';
 import generateTodoInput from '/client/js/components/listTodos/generateTodoInput.js'; 
 
 export default function generateHeader(text = 'TodoList') {
+  const itself = document.querySelector('.main-list-header');
+  if(itself) {
+    itself.remove();
+  }
   let listTodos = document.querySelector('#list-todos-container');
 
   let h1Container = document.createElement('section');
@@ -28,7 +32,6 @@ export default function generateHeader(text = 'TodoList') {
   h1Container.append(iconsContainer)
   h1Container.append(h1);
   
-
   listTodos.prepend(h1Container)
   
   editIcon.addEventListener('click', e => {

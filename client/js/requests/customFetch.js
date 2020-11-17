@@ -21,7 +21,6 @@ export async function postAPI(path, data) {
     })
     console.log(response, ' ----+-+-+-+-+')
     if(response.ok) {
-      console.log(' -------------  -- - -777')
       return response.json();
     } else throw new Error('POST request failed. ');
 }
