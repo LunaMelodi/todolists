@@ -1,4 +1,5 @@
 import requestLists from '/client/js/requests/requestLists.js';
+import listTodos from '/client/js/components/listTodos/listTodos.js';
 
 export default function addNewList() {
 
@@ -17,7 +18,13 @@ export default function addNewList() {
 
     container.append(input);
     container.append(plusIcon);
-    
-    plusIcon.addEventListener('click', requestLists.post);
+
+    plusIcon.addEventListener('click', async e => {
+      if(e.target === plusIcon){
+        const sibling = e.target.previousElementSibling;
+        let res = await requestLists.post(sibling);
+        listTodos(res);
+      }
+    });
     return container;
 }

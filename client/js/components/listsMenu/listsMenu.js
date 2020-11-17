@@ -4,6 +4,10 @@ import requestLists from '/client/js/requests/requestLists.js';
 import listTodos from '/client/js/components/listTodos/listTodos.js';
 
 export default function listsMenu(lists) {
+    const itself = document.querySelector('#lists-menu-container');
+    if(itself) {
+      itself.remove();
+    }  
     let app = document.querySelector('.app');
 
     let menuContainer = document.createElement('section');

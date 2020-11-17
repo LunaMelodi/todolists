@@ -1,7 +1,7 @@
 import editList from '/client/js/components/editList/editList.js';
 import generateTodoInput from '/client/js/components/listTodos/generateTodoInput.js'; 
 
-export default function generateHeader(text = 'TodoList') {
+export default function generateHeader(list) {
   const itself = document.querySelector('.main-list-header');
   if(itself) {
     itself.remove();
@@ -25,7 +25,7 @@ export default function generateHeader(text = 'TodoList') {
     editIcon.innerHTML = 'edit';
 
   let h1 = document.createElement('h1');
-    h1.innerHTML = text;
+    h1.innerHTML = list.name;
 
   iconsContainer.append(plusIcon);
   iconsContainer.append(editIcon);
@@ -37,7 +37,7 @@ export default function generateHeader(text = 'TodoList') {
   editIcon.addEventListener('click', e => {
     let wrapperFirstChild = document.querySelector('.wrapper').firstChild;
     wrapperFirstChild.classList.contains('settings-container') ? wrapperFirstChild.remove() : null; //if that elem is there remove it to avoid overlapping
-    editList()
+    editList(list)
   })
 
   const setActiveState = e => {  // toggles CSS selector to prevent the box from displaying repeatedly, to add transition to icon and to remove the box. 

@@ -4,7 +4,12 @@ import settingsWindow from '/client/js/components/settings/settingsWindow.js';
 
 
 export default async function headBar() {
-    let header = document.createElement('header'); 
+    const itself = document.querySelector('#head-bar');
+    if(itself) {
+      itself.remove();
+    }
+    let header = document.createElement('header');
+    header.id = 'head-bar';
     
     let settingsIcon = document.createElement('span'); 
     settingsIcon.classList.add('material-icons', 'settings-icon', 'md-24', 'md-light')

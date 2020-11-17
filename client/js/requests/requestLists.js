@@ -1,4 +1,5 @@
 import TODOLISTS_API from '/client/js/config/var.js';
+import menuItems from '/client/js/components/listsMenu/menuItems.js';
 import { 
   getAPI,
   postAPI,
@@ -40,32 +41,32 @@ const requestLists = {
   delete: async function (id) {
     try {
       let data = await deleteAPI(TODOLISTS_API.API_URL + TODOLISTS_API.LISTS_ENDPOINT + `/${id}`)
-      console.log('data :>> ', data);
+      return 1;
     } catch (error) {
       console.log('error :>> ', error);
+      return 0;
     }
   },
 
-  post: async function () {
-    let addListInput = document.querySelector('.add-list-input');
-    let listName = addListInput.value.trim();
+  post: async function (input) {
+    let listName = input.value.trim();
       if(listName === '') {
           alert('Give it a name!')
           return 0
       }
     let data = {
-      listName: listName
+      name: listName
     }
     try {
       let response = await postAPI(TODOLISTS_API.API_URL + TODOLISTS_API.LISTS_ENDPOINT, data);
       console.log(response)
+      const ul = document.querySelector('.lists-menu');
+      ul.prepend(menuItems(response))
+      input.value = '';
+      return response;
     } catch(error) {
       console.log(error)
     }
-    
-    addListInput.value = '';
-   
-    return 0;
   }
 }
 
