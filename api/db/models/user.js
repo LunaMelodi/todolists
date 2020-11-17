@@ -1,8 +1,8 @@
-import { v4 as uuid } from 'uuid';
-// import { Model } from 'sequelize';
+import { v4 as uuid } from "uuid";
+import { Model } from "sequelize";
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('Users', {
+  const User = sequelize.define("Users", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -35,8 +35,8 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function (models) {
     User.belongsToMany(models.Lists, {
-      through: 'UserLists',
-      foreignKey: 'userId',
+      through: "UserLists",
+      foreignKey: "userId",
     });
   };
 

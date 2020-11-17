@@ -1,94 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test stuff</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test stuff</title>
+  </head>
+  <body>
+    <form id="signup-form">
+      <h1>Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
 
-  <form id="signup-form">
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
+      <label for="name"><b>Name</b></label>
+      <input
+        type="text"
+        placeholder="Enter Name"
+        name="name"
+        id="name"
+        required
+      />
 
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" id="name" required>
+      <label for="email"><b>Email</b></label>
+      <input
+        type="text"
+        placeholder="Enter Email"
+        name="email"
+        id="email"
+        required
+      />
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+      <label for="password"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        id="password"
+        required
+      />
 
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+      <label for="password2"><b>Repeat Password</b></label>
+      <input
+        type="password"
+        placeholder="Repeat Password"
+        name="password2"
+        id="password2"
+        required
+      />
 
-    <label for="password2"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="password2" id="password2" required>
-  
-    <button type="submit" class="signupbtn">Sign Up</button>
-  </form>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </form>
 
-  <hr>
+    <hr />
 
-  <form id="login-form">
-    <h1>Login</h1>
+    <form id="login-form">
+      <h1>Login</h1>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="login-email" required>
+      <label for="email"><b>Email</b></label>
+      <input
+        type="text"
+        placeholder="Enter Email"
+        name="email"
+        id="login-email"
+        required
+      />
 
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="login-password" required>
-  
-    <button type="submit" class="login-btn" id="login-btn">Login</button>
-  </form>
-  
-  <hr>
-  <h2>Logout:</h2>
-  <button id="logout-button">Logout</button>    
+      <label for="password"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        id="login-password"
+        required
+      />
 
-  <hr>
+      <button type="submit" class="login-btn" id="login-btn">Login</button>
+    </form>
 
-  <h2>Lists: </h2>
-  
-  <button id="getLists-button">Get All User's Lists</button>
+    <hr />
+    <h2>Logout:</h2>
+    <button id="logout-button">Logout</button>
 
-  <form id="addList-form">
-    <label for="list-name"><b>New List:</b></label>
-    <input type="text" placeholder="Enter List Name" name="list-name" id="listName-input" required>
-    <button>Add List</button>
-  </form>
+    <hr />
 
-  <form id="updateList-form">
-    <label for="update-list-name"><b>Updated List Name:</b></label>
-    <input type="text" placeholder="Enter updated List name" name="update-list-name" id="update-listName-input" required>
-    <label for="update-listId"><b>List ID:</b></label>
-    <input type="text" placeholder="Enter List ID to update" name="update-listId" id="update-listId-input" required>
-    <button>Update List</button>
-  </form>
+    <h2>Lists:</h2>
 
-  <form id="deleteList-form">
-    <label for="delete-listId"><b>List ID to delete:</b></label>
-    <input type="text" placeholder="Enter List ID to delete" name="delete-listId" id="delete-listId-input" required>
-    <button>Delete List</button>
-  </form>
+    <button id="getLists-button">Get All User's Lists</button>
 
-  <hr>
+    <form id="addList-form">
+      <label for="list-name"><b>New List:</b></label>
+      <input
+        type="text"
+        placeholder="Enter List Name"
+        name="list-name"
+        id="listName-input"
+        required
+      />
+      <button>Add List</button>
+    </form>
 
-  <h2>Todos: </h2>
+    <form id="updateList-form">
+      <label for="update-list-name"><b>Updated List Name:</b></label>
+      <input
+        type="text"
+        placeholder="Enter updated List name"
+        name="update-list-name"
+        id="update-listName-input"
+        required
+      />
+      <label for="update-listId"><b>List ID:</b></label>
+      <input
+        type="text"
+        placeholder="Enter List ID to update"
+        name="update-listId"
+        id="update-listId-input"
+        required
+      />
+      <button>Update List</button>
+    </form>
 
-  <label for="listId">Current listId:</label>
-  <input style="display:block" type="text" name="listId" id="listId" placeholder="Enter current list ID">
+    <form id="deleteList-form">
+      <label for="delete-listId"><b>List ID to delete:</b></label>
+      <input
+        type="text"
+        placeholder="Enter List ID to delete"
+        name="delete-listId"
+        id="delete-listId-input"
+        required
+      />
+      <button>Delete List</button>
+    </form>
 
-  <button id="getTodos-button">getTodos</button>
+    <hr />
 
-  <form id="addTodo-form">
-    <label for="todo-name"><b>New Todo Title:</b></label>
-    <input type="text" placeholder="Enter Todo Title" name="todo-title" id="todoTitle-input" required>
-    <button>Add Todo</button>
-  </form>
-  
-  <script src="./js/signup.js" type="module"></script>
-  <script src="./js/login.js" type="module"></script>
-  <script src="./js/logout.js" type="module"></script>
-  <script src="./js/utils/listsAPI.js" type="module"></script>
-  <script src="./js/utils/todosAPI.js" type="module"></script>
-</body>
+    <h2>Todos:</h2>
+
+    <label for="listId">Current listId:</label>
+    <input
+      style="display: block"
+      type="text"
+      name="listId"
+      id="listId"
+      placeholder="Enter current list ID"
+    />
+
+    <button id="getTodos-button">getTodos</button>
+
+    <form id="addTodo-form">
+      <label for="todo-name"><b>New Todo Title:</b></label>
+      <input
+        type="text"
+        placeholder="Enter Todo Title"
+        name="todo-title"
+        id="todoTitle-input"
+        required
+      />
+      <button>Add Todo</button>
+    </form>
+
+    <form id="updateTodo-form">
+      <label for="todoId"><b>Update Todo Id:</b> </label>
+      <input
+        type="text"
+        name="todoId"
+        id="todoId"
+        placeholder="Enter current todo ID"
+      />
+      <label for="update-todo-title"><b>Update Todo Title:</b></label>
+      <input
+        type="text"
+        placeholder="Enter Updated Todo Title"
+        name="update-todo-title"
+        id="updatedTodoTitle-input"
+        required
+      />
+      <button>Update Todo</button>
+    </form>
+
+    <form id="deleteTodo-form">
+      <label for="delete-todoId"><b>Todo ID to delete:</b></label>
+      <input
+        type="text"
+        placeholder="Enter Todo ID to delete"
+        name="delete-todoId"
+        id="delete-todoId-input"
+        required
+      />
+      <button>Delete List</button>
+    </form>
+
+    <script src="./js/signup.js" type="module"></script>
+    <script src="./js/login.js" type="module"></script>
+    <script src="./js/logout.js" type="module"></script>
+    <script src="./js/utils/listsAPI.js" type="module"></script>
+    <script src="./js/utils/todosAPI.js" type="module"></script>
+  </body>
 </html>

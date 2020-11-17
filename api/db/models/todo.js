@@ -1,9 +1,7 @@
-/* const {
-  Model,
-} = require('sequelize'); */
+const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  const Todo = sequelize.define('Todos', {
+  const Todo = sequelize.define("Todos", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Todo.associate = function (models) {
     Todo.belongsTo(models.Lists, {
-      foreignKey: 'listId',
+      foreignKey: "listId",
     });
   };
 

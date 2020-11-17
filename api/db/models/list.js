@@ -1,9 +1,7 @@
-/* const {
-  Model,
-} = require('sequelize'); */
+const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  const List = sequelize.define('Lists', {
+  const List = sequelize.define("Lists", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -12,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
 
   List.associate = function (models) {
     List.hasMany(models.Todos, {
-      foreignKey: 'listId',
+      foreignKey: "listId",
     });
     List.belongsToMany(models.Users, {
-      through: 'UserLists',
-      foreignKey: 'listId',
+      through: "UserLists",
+      foreignKey: "listId",
     });
   };
 

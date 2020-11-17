@@ -1,24 +1,24 @@
-import API_URL from '../config/var';
+import API_URL from "../config/testVar.js";
 
 export async function getAPI(path) {
-  const response = await fetch(TODOLISTS_API.API_URL + path, {
-    method: 'GET',
+  const response = await fetch(API_URL + path, {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
   });
 
   return response.json();
 }
 
 export async function postAPI(path, data) {
-  const response = await fetch(TODOLISTS_API.API_URL + path, {
-    method: 'POST', // or 'PUT'
+  const response = await fetch(API_URL + path, {
+    method: "POST", // or 'PUT'
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(data),
   });
 
@@ -26,12 +26,12 @@ export async function postAPI(path, data) {
 }
 
 export async function putAPI(path, data) {
-  const response = await fetch(TODOLISTS_API.API_URL + path, {
-    method: 'PUT',
+  const response = await fetch(API_URL + path, {
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(data),
   });
 
@@ -39,12 +39,12 @@ export async function putAPI(path, data) {
 }
 
 export async function patchAPI(path, data) {
-  const response = await fetch(TODOLISTS_API.API_URL + path, {
-    method: 'PUT',
+  const response = await fetch(API_URL + path, {
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(data),
   });
 
@@ -52,12 +52,12 @@ export async function patchAPI(path, data) {
 }
 
 export async function deleteAPI(path) {
-  const response = await fetch(TODOLISTS_API.API_URL + path, {
-    method: 'DELETE', // or 'PUT'
+  const response = await fetch(API_URL + path, {
+    method: "DELETE", // or 'PUT'
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
   });
 
   return response.json();

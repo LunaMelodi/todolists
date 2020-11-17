@@ -1,4 +1,4 @@
-import database from '../db/models';
+import database from "../db/models";
 
 class UserService {
   static async addUser(newUser) {
@@ -39,7 +39,9 @@ class UserService {
   }
 
   static async deleteUser(id) {
-    const userToDelete = await database.Users.findOne({ where: { id: Number(id) } });
+    const userToDelete = await database.Users.findOne({
+      where: { id: Number(id) },
+    });
 
     if (userToDelete) {
       const deletedUser = await database.Users.destroy({
