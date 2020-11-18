@@ -25,16 +25,13 @@
     "express": "^4.17.1",
     "helmet": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.20",
     "morgan": "^1.10.0",
     "nodemailer": "^6.4.14",
     "path": "^0.12.7",
     "pg": "^8.4.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
-    "serve-favicon": "^2.5.0",
-    "uuid": "^8.3.1",
-    "winston": "^3.3.3"
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -44,10 +41,6 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/register": "^7.12.1",
     "@babel/runtime": "^7.12.1",
-    "babel-loader": "^8.1.0",
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0"
+    "babel-loader": "^8.1.0"
   }
 }
