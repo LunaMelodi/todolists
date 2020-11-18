@@ -10,7 +10,7 @@ export default async function generateApp() {
   if(lists.length <= 0 ) {
     noListWindow();
   } else {
-    let list = await requestLists.get(lists[0].id);
+    let list = await requestLists.get(lists[0].listId);
     listTodos(list.list)
   }
 }

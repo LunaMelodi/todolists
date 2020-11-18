@@ -23,7 +23,6 @@ export default function addNewList() {
       if(e.target === plusIcon){
         const sibling = e.target.previousElementSibling;
         let res = await requestLists.post(sibling);
-        listTodos(res);
       }
     });
     return container;

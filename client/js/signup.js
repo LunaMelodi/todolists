@@ -1,37 +1,44 @@
-var form = document.querySelector('#signup-form');
+import requestAuth from '/client/js/requests/requestAuth.js';
 
-function handleSignup(evt) {
-  evt.preventDefault();
+const signupForm = document.querySelector('#signup-form');
+const signupName = signupForm.querySelector('#name');
+const signupEmail = signupForm.querySelector('#email');
+const signupPassword = signupForm.querySelector('#password');
+const signupPassword2 = signupForm.querySelector('#password2');
 
-  var name = form.querySelector('#name').value;
-  var email = form.querySelector('#email').value;
-  var password = form.querySelector('#password').value;
+const span = document.createElement('span');
+span.innerHTML = 'password does not match.';
+span.style.color = '#f00';
+span.id = 'password-unmatch';
+span.style.display = 'none';
+signupPassword2.after(span);
 
-  var user = {
-    name: name,
-    email: email,
-    password: password
-  };
+const passwordTooShort = document.createElement('span');
+passwordTooShort.innerHTML = 'password is too short.';
+passwordTooShort.style.color = '#f00';
+passwordTooShort.id = 'password-short';
+passwordTooShort.style.display = 'none';
+signupPassword.after(passwordTooShort);
 
-  console.log('user :>> ', user);
-  signup(user)
-  .then(res => res.json())
-  .then(data => console.log('data >> ', data))
-  .catch(err => {
-      console.log('error :>> ', err);
-  })
+signupPassword.addEventListener('change', e => {
+  if(signupPassword.value.length < 6) {
+    passwordTooShort.style.display = 'block';
+  } else {
+    passwordTooShort.style.display = 'none';
+  }
+})
 
-}
+signupForm.addEventListener('change', (e) => {
+  if (signupPassword.value === signupPassword2.value) {
+    span.style.display = 'none';
+  } else {
+    span.style.display = 'block';
+  }
+});
 
-function signup(user) {
-  return fetch('http://localhost:8000/auth/signup', {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    //credentials: 'include',
-    body: JSON.stringify(user),
-  })
-}
-
-form.addEventListener('submit', handleSignup);
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (signupPassword.value === signupPassword2.value) {
+    requestAuth.signup(signupName.value, signupEmail.value, signupPassword.value);
+  }
+});

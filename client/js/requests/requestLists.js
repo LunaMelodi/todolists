@@ -1,5 +1,6 @@
 import TODOLISTS_API from '/client/js/config/var.js';
 import menuItems from '/client/js/components/listsMenu/menuItems.js';
+import generateApp from '/client/js/generateApp.js';
 import { 
   getAPI,
   postAPI,
@@ -11,7 +12,7 @@ import {
 const requestLists = {
   get: async function (id) {
     try {
-      let data = await getAPI(TODOLISTS_API.API_URL + TODOLISTS_API.LISTS_ENDPOINT + `/${id}`)
+      let data = await getAPI(TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT(id))
       console.log('data :>> ', data);
       return data;
     } catch (error) {
@@ -61,8 +62,7 @@ const requestLists = {
       let response = await postAPI(TODOLISTS_API.API_URL + TODOLISTS_API.LISTS_ENDPOINT, data);
       console.log(response)
       const ul = document.querySelector('.lists-menu');
-      ul.prepend(menuItems(response))
-      input.value = '';
+      generateApp()
       return response;
     } catch(error) {
       console.log(error)

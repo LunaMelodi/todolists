@@ -30,8 +30,10 @@ export default async function headBar() {
     app.prepend(header);
     
     let lists = await requestLists.getAll(); 
+    console.log(lists.data)
 
-    listsMenu(lists.lists); // the navbar is added to the page.  
+    if(lists.data){
+      listsMenu(lists.data); // the navbar is added to the page.  
     let menu = document.querySelector('#lists-menu-container');
         menu.style.width = '0';   //immediately set "width: 0" to hide it.
     const listsHandler = () => { // on event the elem will transition to the width declared in the stylesheet. 
@@ -46,5 +48,9 @@ export default async function headBar() {
         settingsWindow();
     })
 
-    return lists.lists;
+    return lists.data;
+    } else {
+      return [];
+    }
+    
 }
