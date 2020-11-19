@@ -46,7 +46,7 @@ const requestTodos = {
     }
   },
 
-  post: async function (addTodoTitle, addTodoDescription, addTodoDuedate) {
+  post: async function (addTodoTitle, addTodoDescription, addTodoDuedate, listId) {
     let titleValue = addTodoTitle.value.trim();
     let descriptionValue = addTodoDescription.value.trim();
     let dueDateValue = addTodoDuedate.value;
@@ -59,8 +59,9 @@ const requestTodos = {
       description: descriptionValue,
       dueDate: dueDateValue
     }
+    const path = TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT(listId);
     try {
-      let response = await postAPI(TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT, data);
+      let response = await postAPI(path, data);
       console.log(response);
     } catch(error) {
       console.log(error)

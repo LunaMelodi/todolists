@@ -46,7 +46,7 @@ export default function generateHeader(list) {
       mainForm.remove();
       e.target.classList.remove('active');
     } else {
-      generateTodoInput(e);
+      generateTodoInput(e, list.listId);
       e.target.classList.add('active');
     }
   }

@@ -38,7 +38,7 @@ class TodoController {
       if (allTodos.todos.length > 0) {
         resgen.setSuccess(200, "Todos retrieved", allTodos);
       } else {
-        resgen.setSuccess(200, "No todo found");
+        resgen.setSuccess(200, "No todo found", allTodos);
       }
       return resgen.send(res);
     } catch (error) {

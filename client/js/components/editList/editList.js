@@ -29,7 +29,7 @@ export default function editList(list) {
     })
 
     deleteList.addEventListener('click', async e => {
-      let res = await requestLists.delete(list.id);
+      let res = await requestLists.delete(list.listId);
       if(res) {
         let menuListItems = document.querySelectorAll('.lists-menu-item');
         for(let item of menuListItems) {

@@ -11,7 +11,7 @@ export default async function generateApp() {
     noListWindow();
   } else {
     let list = await requestLists.get(lists[0].listId);
-    listTodos(list.list)
+    listTodos(list.data)
   }
 }
 

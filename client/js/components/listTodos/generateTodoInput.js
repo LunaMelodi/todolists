@@ -1,6 +1,6 @@
 import requestTodos from '/client/js/requests/requestTodos.js';
 
-export default function generateTodoInput(e) {   //this function is called in app.js
+export default function generateTodoInput(e, listId) {   //this function is called in app.js
 
     let mainForm = document.createElement('section');
     mainForm.setAttribute('class', 'main-form');
@@ -40,7 +40,7 @@ export default function generateTodoInput(e) {   //this function is called in ap
     
     form.addEventListener('submit', evt => {
         evt.preventDefault();
-        requestTodos.post(inputTitle, inputDescription, inputDueDate);
+        requestTodos.post(inputTitle, inputDescription, inputDueDate, listId);
         mainForm.remove();
     }) 
     

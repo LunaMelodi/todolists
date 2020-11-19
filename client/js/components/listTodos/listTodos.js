@@ -16,7 +16,7 @@ export default function listTodos(list) { // function for displaying the list wi
   wrapper.append(container);
 
   generateHeader(list);
-  generateList(list.id);
+  generateList(list.listId);
   displayTodos(list.todos);
     
   return 1;
