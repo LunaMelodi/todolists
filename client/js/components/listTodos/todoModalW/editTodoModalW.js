@@ -1,7 +1,7 @@
 import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
 import requestTodos from '/client/js/requests/requestTodos.js'; 
 
-export default function editTodoModalW(todo) {
+export default function editTodoModalW(todo, listId) {
   let background = document.querySelector('.modal-todo-background');
 
   let todoInfoContainer = document.createElement('div');
@@ -23,7 +23,7 @@ export default function editTodoModalW(todo) {
   let changeTodoDescription = document.createElement('textarea');
   changeTodoDescription.className = 'modal-todo-description';
   changeTodoDescription.id = 'modal-todo-description';
-  changeTodoDescription.value = todo.description;
+  changeTodoDescription.value = todo.note;
   changeTodoDescription.setAttribute('maxlength', 450)
   
   let editDescriptionIcon = document.createElement('label');
@@ -61,7 +61,12 @@ export default function editTodoModalW(todo) {
   
 
   saveChanges.addEventListener('click', evt => {
-    requestTodos.put(todo.id)
+    const data = {
+      title: changeTodoTitle.value,
+      note: changeTodoDescription.value,
+      duedate: changeTodoDueDate.value
+    } 
+    requestTodos.put(listId, todo.id, data);
   })
 
   close.addEventListener('click', evt => {

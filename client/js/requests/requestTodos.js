@@ -8,9 +8,10 @@ import {
 } from './customFetch.js';
 
 const requestTodos = {
-  get: async function (id) {
+  get: async function (listId, todoId) {
+    const path = TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(listId) + TODOLISTS_API.TODO_ENDPOINT(todoId);
     try {
-      let data = await getAPI(TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(id))
+      let data = await getAPI(path)
       console.log('data :>> ', data);
       return data;
     } catch (error) {

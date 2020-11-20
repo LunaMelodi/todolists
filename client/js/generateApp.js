@@ -11,6 +11,7 @@ export default async function generateApp() {
     noListWindow();
   } else {
     let list = await requestLists.get(lists[0].listId);
+    sessionStorage.setItem('currentListTodos', JSON.stringify(list.data.todos));
     listTodos(list.data)
   }
 }

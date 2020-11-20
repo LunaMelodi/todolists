@@ -1,4 +1,5 @@
 import requestTodos from '/client/js/requests/requestTodos.js'; 
+import todoModalW from '/client/js/components/listTodos/todoModalW/todoModalW.js';
 
 export default function generateList(listId) {
     let container = document.querySelector('#list-todos-container');
@@ -24,8 +25,9 @@ export default function generateList(listId) {
     ul.addEventListener('click', async (e) => {
         if(e.target.classList.contains('todo-title')) {
           let itemKey = e.target.parentElement.parentElement.dataset.key;
-          let todo = await requestTodos.get(itemKey);
-          todoModalW(todo);
+          let todos = JSON.parse(sessionStorage.getItem('currentListTodos'));
+          let todo = todos.find(elem => { return elem.id === +itemKey })
+          todoModalW(todo, listId);
         }
     })
 

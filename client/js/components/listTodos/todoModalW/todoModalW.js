@@ -1,7 +1,7 @@
 import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
 import editTodoModalW from '/client/js/components/listTodos/todoModalW/editTodoModalW.js';
 
-export default function todoModalW(todo) {
+export default function todoModalW(todo, listId) {
   
   let body = document.body;
 
@@ -17,7 +17,7 @@ export default function todoModalW(todo) {
 
   let todoDescription = document.createElement('p');
   todoDescription.className = 'modal-todo-description';
-  todoDescription.innerHTML = todo.description;
+  todoDescription.innerHTML = todo.note;
 
   let todoDueDate = document.createElement('span');
   todoDueDate.className = 'modal-todo-duedate';
@@ -37,7 +37,7 @@ export default function todoModalW(todo) {
   body.prepend(windowBackground);
   
   edit.addEventListener('click', evt => {
-    let editWindow = editTodoModalW(todo);
+    let editWindow = editTodoModalW(todo, listId);
     todoInfoContainer.replaceWith(editWindow);
   })
 

@@ -52,6 +52,7 @@ export default function listsMenu(lists) {
         if(e.target.classList.contains('lists-menu-item')) {
             let listId = e.target.dataset.listId;
             let list = await requestLists.get(listId);
+            sessionStorage.setItem('currentListTodos', JSON.stringify(list.data.todos));
             listTodos(list.data);
         }
     })
