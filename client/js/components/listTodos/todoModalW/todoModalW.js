@@ -23,17 +23,12 @@ export default function todoModalW(todo, listId) {
   todoDescription.className = 'modal-todo-description';
   todoDescription.innerHTML = todo.note;
 
-  let todoDueDate = document.createElement('span');
-  todoDueDate.className = 'modal-todo-duedate';
-  todoDueDate.innerHTML = 'Due date: ' + todo.duedate;
-
   let edit = newbutton('edit' , 'edit-main-button', 'edit-todo-button');
   let close = newbutton( '[x]', 'close-modal-button', 'close-modal-button');
   
   
   todoInfoContainer.prepend(todoTitle)
   todoInfoContainer.append(todoDescription)
-  todoInfoContainer.append(todoDueDate)
   todoInfoContainer.append(edit)
   todoInfoContainer.append(close)
 

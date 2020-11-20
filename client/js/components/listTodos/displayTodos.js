@@ -16,7 +16,7 @@ export default async function displayTodos(todos) {
       const todoText = document.createElement('div');
       todoText.setAttribute('class', 'list-text');
       todoText.innerHTML = `<p class="todo-title">${todo.title}</p>
-                            <span class="todo-duedate">${todo.duedate}</span>`;
+                            <span class="todo-note">${todo.note ?? '. . .'}</span>`;
       
       const button = document.createElement('button');
       button.setAttribute('class', 'delete-todo');

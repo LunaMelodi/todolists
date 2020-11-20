@@ -19,13 +19,7 @@ export default function generateTodoInput(e, listId) {   //this function is call
     inputDescription.setAttribute('id', 'add-todo-description');
     inputDescription.setAttribute('type', 'text');
     inputDescription.setAttribute('placeholder', 'Add a note here!');
-    inputDescription.setAttribute('maxlength', 450)
-    
-
-    let inputDueDate = document.createElement('input');
-    inputDueDate.setAttribute('id', 'add-todo-duedate');
-    inputDueDate.setAttribute('type', 'text');
-    inputDueDate.setAttribute('placeholder', 'Due ');
+    inputDescription.setAttribute('maxlength', 249)
 
     let button = document.createElement('button');
     button.setAttribute('class', 'submit-todo-button');
@@ -34,7 +28,6 @@ export default function generateTodoInput(e, listId) {   //this function is call
     
     form.prepend(inputTitle)
     form.append(inputDescription)
-    form.append(inputDueDate)
     
     form.append(button);
     mainForm.append(form);
@@ -42,11 +35,10 @@ export default function generateTodoInput(e, listId) {   //this function is call
     
     form.addEventListener('submit', async evt => {
         evt.preventDefault();
-        await requestTodos.post(inputTitle, inputDescription, inputDueDate, listId);
+        await requestTodos.post(inputTitle, inputDescription, listId);
         let list =  await requestLists.get(listId);
         inputTitle.value = '';
         inputDescription.value = '';
-        inputDueDate.value = '';
         displayTodos(list.data.todos);
     }) 
     

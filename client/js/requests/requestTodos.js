@@ -3,7 +3,6 @@ import {
   getAPI,
   postAPI,
   putAPI,
-  patchAPI,
   deleteAPI
 } from './customFetch.js';
 
@@ -40,18 +39,16 @@ const requestTodos = {
     }
   },
 
-  post: async function (addTodoTitle, addTodoDescription, addTodoDuedate, listId) {
+  post: async function (addTodoTitle, addTodoDescription, listId) {
     let titleValue = addTodoTitle.value.trim();
     let descriptionValue = addTodoDescription.value.trim();
-    let dueDateValue = addTodoDuedate.value;
     if(titleValue === '') {
         alert('Give it a title!')
         return 0
     }
     let data = {
       title: titleValue,
-      description: descriptionValue,
-      dueDate: dueDateValue
+      description: descriptionValue
     }
     const path = TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(listId);
     try {

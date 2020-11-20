@@ -53,7 +53,8 @@ export default function listsMenu(lists) {
             let listId = e.target.dataset.listId;
             let list = await requestLists.get(listId);
             sessionStorage.setItem('currentListTodos', JSON.stringify(list.data.todos));
-            listTodos(list.data);
+            await listTodos(list.data);
+            menuContainer.style.width = '0';
         }
     })
 
