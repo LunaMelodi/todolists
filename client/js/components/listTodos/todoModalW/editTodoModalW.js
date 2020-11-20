@@ -1,5 +1,6 @@
 import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
 import requestTodos from '/client/js/requests/requestTodos.js'; 
+import todoModalW from '/client/js/components/listTodos/todoModalW/todoModalW.js';
 
 export default function editTodoModalW(todo, listId) {
   let background = document.querySelector('.modal-todo-background');
@@ -60,13 +61,21 @@ export default function editTodoModalW(todo, listId) {
   todoInfoContainer.append(buttonsContainer)
   
 
-  saveChanges.addEventListener('click', evt => {
+  saveChanges.addEventListener('click', async () => {
     const data = {
       title: changeTodoTitle.value,
       note: changeTodoDescription.value,
       duedate: changeTodoDueDate.value
     } 
-    requestTodos.put(listId, todo.id, data);
+    let response = await requestTodos.put(listId, todo.id, data);
+    if(response) {
+      let freshTodo = await requestTodos.get(listId, todo.id);
+      todoModalW(freshTodo.data, listId);
+      let todos = JSON.parse(sessionStorage.getItem('currentListTodos'));
+      const todoToUpdateIndex = todos.findIndex(elem => { return todo.id === elem.id })
+      todos.splice(todoToUpdateIndex, 1, freshTodo.data);
+      sessionStorage.currentListTodos = JSON.stringify(todos);
+    }
   })
 
   close.addEventListener('click', evt => {

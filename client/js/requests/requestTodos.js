@@ -24,14 +24,16 @@ const requestTodos = {
     try {
       let response = await putAPI(path, data)
       console.log('data :>> ', response);
+      return 1;
     } catch (error) {
       console.log('error :>> ', error);
     }
   },   
   
   delete: async function (listId, todoId) {
+    const path =  TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(listId) + TODOLISTS_API.TODO_ENDPOINT(todoId);
     try {
-      let data = await deleteAPI(TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(listId) + `/${todoId}`)
+      let data = await deleteAPI(path);
       console.log('data :>> ', data);
     } catch (error) {
       console.log('error :>> ', error);

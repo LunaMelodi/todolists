@@ -17,8 +17,10 @@ export default function generateList(listId) {
     ul.addEventListener('click', e => {  
         if (e.target.classList.contains('delete-todo')) {
           const itemKey = e.target.parentElement.dataset.key;
-          requestTodos.delete(itemKey, listId);
-          e.target.parentElement.remove(); 
+          // to remove it from the server
+          requestTodos.delete(listId, itemKey);
+          // from the DOM 
+          e.target.parentElement.remove();
         }
     })
 

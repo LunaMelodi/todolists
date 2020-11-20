@@ -45,6 +45,18 @@ class TodoService {
     }
   }
 
+  static async getOneTodo(id) {
+    try {
+      const theList = await db.Todos.findOne({
+        where: { id: Number(id) }
+      });
+
+      return theList;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async updateTodo(todoId, updateTodo) {
     try {
       console.log("todoId :>> ", todoId);

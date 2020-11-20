@@ -2,7 +2,11 @@ import newbutton from '/client/js/components/listTodos/todoModalW/newbutton.js';
 import editTodoModalW from '/client/js/components/listTodos/todoModalW/editTodoModalW.js';
 
 export default function todoModalW(todo, listId) {
-  
+  const itself = document.querySelector('.modal-todo-background');
+  if(itself) {
+    itself.remove();
+  }
+
   let body = document.body;
 
   let windowBackground = document.createElement('div');

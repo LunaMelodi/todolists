@@ -25,8 +25,14 @@ const requestAuth = {
         }
     },
     
-    logout() {
-
+    logout: async function() {
+        const path = TODOLISTS_API.API_URL + TODOLISTS_API.AUTH.LOGOUT;
+        try {
+            await getAPI(path);
+            window.location.href = loginHTML;
+        } catch (err) {
+            console.error(err)
+        }
     },
 
     signup: async function (name, email, password) {
