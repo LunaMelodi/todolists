@@ -21,11 +21,24 @@ export default function generateList(listId) {
         }
     })
 
-    ul.addEventListener('click', async (evt) => {
-        if(evt.target.classList.contains('todo-title')) {
-          let itemKey = evt.target.parentElement.parentElement.dataset.key;
+    ul.addEventListener('click', async (e) => {
+        if(e.target.classList.contains('todo-title')) {
+          let itemKey = e.target.parentElement.parentElement.dataset.key;
           let todo = await requestTodos.get(itemKey);
           todoModalW(todo);
         }
+    })
+
+    ul.addEventListener('click', async e => {
+      if(e.target.classList.contains('checkmark')) {
+        let li = e.target.closest('.todo-item');
+        let itemKey = li.dataset.key;
+        let complete = li.dataset.completed;
+        let data = {
+          isCompleted: (+complete) ? 0 : 1
+        }
+        await requestTodos.put(listId, itemKey, data);
+        li.dataset.completed = data.isCompleted;
+      }
     })
 }

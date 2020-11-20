@@ -11,7 +11,7 @@ import {
 
 const requestLists = {
   get: async function (id) {
-    const path = TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT(id);
+    const path = TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(id);
     try {
       let data = await getAPI(path)
       console.log('data :>>>> ', data);

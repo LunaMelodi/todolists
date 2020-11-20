@@ -10,7 +10,7 @@ import {
 const requestTodos = {
   get: async function (id) {
     try {
-      let data = await getAPI(TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT + `/${id}`)
+      let data = await getAPI(TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(id))
       console.log('data :>> ', data);
       return data;
     } catch (error) {
@@ -18,28 +18,19 @@ const requestTodos = {
     }
   },
 
-  getAll: async function () {
+  put: async function (listId, todoId, data) {
+    const path = TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(listId) + TODOLISTS_API.TODO_ENDPOINT(todoId);
     try {
-      let data = await getAPI(TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT)
-      console.log('data :>> ', data);
-      return data;
-    } catch (error) {
-      console.log('error :>> ', error);
-    }
-  },
-/*
-  put: async function (id, data) {
-    try {
-      let response = await putAPI(TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT + `/${id}`, data)
+      let response = await putAPI(path, data)
       console.log('data :>> ', response);
     } catch (error) {
       console.log('error :>> ', error);
     }
-  },   */
+  },   
   
   delete: async function (listId, todoId) {
     try {
-      let data = await deleteAPI(TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT(listId) + `/${todoId}`)
+      let data = await deleteAPI(TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(listId) + `/${todoId}`)
       console.log('data :>> ', data);
     } catch (error) {
       console.log('error :>> ', error);
@@ -59,17 +50,13 @@ const requestTodos = {
       description: descriptionValue,
       dueDate: dueDateValue
     }
-    const path = TODOLISTS_API.API_URL + TODOLISTS_API.TODOS_ENDPOINT(listId);
+    const path = TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(listId);
     try {
       let response = await postAPI(path, data);
       console.log(response);
     } catch(error) {
       console.log(error)
     }
-    
-    titleValue.value = '';
-    descriptionValue.value = '';
-    dueDateValue.value = '';
    
     return 1;
   }

@@ -1,8 +1,11 @@
 const TODOLISTS_API = {
     API_URL: 'http://localhost:8000',
     LISTS_ENDPOINT: '/api/lists',
-    TODOS_ENDPOINT(listid) {
+    LIST_TODOS(listid) {
       return `${this.LISTS_ENDPOINT}/${listid}/todos`;
+    },
+    TODO_ENDPOINT(todoId) {
+      return `/${todoId}`;
     },
     AUTH: {
       LOGIN: '/auth/login',

@@ -1,4 +1,6 @@
 import requestTodos from '/client/js/requests/requestTodos.js';
+import displayTodos from '/client/js/components/listTodos/displayTodos.js';
+import requestLists from '/client/js/requests/requestLists.js';
 
 export default function generateTodoInput(e, listId) {   //this function is called in app.js
 
@@ -38,10 +40,14 @@ export default function generateTodoInput(e, listId) {   //this function is call
     mainForm.append(form);
     e.target.closest('.main-list-header').after(mainForm); //appends this component after the wrapper header block.
     
-    form.addEventListener('submit', evt => {
+    form.addEventListener('submit', async evt => {
         evt.preventDefault();
-        requestTodos.post(inputTitle, inputDescription, inputDueDate, listId);
-        mainForm.remove();
+        await requestTodos.post(inputTitle, inputDescription, inputDueDate, listId);
+        let list =  await requestLists.get(listId);
+        inputTitle.value = '';
+        inputDescription.value = '';
+        inputDueDate.value = '';
+        displayTodos(list.data.todos);
     }) 
     
 }
