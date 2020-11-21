@@ -30,15 +30,19 @@ const requestLists = {
       console.log('error :>> ', error);
     }
   },
-/*
-  put: async function (id, data) {
+
+  put: async function (id, value) {
+    const path = TODOLISTS_API.API_URL + TODOLISTS_API.LISTS_ENDPOINT + '/' + id;
     try {
-      let response = await putAPI(TODOLISTS_API.API_URL + TODOLISTS_API.LISTS_ENDPOINT + `/${id}`, data)
+      const data = {
+        name: value
+      }
+      let response = await putAPI(path, data)
       console.log('data :>> ', response);
     } catch (error) {
       console.log('error :>> ', error);
     }
-  },   */
+  },   
   
   delete: async function (id) {
     try {

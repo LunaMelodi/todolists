@@ -45,9 +45,13 @@ export default function generateHeader(list) {
       let mainForm = document.querySelector('.main-form');
       mainForm.remove();
       e.target.classList.remove('active');
+      let ulContainer = document.querySelector('.todo-list');
+      ulContainer.style.height = '';
     } else {
       generateTodoInput(e, list.listId);
       e.target.classList.add('active');
+      let ulContainer = document.querySelector('.todo-list');
+      ulContainer.style.height = 'calc(100% - 8.25rem - 3.3rem)'; //here we make the list height adapt to the appearence of the form.
     }
   }
 

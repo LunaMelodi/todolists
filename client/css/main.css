@@ -41,6 +41,7 @@ body {
 #list-todos-container {
   max-height: 100%;
   max-width: 100%;
+  overflow: hidden;
 }
 
 .main-list-header {
@@ -58,7 +59,7 @@ body {
 /*    list items    */
 
 .todo-list {
-    max-height: 80%;
+    height: calc(100% - 3.3rem);
     overflow: auto;
     max-width: 100%;
 }
@@ -67,6 +68,7 @@ body {
     padding: 0;
     max-height: 100%;
     max-width: 100%;
+    overflow: auto;
 }
 /* buttons  */
 button {
@@ -104,6 +106,7 @@ header {
 .main-form {
     display: flex;
     justify-content: center;
+    max-height: 8.25rem;
 }
 
 #add-todo-form {
@@ -150,6 +153,7 @@ input[type=text], input[type=password],  #modal-todo-description {
 
 .todo-note {
   font-size: 0.7em;
+  overflow: hidden;
 }
 
 .delete-todo {

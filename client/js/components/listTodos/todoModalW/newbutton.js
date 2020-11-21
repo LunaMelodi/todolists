@@ -1,7 +1,7 @@
 export default function newbutton(content , buttonId, buttonClass) {
     let customButton = document.createElement('button');
-    buttonClass ? customButton.className = buttonClass : console.log('No class has been assigned to this button. ', customButton);;
-    buttonId ? customButton.id = buttonId : console.log('No id has been assigned to this button. ', customButton);
+    buttonClass ? customButton.className = buttonClass : null;
+    buttonId ? customButton.id = buttonId : null;
     customButton.innerHTML = content;
     return customButton;
 }

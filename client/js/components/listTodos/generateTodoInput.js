@@ -2,7 +2,7 @@ import requestTodos from '/client/js/requests/requestTodos.js';
 import displayTodos from '/client/js/components/listTodos/displayTodos.js';
 import requestLists from '/client/js/requests/requestLists.js';
 
-export default function generateTodoInput(e, listId) {   //this function is called in app.js
+export default function generateTodoInput(e, listId) { 
 
     let mainForm = document.createElement('section');
     mainForm.setAttribute('class', 'main-form');
@@ -35,11 +35,14 @@ export default function generateTodoInput(e, listId) {   //this function is call
     
     form.addEventListener('submit', async evt => {
         evt.preventDefault();
-        await requestTodos.post(inputTitle, inputDescription, listId);
+        let freshTodo =  await requestTodos.post(inputTitle, inputDescription, listId);
         let list =  await requestLists.get(listId);
         inputTitle.value = '';
         inputDescription.value = '';
         displayTodos(list.data.todos);
+        let todos = JSON.parse(sessionStorage.getItem('currentListTodos'));
+        todos.push(freshTodo.data);
+        sessionStorage.setItem('currentListTodos',JSON.stringify(todos));
     }) 
     
 }

@@ -48,17 +48,15 @@ const requestTodos = {
     }
     let data = {
       title: titleValue,
-      description: descriptionValue
+      note: descriptionValue
     }
     const path = TODOLISTS_API.API_URL + TODOLISTS_API.LIST_TODOS(listId);
     try {
       let response = await postAPI(path, data);
-      console.log(response);
+      return response;
     } catch(error) {
       console.log(error)
     }
-   
-    return 1;
   }
 }
 
